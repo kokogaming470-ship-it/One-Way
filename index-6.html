@@ -1,0 +1,525 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><title>One Way | شحن ونقل دولي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050b18;--bg2:#0a1630;--card:#0d1b3a;--line:#1b2f5e;--b:#1e90ff;--b2:#6cc4ff;--t:#eaf2ff;--m:#8ea3c7;--ok:#22c55e;--wr:#f59e0b;--er:#ef4444;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="light"]{--bg:#050b18}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--t);font-family:Cairo,Tahoma,sans-serif;overflow-x:hidden}
+button,input,textarea,select{font-family:inherit;font-size:15px}
+#intro{position:fixed;inset:0;z-index:99;background:radial-gradient(circle at 50% 50%,#0b2a63,#030712);display:flex;flex-direction:column;align-items:center;justify-content:center;animation:out .8s 3.4s forwards}
+#intro .lg{animation:pop 1.6s cubic-bezier(.2,1.4,.4,1) both}
+#intro p{margin-top:18px;letter-spacing:6px;color:var(--b2);animation:fade 1s 1.4s both;font-weight:600}
+#intro .bar{width:200px;height:3px;background:#1b2f5e;margin-top:22px;border-radius:9px;overflow:hidden}
+#intro .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--b),var(--b2));animation:ld 2.8s .3s forwards}
+@keyframes pop{from{transform:scale(.2) rotate(-25deg);opacity:0;filter:blur(14px)}to{transform:none;opacity:1}}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}}@keyframes ld{to{width:100%}}@keyframes out{to{opacity:0;visibility:hidden}}
+nav{position:fixed;top:0;inset-inline:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:10px 5vw;padding-top:calc(10px + env(safe-area-inset-top,0px));background:rgba(5,11,24,.75);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav .l{display:flex;gap:22px;flex-wrap:wrap;color:var(--m)}nav .l a{color:inherit;text-decoration:none;font-weight:600}nav .l a:hover{color:var(--b2)}
+.btn{border:0;cursor:pointer;border-radius:12px;padding:10px 20px;font-weight:800;color:#fff;background:linear-gradient(135deg,#1e90ff,#0b57d0);box-shadow:0 8px 28px -8px #1e90ff;transition:.25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 34px -8px #1e90ff}.btn.g{background:transparent;border:1px solid var(--line);box-shadow:none;color:var(--t)}.btn.s{padding:6px 12px;font-size:13px}.btn.ok{background:#16a34a;box-shadow:none}.btn.wr{background:#d97706;box-shadow:none}.btn.er{background:#dc2626;box-shadow:none}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:110px 6vw 80px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 70% 10%,#103a85 0,transparent 55%),radial-gradient(ellipse at 10% 90%,#0a2a66 0,transparent 50%),var(--bg)}
+.hero h1{font-size:clamp(34px,7vw,74px);font-weight:900;line-height:1.2;background:linear-gradient(120deg,#fff,#6cc4ff 60%,#1e90ff);-webkit-background-clip:text;background-clip:text;color:transparent;animation:fade 1s 3.6s both}
+.hero p{max-width:640px;color:var(--m);margin:18px 0 28px;font-size:18px;animation:fade 1s 3.8s both}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;animation:fade 1s 4s both}
+.hero .lg{animation:fl 5s ease-in-out infinite;margin-bottom:10px}
+@keyframes fl{50%{transform:translateY(-12px)}}
+.waves{position:absolute;bottom:0;inset-inline:0;height:130px;opacity:.9}.waves path{animation:wv 9s linear infinite}.waves path:nth-child(2){animation-duration:14s;opacity:.5}
+@keyframes wv{to{transform:translateX(-600px)}}
+.sh{position:absolute;bottom:70px;font-size:44px;animation:sail 22s linear infinite;inset-inline-start:-80px}@keyframes sail{to{inset-inline-start:110%}}
+section{padding:80px 6vw}h2{font-size:34px;font-weight:900;margin-bottom:10px}h2 span{color:var(--b2)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:28px}
+.card{background:linear-gradient(160deg,var(--card),#081226);border:1px solid var(--line);border-radius:18px;padding:22px;transition:.3s}
+.card:hover{transform:translateY(-6px);border-color:var(--b);box-shadow:0 20px 50px -20px #1e90ff}
+.card .ic{font-size:34px}.card h3{margin:8px 0 6px}.card p{color:var(--m);font-size:14px}
+.rv{opacity:0;transform:translateY(30px);transition:1s}.rv.on{opacity:1;transform:none}
+.big{font-size:clamp(26px,5vw,44px);font-weight:900;direction:ltr;color:var(--b2)}
+footer{padding:26px;text-align:center;color:var(--m);border-top:1px solid var(--line)}
+.ov{position:fixed;inset:0;z-index:50;background:rgba(2,6,16,.8);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:16px}.ov.on{display:flex}
+.box{width:min(440px,100%);max-height:92vh;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px;animation:pop2 .4s both}
+.box.wide{width:min(760px,100%)}@media(max-width:700px){nav .l{display:none}}@keyframes pop2{from{opacity:0;transform:scale(.9)}}
+label{display:block;margin:12px 0 5px;color:var(--m);font-size:13px}
+input,textarea,select{width:100%;background:#071026;border:1px solid var(--line);color:var(--t);border-radius:12px;padding:11px 14px;outline:0}input:focus,textarea:focus,select:focus{border-color:var(--b)}
+.note{background:#102a55;border:1px dashed var(--b);border-radius:12px;padding:10px 12px;font-size:13px;color:var(--b2);margin-bottom:6px}
+.err{color:var(--er);font-size:13px;margin-top:8px;min-height:18px}
+#app{display:none;min-height:100vh;padding:80px 4vw 40px;padding-top:calc(80px + env(safe-area-inset-top,0px));background:var(--bg2)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 20px}.tabs button{background:var(--card);color:var(--m);border:1px solid var(--line);border-radius:10px;padding:8px 16px;cursor:pointer;font-weight:700}.tabs button.on{background:var(--b);color:#fff;border-color:var(--b)}
+.st{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:18px}.st div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}.st b{display:block;font-size:30px;color:var(--b2)}.st small{color:var(--m)}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:560px}th,td{padding:10px;text-align:start;border-bottom:1px solid var(--line);font-size:14px}th{color:var(--m);font-weight:600}
+.tg{padding:3px 10px;border-radius:99px;font-size:12px;font-weight:700}.tg.open{background:#1e90ff33;color:#6cc4ff}.tg.done{background:#22c55e33;color:#4ade80}.tg.postponed{background:#f59e0b33;color:#fbbf24}.tg.closed{background:#64748b44;color:#cbd5e1}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#64748b;margin-inline-end:6px}.dot.on{background:#22c55e;box-shadow:0 0 10px #22c55e}
+.chat{max-height:280px;overflow:auto;background:#071026;border-radius:14px;padding:12px;margin:12px 0;display:flex;flex-direction:column;gap:8px}
+.m{max-width:80%;padding:8px 12px;border-radius:14px;background:#14284f;font-size:14px}.m.me{align-self:flex-end;background:#0b57d0}.m small{display:block;opacity:.7;font-size:11px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+#push{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));left:50%;transform:translate(-50%,-160%);z-index:120;width:min(360px,94vw);background:rgba(240,246,255,.96);color:#0b1630;border-radius:20px;padding:12px 14px;box-shadow:0 20px 60px #000a;transition:.6s cubic-bezier(.2,1.3,.4,1);display:flex;gap:10px;align-items:center}#push.on{transform:translate(-50%,0)}#push b{display:block;font-size:13px}#push span{font-size:13px}
+
+#sp0{position:fixed;top:0;inset-inline-start:0;height:3px;width:0;background:linear-gradient(90deg,#1e90ff,#6cc4ff,#fff);z-index:60;box-shadow:0 0 12px #1e90ff}
+#cg{position:fixed;width:380px;height:380px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,#1e90ff33,transparent 65%);transform:translate(-50%,-50%);left:-400px;top:-400px}
+#cv{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.hero>*:not(#cv):not(.au):not(.waves):not(.sh){position:relative;z-index:2}
+.au{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;z-index:0;animation:au 16s ease-in-out infinite alternate}
+.au.a{width:420px;height:420px;background:#0b57d0;top:-80px;inset-inline-end:-80px}.au.b{width:360px;height:360px;background:#1e90ff;bottom:80px;inset-inline-start:-100px;animation-delay:-6s}.au.c{width:260px;height:260px;background:#6cc4ff;top:40%;inset-inline-start:40%;opacity:.25;animation-delay:-3s}
+@keyframes au{to{transform:translate(60px,-50px) scale(1.25)}}
+.hero{animation:none}.hero .gl{margin-bottom:6px;filter:drop-shadow(0 0 40px #1e90ffaa);animation:gin 2s 3.3s cubic-bezier(.2,1.4,.4,1) both,fl 6s 5.3s ease-in-out infinite}
+@keyframes gin{from{opacity:0;transform:scale(.1) rotate(-200deg)}}
+.hero .lg{animation:fade 1s 3.7s both,fl 7s 4.7s ease-in-out infinite}
+.w{display:inline-block;background:linear-gradient(120deg,#fff,#6cc4ff 60%,#1e90ff);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;transform:translateY(40px) rotateX(-70deg);animation:wd .9s cubic-bezier(.2,1.2,.4,1) forwards;margin-inline:.12em}
+@keyframes wd{to{opacity:1;transform:none}}
+.hero h1{animation:none;-webkit-text-fill-color:initial;background:none;color:inherit}
+.btn{position:relative;overflow:hidden}.btn::after{content:"";position:absolute;top:0;inset-inline-start:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,#fff7,transparent);transform:skewX(-20deg);animation:sh 3.2s infinite}
+@keyframes sh{60%,100%{inset-inline-start:140%}}
+.cta .btn{animation:pulse 2.8s infinite}@keyframes pulse{50%{box-shadow:0 0 0 12px #1e90ff00,0 8px 40px -4px #1e90ff}}
+.mq{overflow:hidden;border-block:1px solid var(--line);background:#07122a;padding:16px 0;white-space:nowrap}.mq div{display:inline-block;animation:mq 30s linear infinite}.mq span{margin:0 28px;color:var(--b2);font-weight:800;letter-spacing:1px}.mq span::before{content:"⚓ ";}
+@keyframes mq{to{transform:translateX(50%)}}
+.rt{position:relative;text-align:center}.rt svg{width:100%;max-width:980px;height:auto;margin-top:20px}
+.rv{transition:1s cubic-bezier(.2,.9,.3,1)}.rv:nth-child(2){transition-delay:.12s}.rv:nth-child(3){transition-delay:.24s}.rv:nth-child(4){transition-delay:.36s}
+.card{transform-style:preserve-3d;position:relative;overflow:hidden}.card::before{content:"";position:absolute;inset:-2px;background:conic-gradient(from 0deg,transparent,#1e90ff55,transparent 30%);animation:rot 6s linear infinite;opacity:0;transition:.4s}.card:hover::before{opacity:1}.card::after{content:"";position:absolute;inset:1px;background:linear-gradient(160deg,var(--card),#081226);border-radius:17px}.card>*{position:relative;z-index:1}
+@keyframes rot{to{transform:rotate(360deg)}}
+.card .ic{display:inline-block;animation:bob 3s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-8px) rotate(6deg)}}
+.cn{position:absolute;font-size:34px;opacity:.5;animation:drift 18s linear infinite;z-index:1}@keyframes drift{from{transform:translateY(0) rotate(0)}to{transform:translateY(-110vh) rotate(360deg)}}
+.big{animation:glow 3s ease-in-out infinite}@keyframes glow{50%{text-shadow:0 0 30px #1e90ff}}
+.tabs button,.card,.m{transition:.25s}.m{animation:fade .4s both}#app{animation:fade .8s both}
+tr{animation:fade .5s both}tr:hover td{background:#12306a55}
+
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+:root{--gd:#e8c987}
+nav{background:linear-gradient(180deg,rgba(5,11,24,.92),rgba(5,11,24,.6));border-bottom:1px solid transparent;border-image:linear-gradient(90deg,transparent,#1e90ff88,var(--gd),#1e90ff88,transparent) 1}
+h2{background:linear-gradient(120deg,#fff,#bfe3ff 55%,var(--gd));-webkit-background-clip:text;background-clip:text;color:transparent;position:relative;display:inline-block;font-size:clamp(28px,5vw,44px)}
+h2 span{-webkit-text-fill-color:#6cc4ff}
+h2::after{content:"";display:block;height:3px;width:60%;margin-top:8px;border-radius:9px;background:linear-gradient(90deg,var(--gd),#1e90ff,transparent);animation:ln 3s ease-in-out infinite alternate}@keyframes ln{from{width:25%}to{width:90%}}
+.rt h2,#contact h2{display:inline-block}#contact h2::after,.rt h2::after{margin-inline:auto}
+.hero h1{letter-spacing:.5px;text-shadow:0 10px 60px #1e90ff55}
+.hero p{font-size:19px;line-height:1.9}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 45%,#030712cc 100%);z-index:1;pointer-events:none}
+.btn{letter-spacing:.3px;border:1px solid #ffffff22;padding:12px 24px;border-radius:14px}
+.btn.g{background:#ffffff0a;backdrop-filter:blur(8px);border:1px solid #e8c98766;color:var(--gd)}
+.card{background:linear-gradient(160deg,#10224a99,#08142c99);backdrop-filter:blur(10px);border:1px solid #6cc4ff33}
+.card:hover{border-color:var(--gd);box-shadow:0 30px 70px -25px #1e90ff,0 0 0 1px #e8c98755}
+.box{background:linear-gradient(160deg,#0f2250,#08142c);border:1px solid #e8c98755;box-shadow:0 40px 100px -20px #000,0 0 80px -30px #1e90ff}
+.mq{background:linear-gradient(90deg,#07122a,#0b2252,#07122a);border-block:1px solid #e8c98733}.mq span{color:var(--gd)}
+.st div{background:linear-gradient(160deg,#10224a,#08142c);border-color:#6cc4ff33}
+.callb{background:linear-gradient(135deg,#16a34a,#0d7a36);box-shadow:0 10px 34px -8px #22c55e;font-size:17px}
+.ph{display:inline-block;transform-origin:50% 60%;animation:ring 1.6s ease-in-out infinite}
+@keyframes ring{0%,50%,100%{transform:rotate(0)}5%,15%,25%,35%{transform:rotate(-18deg)}10%,20%,30%,40%{transform:rotate(18deg)}}
+.fab{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));inset-inline-start:18px;z-index:40;width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none;background:linear-gradient(135deg,#22c55e,#0d7a36);box-shadow:0 10px 30px -6px #22c55e}
+.fab::before,.fab::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #22c55e;animation:rp 2s infinite}.fab::after{animation-delay:1s}
+@keyframes rp{to{transform:scale(1.9);opacity:0}}
+
+#app{max-width:1240px;margin-inline:auto;width:100%}
+#app,.hero,section{--pad:6vw}
+@media(min-width:1000px){nav{padding-inline:max(5vw,40px)}.hero{padding-top:130px}.hero h1{font-size:clamp(50px,5.4vw,84px);max-width:1100px}.hero p{max-width:760px;font-size:21px}section{padding:100px max(6vw,60px);max-width:1400px;margin-inline:auto}.grid{grid-template-columns:repeat(4,1fr);gap:24px}.card{padding:30px}.box{padding:34px}table th,table td{padding:13px 12px}.rt svg{max-width:1100px}}
+@media(min-width:1600px){html{font-size:18px}}
+@media(max-width:700px){
+nav{padding-inline:12px}nav .btn.s{padding:7px 10px;font-size:12px;white-space:nowrap}#navb{flex-wrap:nowrap;gap:6px}#nl svg{max-width:112px}
+.hero{padding:96px 18px 90px}.hero p{font-size:16px}.hero .cta{flex-direction:column;width:100%;max-width:340px}.hero .cta .btn{width:100%;text-align:center}
+.sh{font-size:34px}section{padding:60px 18px}.rt{overflow:hidden}.rt svg{width:118%;max-width:none;margin-inline:-9%}
+footer{padding-bottom:96px}.box{padding:20px;border-radius:18px}.box.wide{padding:16px}
+#app{padding:78px 12px 100px}.tabs button{flex:1 1 auto;padding:9px 10px;font-size:13px}.st{grid-template-columns:repeat(2,1fr)}.card{padding:18px}
+th,td{padding:8px 6px;font-size:13px}.m{max-width:92%}.fab{width:56px;height:56px;font-size:25px}
+#push{width:94vw}.big{font-size:30px}}
+@media(max-width:380px){nav .btn.s{padding:6px 8px;font-size:11px}.hero h1{font-size:30px}}
+@media(hover:none){.card:hover{transform:none}.btn:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important}}
+
+.ov{background:radial-gradient(ellipse at 50% 30%,#0b2a63f0,#030712f8);backdrop-filter:none;-webkit-backdrop-filter:none}
+body.mo #site{visibility:hidden}body.mo{overflow:hidden}
+.box{animation:none;backdrop-filter:none}
+.au{filter:none;background:radial-gradient(circle,#1e90ff77,transparent 68%)!important}
+@media(max-width:900px),(hover:none){
+nav,.card,.btn.g,.box,.ov,.mq{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+body::before,#cg{display:none}
+.hero .gl{filter:none}.lg svg,.gl svg{filter:none}
+.card::before{display:none}.btn::after{display:none}
+.au.c{display:none}}
+
+*{-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+body{-webkit-user-select:none;user-select:none}
+input,textarea{-webkit-user-select:text;user-select:text}
+#app td,#app .m{-webkit-user-select:text;user-select:text}
+a,button,input,textarea,select,[onclick]{outline:0!important}
+::selection{background:transparent}input::selection,textarea::selection{background:#1e90ff55}
+svg,img,canvas{-webkit-user-drag:none;user-select:none}
+.card:focus,.btn:focus,a:focus{outline:0}
+@media(max-width:900px),(hover:none){
+#cv,.au,.hero::after{display:none!important}
+.waves path{animation:none!important}.waves{width:100%;height:90px}
+.sh{inset-inline-start:0;animation:sail2 24s linear infinite}@keyframes sail2{from{transform:translateX(90px)}to{transform:translateX(-115vw)}}
+.cta .btn,.big,h2::after{animation:none!important}
+.hero{background:radial-gradient(ellipse at 70% 10%,#103a85 0,transparent 55%),var(--bg)}
+#navb .btn.s{padding:7px 12px;font-size:12px;white-space:nowrap}
+nav{gap:8px}
+}
+.hero h1{margin-bottom:26px}*,*::before,*::after{-webkit-user-select:none;user-select:none}input,textarea{-webkit-user-select:text!important;user-select:text!important}#app td,#app .m{-webkit-user-select:text!important;user-select:text!important}
+.pw{font-size:11px;letter-spacing:1.5px;color:#8ea3c7;opacity:.28;cursor:pointer;padding:18px 10px 22px;text-align:center;direction:ltr;transition:.3s;font-family:Arial,sans-serif}.pw:hover{opacity:.6}
+#maint{position:fixed;inset:0;z-index:45;background:radial-gradient(ellipse at 50% 35%,#0b2a63,#030712 70%);display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px}
+#maint h1{font-size:clamp(28px,6vw,52px);font-weight:900;margin-top:18px;background:linear-gradient(120deg,#fff,#6cc4ff 60%,#e8c987);-webkit-background-clip:text;background-clip:text;color:transparent}
+#maint .pw{position:absolute;bottom:calc(8px + env(safe-area-inset-bottom,0px));inset-inline:0}
+.sw{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#071026;border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:14px 0}
+.tg2{width:58px;height:32px;border-radius:99px;background:#334155;position:relative;cursor:pointer;transition:.3s;flex:none}.tg2::after{content:"";position:absolute;top:4px;inset-inline-start:4px;width:24px;height:24px;border-radius:50%;background:#fff;transition:.3s}.tg2.on{background:#dc2626}.tg2.on::after{inset-inline-start:30px}
+.ov{align-items:flex-start;overflow-y:auto;-webkit-overflow-scrolling:touch}.box{margin:auto;max-height:none}#call{z-index:80!important;background:#030b1f!important}#lgb{white-space:nowrap}
+
+.ov{display:none!important;background:#06142e!important;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:12px;align-items:initial}
+.ov.on{display:block!important}
+.box{margin:8px auto!important;position:relative;z-index:2;background:#0c1d44!important;box-shadow:none!important;opacity:1!important;transform:none!important;animation:none!important;max-height:none}
+body.mo #site{visibility:visible!important}
+</style></head><body>
+<div id="intro"><div class="lg" id="il"></div><p>SHIPPING &amp; INT'L TRANSPORTATION</p><div class="bar"><i></i></div></div>
+<div id="push"></div>
+<div id="sp0"></div><div id="cg"></div><nav><div id="nl"></div><div class="l" id="links"><a href="#home">الرئيسية</a><a href="#svc">خدماتنا</a><a href="#contact">تواصل معنا</a></div><button class="btn s g" id="lgb" onclick="setLang()">EN</button><div class="row" id="navb"></div></nav>
+<div id="site">
+<header class="hero" id="home"><canvas id="cv"></canvas><i class="au a"></i><i class="au b"></i><i class="au c"></i><div class="gl" id="hg"></div><div class="lg" id="hl"></div><h1 id="h1">طريقك الواحد للشحن العالمي</h1>
+<div class="cta"><button class="btn" onclick="openCust()">👤 تسجيل دخول العملاء</button><button class="btn g" onclick="openSup()">🛡️ مركز الدعم</button><a class="btn g callb" href="tel:+201119300061" style="text-decoration:none"><span class="ph">📞</span> اتصل الآن</a></div>
+<div class="sh">🚢</div><svg class="waves" viewBox="0 0 2400 130" preserveAspectRatio="none" width="200%"><path d="M0 60 Q150 10 300 60 T600 60 T900 60 T1200 60 T1500 60 T1800 60 T2100 60 T2400 60 V130 H0Z" fill="#0b57d0" opacity=".55"/><path d="M0 80 Q150 40 300 80 T600 80 T900 80 T1200 80 T1500 80 T1800 80 T2100 80 T2400 80 V130 H0Z" fill="#1e90ff" opacity=".4"/></svg></header>
+
+<section id="svc"><h2 class="rv">خدمات <span>One Way</span></h2><div class="grid">
+<div class="card rv"><div class="ic">🚢</div><h3>الشحن البحري</h3></div>
+<div class="card rv"><div class="ic">✈️</div><h3>الشحن الجوي</h3></div>
+<div class="card rv"><div class="ic">🚛</div><h3>النقل البري والتخليص</h3></div>
+<div class="card rv"><div class="ic">🛡️</div><h3>مركز الدعم للعملاء</h3></div></div></section>
+<section class="rt" id="rt"><h2 class="rv">شبكة <span>شحن عالمية</span></h2>
+<svg viewBox="0 0 900 300"><defs><radialGradient id="pg"><stop offset="0" stop-color="#6cc4ff"/><stop offset="1" stop-color="#1e90ff00"/></radialGradient></defs>
+<path id="r1" d="M120 190 Q300 20 520 110 T800 80" fill="none" stroke="#1e90ff" stroke-width="2" stroke-dasharray="6 8"><animate attributeName="stroke-dashoffset" from="0" to="-140" dur="4s" repeatCount="indefinite"/></path>
+<path id="r2" d="M120 190 Q380 300 640 220 T820 230" fill="none" stroke="#6cc4ff" stroke-width="2" stroke-dasharray="6 8"><animate attributeName="stroke-dashoffset" from="0" to="-140" dur="5s" repeatCount="indefinite"/></path>
+<g fill="#6cc4ff"><circle cx="120" cy="190" r="7"/><circle cx="520" cy="110" r="5"/><circle cx="800" cy="80" r="6"/><circle cx="820" cy="230" r="6"/><circle cx="640" cy="220" r="5"/></g>
+<g fill="url(#pg)"><circle cx="120" cy="190" r="26"><animate attributeName="r" values="10;38;10" dur="2.5s" repeatCount="indefinite"/></circle><circle cx="800" cy="80" r="20"><animate attributeName="r" values="8;30;8" dur="3s" repeatCount="indefinite"/></circle><circle cx="820" cy="230" r="20"><animate attributeName="r" values="8;30;8" dur="3.4s" repeatCount="indefinite"/></circle></g>
+<text font-size="26"><tspan><animateMotion dur="9s" repeatCount="indefinite"><mpath href="#r1"/></animateMotion></tspan></text>
+<text font-size="30" text-anchor="middle" dy="10">🚢<animateMotion dur="9s" repeatCount="indefinite" rotate="0"><mpath href="#r1"/></animateMotion></text>
+<text font-size="28" text-anchor="middle" dy="10">✈️<animateMotion dur="6s" repeatCount="indefinite" rotate="0"><mpath href="#r2"/></animateMotion></text>
+<text x="120" y="226" fill="#eaf2ff" font-size="14" text-anchor="middle" font-family="Cairo">القاهرة</text></svg></section><section id="contact" style="position:relative;overflow:hidden;text-align:center;background:var(--bg2)"><h2 class="rv">تواصل <span>معنا</span></h2><div class="cn" style="inset-inline-start:8%;bottom:-40px">📦</div><div class="cn" style="inset-inline-start:50%;bottom:-40px;animation-delay:-7s">🚢</div><div class="cn" style="inset-inline-start:88%;bottom:-40px;animation-delay:-12s">✈️</div><a class="big rv" href="tel:+201119300061" style="margin:16px 0;display:block;text-decoration:none">01119300061</a><a class="btn rv callb" href="tel:+201119300061" style="text-decoration:none;display:inline-block"><span class="ph">📞</span> اتصل الآن</a><p class="rv" style="color:var(--m);margin-top:18px">مدينة نصر، القاهرة، مصر</p></section>
+<a class="fab" href="tel:+201119300061" aria-label="اتصل الآن"><span class="ph">📞</span></a><footer>© One Way Shipping &amp; Int'l Transportation LLC</footer><div class="pw" onclick="openDev()">Powered by Malek Mohamed</div></div>
+<div id="maint"><div id="mg"></div><h1>الموقع تحت الصيانة</h1><div class="pw" onclick="openDev()">Powered by Malek Mohamed</div></div><div id="app"></div>
+<div class="ov" id="mc"><div class="box"><div style="text-align:center" id="ml"></div><h2 style="font-size:24px;text-align:center;margin-top:8px">دخول العملاء</h2><label>الاسم</label><input id="cn"><label>البريد الإلكتروني</label><input id="ce" type="email" dir="ltr"><label>رقم التليفون</label><input id="cp" type="tel" dir="ltr"><label>كلمة المرور</label><input id="cpw" type="password" dir="ltr" autocomplete="current-password"><div class="note" style="margin-top:12px">اكتب أي كلمة مرور لحماية حسابك من أي شخص يسجل بإيميلك</div><div class="err" id="cerr"></div><div class="row" style="margin-top:8px"><button class="btn" id="cb" style="flex:1" onclick="custLogin()">دخول</button><button class="btn g" onclick="resetC();cl('mc')">إلغاء</button></div></div></div>
+<div class="ov" id="ms"><div class="box"><h2 style="font-size:24px;text-align:center">🛡️ مركز الدعم الفني</h2><div class="note" style="margin-top:12px">هذا المركز مخصص لفريق دعم عملاء One Way فقط، وليس متاحاً لأي شخص آخر.</div><label>كلمة المرور</label><input id="sp" type="password" dir="ltr"><div class="err" id="serr"></div><div class="row" style="margin-top:8px"><button class="btn" style="flex:1" onclick="supLogin()">دخول</button><button class="btn g" onclick="cl('ms')">إلغاء</button></div></div></div>
+<div class="ov" id="md"><div class="box" id="mdb"></div></div><div class="ov" id="mt"><div class="box wide" id="mtb"></div></div>
+<script>
+let LG='ar';const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const sync=()=>document.body.classList.toggle('mo',!!document.querySelector('.ov.on')),cl=id=>{$(id).classList.remove('on');sync()},op=id=>{$(id).classList.add('on');sync()};
+const fmt=t=>t?new Date(t).toLocaleString(LG==='en'?'en-GB':'ar-EG',{dateStyle:'short',timeStyle:'short'}):'—';
+const SP='Net@OneWay2021',ST={open:'مفتوحة',done:'تمت بنجاح',postponed:'مؤجلة',closed:'مقفولة'};
+const ckg=k=>{try{const m=document.cookie.match(new RegExp('(?:^|; )'+k+'=([^;]*)'));return m?decodeURIComponent(m[1]):null}catch(e){return null}},ckw=(k,v,d)=>{try{document.cookie=k+'='+encodeURIComponent(v)+';max-age='+(d*86400)+';path=/;SameSite=Lax'}catch(e){}};
+const lsg=k=>{let v=null;try{v=localStorage.getItem(k)}catch(e){}return v!==null?v:ckg(k)},lss=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}ckw(k,v,365);idbs(k,v)},lsd=k=>{try{localStorage.removeItem(k)}catch(e){}ckw(k,'',-1);idbs(k,null)};
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+LG=lsg('ow_lang')==='en'?'en':'ar';
+function idb(){return new Promise((a,b)=>{const r=indexedDB.open('ow',1);r.onupgradeneeded=()=>r.result.createObjectStore('k');r.onsuccess=()=>a(r.result);r.onerror=b})}
+async function idbs(k,v){try{const d=await idb();d.transaction('k','readwrite').objectStore('k').put(v,k)}catch(e){}}
+async function idbg(k){try{const d=await idb();return await new Promise(r=>{const q=d.transaction('k').objectStore('k').get(k);q.onsuccess=()=>r(q.result);q.onerror=()=>r(null)})}catch(e){return null}}
+const EX={'رد':'Answer','رفض':'Decline','الدعم':'Support','العملاء':'Customers','العميل':'Customer','الاسم':'Name','دخول':'Login','خروج':'Logout','الحالة':'Status','التاريخ':'Date','الشحنة':'Shipment','الموضوع':'Subject','الرسالة':'Message','فتح':'Open','نجاح':'Success','قفل':'Closed','تذاكر':'Tickets','التذاكر':'Tickets','الأرشيف':'Archive','أخرى':'Other','شكوى':'Complaint','مفتوحة':'Open','مؤجلة':'Postponed','مقفولة':'Closed','منتهية':'Closed','التليفون':'Phone','إرسال':'Send','إيقاف':'Stop','الآن':'Now','إغلاق':'Close','مبرمج':'Developer','تأكيد':'Confirm','العربية':'العربية'};
+const DI=`شحن ونقل دولي|Shipping & Int'l Transportation
+الرئيسية|Home
+خدماتنا|Our Services
+تواصل معنا|Contact Us
+تسجيل دخول العملاء|Customer Login
+مركز الدعم للعملاء|Customer Support Center
+مركز الدعم الفني|Technical Support Center
+مركز دعم|Support Center
+مركز الدعم|Support Center
+اتصل الآن|Call Now
+الشحن البحري|Sea Freight
+الشحن الجوي|Air Freight
+النقل البري والتخليص|Land Transport & Customs Clearance
+خدمات |Services of 
+شبكة |Global 
+شحن عالمية|Shipping Network
+القاهرة|Cairo
+تواصل |Contact 
+معنا|Us
+مدينة نصر، القاهرة، مصر|Nasr City, Cairo, Egypt
+الموقع تحت الصيانة|Site Under Maintenance
+دخول العملاء|Customer Login
+البريد الإلكتروني|Email
+رقم التليفون|Phone Number
+إلغاء|Cancel
+هذا المركز مخصص لفريق دعم عملاء One Way فقط، وليس متاحاً لأي شخص آخر.|This center is for the One Way customer support team only and is not available to anyone else.
+كلمة المرور|Password
+تمت بنجاح|Completed
+اكتب الاسم والإيميل ورقم التليفون بشكل صحيح|Enter a valid name, email and phone number
+جاري التسجيل...|Registering...
+تعذر حفظ بياناتك، حاول مرة أخرى|Could not save your data, please try again
+كلمة المرور غير صحيحة|Incorrect password
+فتح تذكرة جديدة|Open a New Ticket
+فتح تذكرة|Open Ticket
+تذاكري المفتوحة|My Open Tickets
+الملف كبير جداً (الحد 10 ميجا)|File too large (limit 10 MB)
+تعذر توصيل المكالمة على الشبكة الحالية|Could not connect the call on this network
+المكالمة شغالة|Call in progress
+اتكلم عادي، الطرف التاني بيسمعك|Speak normally, the other side can hear you
+إنهاء المكالمة|End Call
+المتصفح لا يدعم المكالمات|This browser does not support calls
+جاري الاتصال...|Calling...
+تعذر بدء المكالمة. اسمح للموقع باستخدام الميكروفون|Could not start the call. Allow the site to use the microphone
+تم رفض المكالمة|Call declined
+مكالمة واردة|Incoming Call
+جاري التوصيل...|Connecting...
+تعذر الرد. اسمح للموقع باستخدام الميكروفون|Could not answer. Allow the site to use the microphone
+اسمح للموقع باستخدام الميكروفون|Allow the site to use the microphone
+تعذر تحميل التذكرة، حدّث الصفحة وحاول مرة أخرى|Could not load the ticket, refresh and try again
+حدث خطأ|An error occurred
+رقم الشحنة (اختياري)|Shipment No. (optional)
+رقم الشحنة|Shipment No.
+تأخير في الشحنة|Shipment Delay
+بخصوص الشحنة|regarding shipment
+استفسار عن شحنة|Shipment Inquiry
+طلب تسعير|Quote Request
+التخليص الجمركي|Customs Clearance
+مشكلة في الدفع / الفاتورة|Payment / Invoice Issue
+اختر نوع التذكرة|Choose the ticket type
+اختر النوع...|Choose type...
+نوع التذكرة|Ticket Type
+النوع|Type
+لا توجد تذاكر مفتوحة. اضغط "فتح تذكرة" لبدء تذكرة جديدة|No open tickets. Tap "Open Ticket" to start a new one
+لا توجد تذاكر منتهية|No closed tickets
+لا توجد تذاكر مفتوحة|No open tickets
+لا توجد إشعارات|No notifications
+إرفاق صورة أو ملف (اختياري)|Attach an image or file (optional)
+إرسال التذكرة|Submit Ticket
+اكتب الموضوع والرسالة|Enter the subject and message
+جاري رفع الملف...|Uploading file...
+حجم الملف أكبر من 10 ميجا|File is larger than 10 MB
+تعذر رفع الملف. جرّب صورة أصغر أو تواصل مع الدعم|Could not upload the file. Try a smaller image or contact support
+تعذر رفع الملف. جرّب صورة أصغر|Could not upload the file. Try a smaller image
+جاري الرفع...|Uploading...
+جاري الإرسال...|Sending...
+تعذر حفظ التذكرة، حاول مرة أخرى|Could not save the ticket, please try again
+تعذر إرسال الرسالة، حاول مرة أخرى|Could not send the message, please try again
+اتصال|Call
+شحنة|Shipment
+فتحها|Opened by
+الساعة|at
+أُغلقت|Closed
+التذكرة منتهية.|This ticket is closed.
+إرفاق ملف|Attach file
+تسجيل رسالة صوتية|Record a voice message
+اكتب رسالتك...|Type your message...
+تأجيل|Postpone
+قفل التذكرة|Close Ticket
+رد جديد من|New reply from
+على تذكرتك|on your ticket
+تم إنجاز تذكرتك|Your ticket was completed:
+تم إغلاق تذكرتك|Your ticket was closed:
+اكتب الإيميل والإشعار|Enter the email and notification
+العميل ده لسه ما سجّلش دخول|This customer has not logged in yet
+تم الإرسال لموبايل|Sent to the phone of
+للفريق فقط|Team only
+لوحة المتابعة|Dashboard
+إرسال إشعار|Send Notification
+إرسال لموبايل العميل|Send to Customer's Phone
+إيميل العميل|Customer Email
+نص الإشعار|Notification Text
+عملاء مسجلين|Registered Customers
+متصل الآن|Online Now
+محاولات دخول فاشلة|Failed Login Attempts
+تاريخ التسجيل|Registered
+آخر ظهور|Last Seen
+دخل الساعة|Logged in at
+فاتح الموقع|On the site
+قافل|Offline
+لا يوجد عملاء بعد|No customers yet
+الأرشيف فاضي|Archive is empty
+فُتحت|Opened
+وضع الصيانة|Maintenance Mode
+الموقع مقفول للزوار حالياً|Site is currently closed to visitors
+الموقع شغال للزوار|Site is live for visitors
+كل التذاكر|All Tickets
+المنتهية|Closed
+الإشعارات|Notifications
+أهلاً|Hello
+إعادة الإرسال|Resend
+جاري التحقق...|Verifying...
+اكتب أي كلمة مرور لحماية حسابك من أي شخص يسجل بإيميلك|Enter any password to protect your account from anyone registering with your email
+اكتب كلمة المرور (6 أحرف على الأقل)|Enter a password (at least 6 characters)`.split('\n').map(l=>l.split('|')).sort((a,b)=>b[0].length-a[0].length);
+const AR=/[\u0600-\u06FF]/;
+function T(s){if(LG!=='en'||!AR.test(s))return s;const m=s.match(/^([^\u0600-\u06FF]*)([\s\S]*?)(\s*)$/),x=EX[m[2]];if(x)return m[1]+x+m[3];for(const[a,e]of DI)if(s.includes(a))s=s.split(a).join(e);return s}
+function tn(n){if(n._t===n.nodeValue)return;if(n.parentNode&&n.parentNode.closest&&n.parentNode.closest('.m,.u'))return;const o=n.nodeValue,t=T(o);n._o=o;n._t=t;if(t!==o)n.nodeValue=t}
+function walk(r,f){const w=document.createTreeWalker(r,NodeFilter.SHOW_TEXT),L=[];let n;while(n=w.nextNode())L.push(n);
+ L.forEach(n=>{if(/^(SCRIPT|STYLE)$/i.test(n.parentNode.nodeName))return;if(f){if(n._o!==undefined&&n._t===n.nodeValue)n.nodeValue=n._o;n._t=null;n._o=undefined}if(LG==='en')tn(n)});
+ if(r.querySelectorAll)r.querySelectorAll('[placeholder],[title],[aria-label]').forEach(e=>['placeholder','title','aria-label'].forEach(a=>{if(e.hasAttribute(a)){if(e['_'+a]===undefined)e['_'+a]=e.getAttribute(a);e.setAttribute(a,T(e['_'+a]))}}))}
+new MutationObserver(ms=>ms.forEach(m=>{if(m.type==='characterData')tn(m.target);else m.addedNodes.forEach(n=>n.nodeType===3?tn(n):n.nodeType===1&&walk(n))})).observe(document.documentElement,{childList:true,subtree:true,characterData:true});
+const _al=window.alert.bind(window);window.alert=m=>_al(T(String(m)));
+function setLang(l){LG=l||(LG==='en'?'ar':'en');lss('ow_lang',LG);const d=document.documentElement;d.lang=LG;d.dir=LG==='en'?'ltr':'rtl';$('lgb').textContent=LG==='en'?'العربية':'EN';
+ document.title=LG==='en'?"One Way | Shipping & Int'l Transportation":'One Way | شحن ونقل دولي';
+ $('h1').innerHTML=(LG==='en'?'Your One Way to Global Shipping':'طريقك الواحد للشحن العالمي').split(' ').map((w,i)=>`<span class="w" style="animation-delay:${l?3.6+i*.18:0}s">${w}</span>`).join(' ');
+ walk(document.body,1);lastH='';try{render();if(cur)ticketView(cur,true)}catch(e){}}
+function resetC(){['cn','ce','cp','cpw'].forEach(i=>{const x=$(i);if(x)x.value=''});$('cerr').textContent=''}
+
+function logo(s=120,txt=true){return `<svg width="${s}" height="${s*(txt?1.05:1)}" viewBox="0 0 120 126"><defs><linearGradient id="g${s}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6cc4ff"/><stop offset="1" stop-color="#0b57d0"/></linearGradient></defs><ellipse cx="60" cy="52" rx="50" ry="46" fill="url(#g${s})"/><ellipse cx="60" cy="52" rx="50" ry="46" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2"/><path d="M28 62h64l-9 16H38z" fill="#fff"/><path d="M60 22v34M60 24l22 30H60zM56 30L40 54h16z" fill="#fff" opacity=".95"/><path d="M24 84q9 6 18 0t18 0 18 0 18 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8"/>${txt?'<text x="60" y="122" text-anchor="middle" font-family="Arial Black,Arial" font-weight="900" font-size="19" fill="#eaf2ff" letter-spacing="1">ONE WAY</text>':''}</svg>`}
+
+function globe(sz){const u='g'+Math.random().toString(36).slice(2,7),B='M-40-20q10-14 24-6t6 16-18 6-12-16zM0 10q14-6 22 4t-4 22-22-4zM18-32q10-4 16 4t-8 10zM-30 24q8-4 12 4t-8 6z';
+return `<svg viewBox="-72 -72 144 144" width="${sz}" height="${sz}"><defs><radialGradient id="${u}a" cx=".35" cy=".3"><stop offset="0" stop-color="#9fdcff"/><stop offset=".5" stop-color="#1e90ff"/><stop offset="1" stop-color="#06306f"/></radialGradient><radialGradient id="${u}b"><stop offset=".7" stop-color="#1e90ff55"/><stop offset="1" stop-color="#1e90ff00"/></radialGradient><clipPath id="${u}c"><circle r="50"/></clipPath></defs>
+<circle r="68" fill="url(#${u}b)"><animate attributeName="r" values="60;70;60" dur="4s" repeatCount="indefinite"/></circle><circle r="50" fill="url(#${u}a)"/>
+<g clip-path="url(#${u}c)"><g fill="#cfeeff" opacity=".35"><path d="${B}"/><path d="${B}" transform="translate(100 0)"/><animateTransform attributeName="transform" type="translate" from="0 0" to="-100 0" dur="16s" repeatCount="indefinite"/></g>
+<g fill="none" stroke="#fff" stroke-opacity=".28" stroke-width=".8"><path d="M-50-30h100M-50-15h100M-50 0h100M-50 15h100M-50 30h100"/>
+<ellipse ry="50" rx="6"><animate attributeName="rx" values="2;50;2" dur="7s" repeatCount="indefinite"/></ellipse><ellipse ry="50" rx="6"><animate attributeName="rx" values="2;50;2" dur="7s" begin="-2.3s" repeatCount="indefinite"/></ellipse><ellipse ry="50" rx="6"><animate attributeName="rx" values="2;50;2" dur="7s" begin="-4.6s" repeatCount="indefinite"/></ellipse></g>
+<circle r="50" fill="none" stroke="#031a42" stroke-opacity=".5" stroke-width="14"/>
+<g><animateTransform attributeName="transform" type="translate" values="0 3;0 -1;0 3" dur="3s" repeatCount="indefinite"/><path d="M-27 4h54l-9 15h-36z" fill="#fff"/><rect x="-22" y="-4" width="10" height="8" fill="#ff7a59"/><rect x="-11" y="-4" width="10" height="8" fill="#ffd166"/><rect x="0" y="-4" width="10" height="8" fill="#fff" opacity=".9"/><rect x="11" y="-12" width="11" height="16" fill="#fff"/><rect x="14" y="-9" width="5" height="3" fill="#1e90ff"/></g>
+<path d="M-60 24q7 5 14 0t14 0 14 0 14 0 14 0 14 0 14 0" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><animateTransform attributeName="transform" type="translate" from="0 0" to="-28 0" dur="2s" repeatCount="indefinite"/></path></g>
+<circle r="50" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="1.2"/>
+<g transform="rotate(-22)"><ellipse rx="66" ry="19" fill="none" stroke="#6cc4ff" stroke-width="1.2" stroke-dasharray="4 6"><animate attributeName="stroke-dashoffset" from="0" to="-40" dur="2s" repeatCount="indefinite"/></ellipse><circle r="3.6" fill="#fff"><animateMotion dur="6s" repeatCount="indefinite" path="M-66 0a66 19 0 1 0 132 0a66 19 0 1 0 -132 0"/></circle></g></svg>`}
+function wm(w){return `<span style="display:inline-block;"><svg width="${w}" viewBox="0 0 360 84" style="direction:ltr;unicode-bidi:isolate;display:block"><defs><linearGradient id="wl"><stop offset="0" stop-color="#1e90ff"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#1e90ff"/></linearGradient></defs><g transform="skewX(-8) translate(12 0)"><text x="0" y="46" font-family="Arial Black,Arial" font-weight="900" font-size="50" fill="#4db2ff" letter-spacing="1">ONE</text><text x="214" y="46" font-family="Arial Black,Arial" font-weight="900" font-size="50" fill="#ffffff" letter-spacing="1">WAY</text></g><g transform="translate(166 24) scale(.32)">${globe(1).replace(/<svg[^>]*>/,"").replace("</svg>","").replace(/<animate[A-Za-z]*\b[^>]*\/>/g,"")}</g><rect x="10" y="56" width="340" height="3" rx="1.5" fill="url(#wl)"/><text x="10" y="74" font-family="Arial" font-weight="700" font-size="9.6" fill="#a9c3ee" letter-spacing="1.6">SHIPPING &amp; INT'L TRANSPORTATION LLC</text></svg></span>`}
+$('il').innerHTML=globe(Math.min(230,innerWidth*.6))+'<div style="margin-top:10px">'+wm(Math.min(440,innerWidth-80))+'</div>';$('hg').innerHTML=globe(Math.min(250,innerWidth*.62));$('hl').innerHTML=wm(Math.min(330,innerWidth-90));$('ml').innerHTML=wm(230);$('nl').innerHTML=wm(120);
+
+const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('on')),{threshold:.15});document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+let lastH='',sigT='',pend=null,pc=null,cc=null,ls=null,rg=null,ac=null,inc=null,mr=null,mch=[];
+let M=false,db=null,me=null,isSup=false,tab='',S={users:[],tickets:[],notifs:[],att:0},cur=null,seenN=new Set(),firstN=true;
+function mkdb(){const K='ow_db',L={};const ld=()=>{try{return JSON.parse(localStorage.getItem(K))||{}}catch(e){return{}}},sv=d=>{try{localStorage.setItem(K,JSON.stringify(d))}catch(e){}},fire=()=>Object.values(L).forEach(f=>f());addEventListener('storage',fire);
+const dr=(n,id)=>({get:async()=>{const v=(ld()[n]||{})[id];return{exists:!!v,data:()=>v,id}},set:async x=>{const d=ld();(d[n]=d[n]||{})[id]=x;sv(d);fire()},update:async x=>{const d=ld();d[n]=d[n]||{};d[n][id]={...(d[n][id]||{}),...x};sv(d);fire()},onSnapshot:cb=>{const k=Math.random(),f=()=>{const v=(ld()[n]||{})[id];cb({exists:!!v,data:()=>v})};L[k]=f;f();return()=>delete L[k]}});
+return{collection:n=>({doc:id=>dr(n,id),onSnapshot:cb=>{const k=Math.random(),f=()=>{const d=ld()[n]||{};cb({docs:Object.keys(d).map(id=>({id,data:()=>d[id]}))})};L[k]=f;f();return()=>delete L[k]}}),doc:p=>{const[n,i]=p.split('/');return dr(n,i)}}}
+const SUPABASE_URL='https://qnzszzcihfvjkwruzvfw.supabase.co',SUPABASE_KEY='sb_publishable_bCwL46642Dx_EYsPYMmbZg_ubvcHVu-';
+function mkSb(U,K){const H={apikey:K,'Content-Type':'application/json'};if(K.startsWith('eyJ'))H.Authorization='Bearer '+K;const C={},L=new Set();let last='1970-01-01T00:00:00+00:00',first=false,busy=false;
+const rest=(q,o={})=>fetch(U+'/rest/v1/'+q,{...o,headers:{...H,...(o.headers||{})}}),fire=()=>L.forEach(f=>f());
+async function poll(){if(busy)return;busy=true;try{const r=await rest('docs?select=col,id,data,updated_at&order=updated_at.asc&limit=1000&updated_at=gt.'+encodeURIComponent(last));if(r.ok){const rows=await r.json();rows.forEach(x=>{(C[x.col]=C[x.col]||{})[x.id]=x.data;last=x.updated_at});if(rows.length||!first){first=true;fire()}}}catch(e){}if(!first){first=true;fire()}busy=false}
+setInterval(()=>{if(!document.hidden)poll()},2500);document.addEventListener('visibilitychange',()=>{if(!document.hidden)poll()});poll();
+const put=async(col,id,data)=>{(C[col]=C[col]||{})[id]=data;fire();const r=await rest('docs?on_conflict=col,id',{method:'POST',headers:{Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify({col,id,data})});if(!r.ok)throw new Error('db')};
+const cur=async(col,id)=>{try{const r=await rest(`docs?select=data&col=eq.${encodeURIComponent(col)}&id=eq.${encodeURIComponent(id)}`);const a=await r.json();return a[0]?a[0].data:undefined}catch(e){return(C[col]||{})[id]}};
+const dr=(n,id)=>({get:async()=>{const v=await cur(n,id);return{exists:!!v,data:()=>v,id}},set:async x=>put(n,id,x),update:async x=>{const v=(await cur(n,id))||{};await put(n,id,{...v,...x})},onSnapshot:cb=>{const f=()=>{const v=(C[n]||{})[id];cb({exists:!!v,data:()=>v})};L.add(f);if(first)f();return()=>L.delete(f)}});
+return{collection:n=>({doc:id=>dr(n,id),onSnapshot:cb=>{const f=()=>{const d=C[n]||{};cb({docs:Object.keys(d).map(id=>({id,data:()=>d[id]}))})};L.add(f);if(first)f();return()=>L.delete(f)}}),doc:q=>{const[n,i]=q.split('/');return dr(n,i)}}}
+const key=e=>e.toLowerCase().replace(/[^a-z0-9]/g,'_');
+(async()=>{if(SUPABASE_URL&&SUPABASE_KEY)db=mkSb(SUPABASE_URL.replace(/\/$/,''),SUPABASE_KEY);if(!db){try{db=await claude.use('db')}catch(e){}}if(!db)db=mkdb();try{db.doc('meta/config').onSnapshot(x=>{M=!!(x.exists&&x.data().maint);applyM()})}catch(e){}
+ if(!lsg('ow_me')){const v=await idbg('ow_me');if(v)lss('ow_me',v)}if(!lsg('ow_sup')){const v=await idbg('ow_sup');if(v)lss('ow_sup',v)}
+ try{me=JSON.parse(lsg('ow_me')||'null')}catch(e){}if(me&&me.id)lss('ow_me',JSON.stringify(me));
+ if(lsg('ow_sup')==='1'&&db){isSup=true;await start();supOpen(true)}else if(me&&me.id&&db){await start()}else navb()})();
+function navb(){$('navb').innerHTML=`<button class="btn s" onclick="openCust()">👤 العملاء</button><button class="btn s g" onclick="openSup()">🛡️ الدعم</button>`}navb();
+function openCust(){resetC();op('mc')}function openSup(){op('ms')}
+function needDb(el){if(false){$(el).textContent='الخدمة تحتاج تسجيل دخول لحساب Claude لفتح الصفحة.';return true}}
+async function sha(x){try{const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(x));return[...new Uint8Array(b)].map(v=>v.toString(16).padStart(2,'0')).join('')}catch(e){let h=5381;for(const c of x)h=(h*33^c.charCodeAt(0))>>>0;return'x'+h}}
+async function custLogin(){const n=$('cn').value.trim(),e=$('ce').value.trim().toLowerCase(),p=$('cp').value.trim(),w=$('cpw').value;
+ if(!n||!/.+@.+\..+/.test(e)||p.length<8){$('cerr').textContent='اكتب الاسم والإيميل ورقم التليفون بشكل صحيح';return}
+ if(w.length<6){$('cerr').textContent='اكتب كلمة المرور (6 أحرف على الأقل)';return}
+ $('cerr').textContent='جاري التحقق...';const ph=await sha(w+'|ow|'+e);let old=null;
+ try{const g=await db.doc('users/'+key(e)).get();old=g.exists?g.data():null}catch(x){$('cerr').textContent='حدث خطأ';return}
+ if(old&&old.pw&&old.pw!==ph){$('cerr').textContent='كلمة المرور غير صحيحة';return}
+ return finishLogin(n,e,p,ph)}
+async function finishLogin(n,e,p,ph){const id=key(e);let old=null;try{const g=await db.doc('users/'+id).get();old=g.exists?g.data():null}catch(x){}
+ me={name:n,email:e,phone:p,id,ph,registeredAt:(old&&old.registeredAt)||Date.now(),loginAt:Date.now()};
+ $('cerr').textContent='جاري التسجيل...';
+ try{await db.doc('users/'+id).set({name:n,email:e,phone:p,pw:ph,registeredAt:me.registeredAt,loginAt:me.loginAt,lastSeen:Date.now(),online:true})}catch(x){$('cerr').textContent='تعذر حفظ بياناتك، حاول مرة أخرى';return}
+ $('cerr').textContent='';lss('ow_me',JSON.stringify(me));cl('mc');resetC();start()}
+async function supLogin(){if(needDb('serr'))return;if($('sp').value===SP){lss('ow_sup','1');isSup=true;cl('ms');start();supOpen(true);return}
+ $('serr').textContent='كلمة المرور غير صحيحة';try{const r=db.doc('meta/attempts');const s=await r.get();const c=(s.exists?s.data().count:0)+1;await r.set({count:c,last:Date.now()})}catch(e){}}
+function logout(){if(me&&db&&!isSup)try{db.collection('users').doc(me.id).update({online:false,lastSeen:Date.now()})}catch(e){};lsd('ow_me');lsd('ow_sup');location.reload()}
+async function start(){
+ if(isSup){}
+ else{const a=$('app');$('home').after(a);a.style.paddingTop='36px';a.style.minHeight='0';a.style.background='transparent';
+  document.querySelectorAll('.cta button').forEach(b=>b.style.display='none');
+  document.querySelector('.cta').insertAdjacentHTML('afterbegin','<button class="btn" onclick="goTab(\'new\')">🎫 فتح تذكرة</button><button class="btn g" onclick="goTab(\'ship\')">📂 تذاكري المفتوحة</button>')}
+ $('app').style.display=isSup?'none':'block';
+ $('navb').innerHTML=`<span style="color:var(--m);font-size:13px">${isSup?'🛡️ مركز الدعم':esc(me.name)}</span><button class="btn s g" onclick="logout()">خروج</button>`;
+ if(isSup)navS(false);
+ tab=isSup?'dash':'ship';lastH='';
+ db.collection('tickets').onSnapshot(s=>{S.tickets=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>b.createdAt-a.createdAt);render();if(cur){const t=S.tickets.find(x=>x.id===cur);const sg=t?(t.msgs||[]).length+'|'+t.status:'';if(sg!==sigT)ticketView(cur,true)}});
+ db.collection('calls').onSnapshot(callSnap);
+ db.collection('notifs').onSnapshot(s=>{S.notifs=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>b.t-a.t);if(!isSup)S.notifs.filter(n=>n.to===me.id).forEach(n=>{if(!seenN.has(n.id)){seenN.add(n.id);if(!firstN&&n.t>Date.now()-60000)push(n.text)}});firstN=false;render()});
+ if(isSup){db.collection('users').onSnapshot(s=>{S.users=s.docs.map(d=>({id:d.id,...d.data()}));render()});db.doc('meta/attempts').onSnapshot(s=>{S.att=s.exists?s.data().count:0;render()});setInterval(render,30000)}
+ else{const u=db.collection('users').doc(me.id);const hb=(on=true)=>u.update({name:me.name,email:me.email,phone:me.phone,...(me.ph?{pw:me.ph}:{}),registeredAt:me.registeredAt,lastSeen:Date.now(),online:on,loginAt:me.loginAt||(me.loginAt=Date.now())}).catch(()=>{});hb();setInterval(hb,20000);addEventListener('pagehide',()=>hb(false))}
+ render()}
+function push(t){const p=$('push');p.innerHTML=`<div>${logo(34,false)}</div><div><b>One Way • الآن</b><span>${esc(t)}</span></div>`;p.classList.add('on');try{navigator.vibrate&&navigator.vibrate([200,100,200])}catch(e){}setTimeout(()=>p.classList.remove('on'),6000)}
+
+const FMAX=10*1024*1024;
+const sz=n=>n>1048576?(n/1048576).toFixed(1)+' MB':Math.max(1,Math.round(n/1024))+' KB';
+function cmp(f){return new Promise(res=>{if(!/^image\/(jpeg|png|webp)/.test(f.type))return res(f);const im=new Image(),u=URL.createObjectURL(f);im.onload=()=>{const k=Math.min(1,1600/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);g.drawImage(im,0,0,c.width,c.height);c.toBlob(b=>{URL.revokeObjectURL(u);res(b?new File([b],f.name.replace(/\.\w+$/,'')+'.jpg',{type:'image/jpeg'}):f)},'image/jpeg',.8)};im.onerror=()=>res(f);im.src=u})}
+const b64=f=>new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(f)});
+async function upFile(f){f=await cmp(f);if(f.size>FMAX)throw new Error('big');const meta={name:f.name,type:f.type||'application/octet-stream',size:f.size};
+ if(SUPABASE_URL){try{const B=SUPABASE_URL.replace(/\/$/,''),p='t/'+Date.now()+'_'+Math.random().toString(36).slice(2,8)+'.'+((f.name.split('.').pop()||'bin').replace(/[^a-z0-9]/gi,'').slice(0,6)||'bin'),H={apikey:SUPABASE_KEY,'Content-Type':meta.type};if(SUPABASE_KEY.startsWith('eyJ'))H.Authorization='Bearer '+SUPABASE_KEY;
+  const r=await fetch(B+'/storage/v1/object/attachments/'+p,{method:'POST',headers:H,body:f});if(r.ok)return{...meta,url:B+'/storage/v1/object/public/attachments/'+p,st:1}}catch(e){}}
+ if(f.size>700*1024)throw new Error('nostorage');return{...meta,url:await b64(f)}}
+const BU={};function bu(u){if(!/^data:/.test(u))return u;if(BU[u])return BU[u];try{const p=u.split(','),b=atob(p[1]),a=new Uint8Array(b.length);for(let i=0;i<b.length;i++)a[i]=b.charCodeAt(i);return BU[u]=URL.createObjectURL(new Blob([a],{type:p[0].slice(5).split(';')[0]}))}catch(e){return u}}
+function fileHTML(f){if(!f||!f.url)return'';const U=bu(f.url);const au=/^audio\//.test(f.type)?`<audio controls preload="metadata" src="${esc(U)}" style="width:100%;margin-top:6px"></audio>`:'';const img=/^image\//.test(f.type)?`<a href="${esc(U)}" target="_blank" rel="noopener"><img src="${esc(U)}" alt="" loading="lazy" style="max-width:100%;max-height:220px;border-radius:10px;display:block;margin:6px 0"></a>`:'';
+ const dl=f.st?U+'?download='+encodeURIComponent(f.name):f.url;return au+img+`<a href="${esc(dl)}" ${f.st?'':`download="${esc(f.name)}"`} target="_blank" rel="noopener" style="color:var(--b2);display:block;margin-top:4px;word-break:break-all">⬇️ ${esc(f.name)} (${sz(f.size)})</a>`}
+function pickF(el){const f=el.files[0];el.value='';if(!f)return;if(f.size>30*1024*1024){alert('الملف كبير جداً (الحد 10 ميجا)');return}pend=f;showPf()}
+function showPf(){const p=$('pf');if(p)p.innerHTML=pend?`<span style="font-size:13px;color:var(--b2)">📎 ${esc(pend.name)} (${sz(pend.size)}) <a href="#" onclick="pend=null;showPf();return false" style="color:var(--er);margin-inline-start:6px">✕</a></span>`:''}
+
+const role=()=>isSup?'s':'c';
+function beep(on){clearInterval(rg);rg=null;if(!on)return;try{ac=ac||new AudioContext();const b=()=>{const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=440;g.gain.value=.12;o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+.4)};b();rg=setInterval(b,1500)}catch(e){}}
+function callUI(h){let c=$('call');if(!c){c=document.createElement('div');c.id='call';c.style.cssText='position:fixed;inset:0;z-index:70;background:rgba(2,6,16,.94);display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;color:#fff;text-align:center;padding:20px';document.body.appendChild(c)}c.innerHTML=h;c.style.display=h?'flex':'none'}
+const ice=p=>new Promise(r=>{if(p.iceGatheringState==='complete')return r();const f=()=>{if(p.iceGatheringState==='complete'){p.removeEventListener('icegatheringstatechange',f);r()}};p.addEventListener('icegatheringstatechange',f);setTimeout(r,4000)});
+async function mkPc(){pc=new RTCPeerConnection({iceServers:[{urls:'stun:stun.l.google.com:19302'}]});ls=await navigator.mediaDevices.getUserMedia({audio:true});ls.getTracks().forEach(t=>pc.addTrack(t,ls));
+ pc.ontrack=e=>{let a=$('ra');if(!a){a=document.createElement('audio');a.id='ra';a.autoplay=true;document.body.appendChild(a)}a.srcObject=e.streams[0]};
+ pc.onconnectionstatechange=()=>{if(pc&&pc.connectionState==='failed'){endC(true);alert('تعذر توصيل المكالمة على الشبكة الحالية')}}}
+function endC(local){beep(false);const c=cc;cc=null;inc=null;if(pc){try{pc.close()}catch(e){}pc=null}if(ls){ls.getTracks().forEach(t=>t.stop());ls=null}callUI('');if(local&&c)db.collection('calls').doc(c.tid).set({state:'ended',from:c.from,uid:c.uid,t:Date.now()}).catch(()=>{})}
+const inCall=()=>callUI(`<div style="font-size:60px">🎙️</div><h2>المكالمة شغالة</h2><p style="color:#a9c3ee">اتكلم عادي، الطرف التاني بيسمعك</p><button class="btn" style="background:#dc2626" onclick="endC(true)">إنهاء المكالمة</button>`);
+async function startCall(tid){const t=S.tickets.find(x=>x.id===tid);if(!t||cc)return;if(!navigator.mediaDevices||!window.RTCPeerConnection){alert('المتصفح لا يدعم المكالمات');return}
+ cc={tid,from:role(),uid:t.uid};callUI(`<div style="font-size:60px">📞</div><h2>جاري الاتصال...</h2><p style="color:#a9c3ee">${isSup?esc(t.name):'One Way Team'}</p><button class="btn" style="background:#dc2626" onclick="endC(true)">إلغاء</button>`);
+ try{await mkPc();await pc.setLocalDescription(await pc.createOffer());await ice(pc);await db.collection('calls').doc(tid).set({state:'ringing',from:role(),uid:t.uid,name:isSup?'One Way Team':me.name,offer:pc.localDescription.sdp,t:Date.now()});beep(true)}catch(e){endC(false);alert('تعذر بدء المكالمة. اسمح للموقع باستخدام الميكروفون')}}
+function callSnap(s){s.docs.forEach(async d=>{const c=d.data(),id=d.id;
+ if(cc&&cc.tid===id){if(cc.from===role()&&c.state==='active'&&c.answer&&pc&&pc.signalingState==='have-local-offer'){beep(false);try{await pc.setRemoteDescription({type:'answer',sdp:c.answer});inCall()}catch(e){endC(true)}}
+  if(c.state==='ended'||c.state==='declined'){const dc=c.state==='declined';endC(false);if(dc)alert('تم رفض المكالمة')}return}
+ if(inc&&inc.id===id&&c.state!=='ringing'){inc=null;beep(false);callUI('');return}
+ if(!cc&&!inc&&c.state==='ringing'&&c.from!==role()&&Date.now()-c.t<45000&&(isSup||c.uid===me.id)){inc={id,c};beep(true);
+  callUI(`<div style="font-size:60px">📞</div><h2>مكالمة واردة</h2><p style="color:#a9c3ee">${esc(c.name||'')}</p><div class="row"><button class="btn" style="background:#16a34a" onclick="ansCall()">رد</button><button class="btn" style="background:#dc2626" onclick="decCall()">رفض</button></div>`)}})}
+async function ansCall(){if(!inc)return;const {id,c}=inc;inc=null;beep(false);cc={tid:id,from:c.from,uid:c.uid};callUI('<h2>جاري التوصيل...</h2>');
+ try{await mkPc();await pc.setRemoteDescription({type:'offer',sdp:c.offer});await pc.setLocalDescription(await pc.createAnswer());await ice(pc);await db.collection('calls').doc(id).set({...c,state:'active',answer:pc.localDescription.sdp,t:Date.now()});inCall()}catch(e){endC(true);alert('تعذر الرد. اسمح للموقع باستخدام الميكروفون')}}
+function decCall(){if(!inc)return;const {id,c}=inc;inc=null;beep(false);callUI('');db.collection('calls').doc(id).set({...c,state:'declined',t:Date.now()}).catch(()=>{})}
+async function recV(){if(mr){mr.stop();return}
+ try{const st=await navigator.mediaDevices.getUserMedia({audio:true});const mt=MediaRecorder.isTypeSupported('audio/webm')?'audio/webm':(MediaRecorder.isTypeSupported('audio/mp4')?'audio/mp4':'');mr=new MediaRecorder(st,mt?{mimeType:mt}:{});mch=[];mr.ondataavailable=e=>mch.push(e.data);
+  mr.onstop=()=>{st.getTracks().forEach(t=>t.stop());const ty=(mr.mimeType||mt||'audio/webm').split(';')[0];pend=new File([new Blob(mch,{type:ty})],'voice.'+(ty.includes('mp4')?'m4a':'webm'),{type:ty});mr=null;const m=$('mic');if(m)m.textContent='🎤';showPf()};
+  mr.start();$('mic').textContent='⏹ إيقاف'}catch(e){alert('اسمح للموقع باستخدام الميكروفون')}}
+function navS(on){$('navb').innerHTML=`<button class="btn s" onclick="supOpen(${!on})">${on?'🏠 الرئيسية':'🛡️ مركز الدعم'}</button><button class="btn s g" onclick="logout()">خروج</button>`}
+function supOpen(on){$('site').style.display=on?'none':'';$('app').style.display=on?'block':'none';$('links').style.display=on?'none':'';navS(on);if(on){lastH='';render()}scrollTo(0,0)}
+function openT(id,n=0){try{if(!S.tickets.find(x=>x.id===id)){if(n<10){setTimeout(()=>openT(id,n+1),500);return}alert('تعذر تحميل التذكرة، حدّث الصفحة وحاول مرة أخرى');return}ticketView(id)}catch(e){alert('حدث خطأ: '+e.message)}}
+function setTab(t){tab=t;render()}
+function goTab(t){tab=t;lastH='';render();$('app').scrollIntoView({behavior:'smooth'})}
+function tabs(l){return `<div class="tabs">${l.map(([k,n])=>`<button class="${tab===k?'on':''}" onclick="setTab('${k}')">${n}</button>`).join('')}</div>`}
+function render(){if(!$('app').style.display||$('app').style.display==='none')return;if(document.activeElement&&['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName))return;const h=isSup?supHTML():custHTML();if(h===lastH)return;lastH=h;$('app').innerHTML=h}
+function tgs(s){return `<span class="tg ${s}">${ST[s]}</span>`}
+function custHTML(){const mt=S.tickets.filter(t=>t.uid===me.id),mn=S.notifs.filter(n=>n.to===me.id),op=mt.filter(t=>t.status==='open'||t.status==='postponed'),dn=mt.filter(t=>t.status==='done'||t.status==='closed');
+ const tbl=(l,em)=>`<div class="tw"><table><tr><th>النوع</th><th>رقم الشحنة</th><th>الموضوع</th><th>الحالة</th><th>التاريخ</th><th></th></tr>${l.map(t=>`<tr><td>${esc(t.type||'—')}</td><td dir="ltr">${esc(t.shipment||'—')}</td><td class="u">${esc(t.subject)}</td><td>${tgs(t.status)}</td><td>${fmt(t.createdAt)}</td><td><button class="btn s" onclick="openT('${t.id}')">فتح</button></td></tr>`).join('')||`<tr><td colspan=6 style="color:var(--m)">${em}</td></tr>`}</table></div>`;
+ let h=`<h2>أهلاً ${esc(me.name)} 👋</h2>`+tabs([['ship','تذاكري المفتوحة ('+op.length+')'],['new','فتح تذكرة'],['hist','المنتهية ('+dn.length+')'],['notif','الإشعارات ('+mn.length+')']]);
+ if(tab==='ship')h+=`<div class="st"><div><b>${mt.length}</b><small>كل التذاكر</small></div><div><b>${op.length}</b><small>مفتوحة</small></div><div><b>${dn.length}</b><small>منتهية</small></div></div>`+tbl(op,'لا توجد تذاكر مفتوحة. اضغط "فتح تذكرة" لبدء تذكرة جديدة')+`<div style="margin-top:14px"><button class="btn" onclick="setTab('new')">🎫 فتح تذكرة جديدة</button></div>`;
+ if(tab==='hist')h+=tbl(dn,'لا توجد تذاكر منتهية');
+ if(tab==='new')h+=`<div class="card" style="max-width:520px"><label>نوع التذكرة</label><select id="nty"><option value="">اختر النوع...</option><option value="استفسار عن شحنة">استفسار عن شحنة</option><option value="تأخير في الشحنة">تأخير في الشحنة</option><option value="شكوى">شكوى</option><option value="طلب تسعير">طلب تسعير</option><option value="التخليص الجمركي">التخليص الجمركي</option><option value="مشكلة في الدفع / الفاتورة">مشكلة في الدفع / الفاتورة</option><option value="أخرى">أخرى</option></select><label>رقم الشحنة (اختياري)</label><input id="ns" dir="ltr"><label>الموضوع</label><input id="nj"><label>الرسالة</label><textarea id="nm" rows="4"></textarea><label>إرفاق صورة أو ملف (اختياري)</label><input type="file" id="nf" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.zip"><div class="err" id="nerr"></div><button class="btn" onclick="newTicket()">إرسال التذكرة</button></div>`;
+ if(tab==='notif')h+=mn.map(n=>`<div class="card" style="margin-bottom:10px"><b>🔔 One Way Team</b><p style="color:var(--t)">${esc(n.text)}</p><small style="color:var(--m)">${fmt(n.t)}</small></div>`).join('')||'<p style="color:var(--m)">لا توجد إشعارات</p>';
+ return h}
+async function newTicket(){const ty=$('nty').value,s=$('ns').value.trim(),j=$('nj').value.trim(),m=$('nm').value.trim();if(!ty){$('nerr').textContent='اختر نوع التذكرة';return}if(!j||!m){$('nerr').textContent='اكتب الموضوع والرسالة';return}
+ let fo=null;const nf=$('nf')&&$('nf').files[0];
+ if(nf){$('nerr').textContent='جاري رفع الملف...';try{fo=await upFile(nf)}catch(e){$('nerr').textContent=e.message==='big'?'حجم الملف أكبر من 10 ميجا':'تعذر رفع الملف. جرّب صورة أصغر أو تواصل مع الدعم';return}}
+ $('nerr').textContent='جاري الإرسال...';const id='t'+Date.now()+Math.floor(Math.random()*99);
+ try{await db.collection('tickets').doc(id).set({uid:me.id,name:me.name,email:me.email,phone:me.phone,type:ty,shipment:s,subject:j,status:'open',createdAt:Date.now(),closedAt:0,msgs:[{from:'c',name:me.name,text:m,t:Date.now(),...(fo?{file:fo}:{})}]})}catch(e){$('nerr').textContent='تعذر حفظ التذكرة، حاول مرة أخرى';return}
+ tab='ship';lastH='';render()}
+function ticketView(id,keep){try{return ticketView0(id,keep)}catch(e){console.error(e);cl('mt');cur=null;alert('حدث خطأ: '+e.message)}}
+function ticketView0(id,keep){const t=S.tickets.find(x=>x.id===id);if(!t)return;if(cur!==id)pend=null;cur=id;const sc=$('mtb').querySelector('.chat');const top=sc?sc.scrollTop:0;const rpo=$('rp'),dv=rpo&&cur===id?rpo.value:'',hadF=rpo&&document.activeElement===rpo;sigT=(t.msgs||[]).length+'|'+t.status;
+ const sup=isSup,fin=t.status==='closed'||t.status==='done';
+ $('mtb').innerHTML=`<div class="row" style="justify-content:space-between"><h3 class="u">🎫 ${esc(t.subject)}</h3><div class="row">${fin?'':`<button class="btn s" onclick="startCall('${id}')">📞 اتصال</button>`}<button class="btn s g" onclick="cl('mt');cur=null">✕</button></div></div><p style="color:var(--m);font-size:13px;margin-top:6px">النوع: <b style="color:var(--t)">${esc(t.type||'—')}</b>${t.shipment?' • شحنة: '+esc(t.shipment):''} • ${tgs(t.status)}${sup?`<br>فتحها: <b style="color:var(--t)">${esc(t.name)}</b> (${esc(t.email)} / ${esc(t.phone)}) الساعة ${fmt(t.createdAt)}${t.closedAt?'<br>أُغلقت: '+fmt(t.closedAt):''}`:''}</p>
+ <div class="chat">${(t.msgs||[]).map(m=>{const mine=sup?m.from==='s':m.from==='c';return `<div class="m ${mine?'me':''}"><small>${m.from==='s'?'One Way Team':esc(m.name)} • ${fmt(m.t)}</small>${esc(m.text)}${fileHTML(m.file)}</div>`}).join('')}</div>
+ ${fin?'<p style="color:var(--m)">التذكرة منتهية.</p>':`<div id="pf"></div><div class="row"><button class="btn s g" onclick="$('fl').click()" title="إرفاق ملف">📎</button><button class="btn s g" id="mic" onclick="recV()" title="تسجيل رسالة صوتية">🎤</button><input type="file" id="fl" hidden accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.zip" onchange="pickF(this)"><input id="rp" style="flex:1" placeholder="اكتب رسالتك..." onkeydown="if(event.key==='Enter')reply('${id}')"><button class="btn" id="sb" onclick="reply('${id}')">إرسال</button></div>`}
+ ${sup&&!fin?`<div class="row" style="margin-top:12px"><button class="btn s ok" onclick="setSt('${id}','done')">تمت بنجاح</button><button class="btn s wr" onclick="setSt('${id}','postponed')">تأجيل</button><button class="btn s er" onclick="setSt('${id}','closed')">قفل التذكرة</button></div>`:''}`;
+ op('mt');const c=$('mtb').querySelector('.chat');c.scrollTop=keep?top:c.scrollHeight;const ni=$('rp');if(ni){if(dv)ni.value=dv;showPf();if(hadF)ni.focus()}}
+async function reply(id){const i=$('rp'),v=i.value.trim();if(!v&&!pend)return;const t=S.tickets.find(x=>x.id===id),sb=$('sb');let fo=null;
+ if(sb){sb.disabled=true;sb.textContent=pend?'جاري الرفع...':'...'}
+ try{if(pend)fo=await upFile(pend)}catch(e){alert(e.message==='big'?'حجم الملف أكبر من 10 ميجا':'تعذر رفع الملف. جرّب صورة أصغر');if(sb){sb.disabled=false;sb.textContent='إرسال'}return}
+ const msg={from:isSup?'s':'c',name:isSup?'One Way Team':me.name,text:v,t:Date.now(),...(fo?{file:fo}:{})};
+ const pp=pend;i.value='';pend=null;
+ try{await db.collection('tickets').doc(id).update({msgs:[...(t.msgs||[]),msg]});if(isSup)notify(t.uid,`رد جديد من One Way Team على تذكرتك "${t.subject}"`)}catch(e){alert('تعذر إرسال الرسالة، حاول مرة أخرى');const r=$('rp');if(r)r.value=v;pend=pp;showPf();const b=$('sb');if(b){b.disabled=false;b.textContent='إرسال'}}}
+async function setSt(id,s){await db.collection('tickets').doc(id).update({status:s,closedAt:s==='postponed'?0:Date.now()});if(s!=='postponed'){const t=S.tickets.find(x=>x.id===id);notify(t.uid,`تم ${s==='done'?'إنجاز':'إغلاق'} تذكرتك "${t.subject}" ${t.shipment?'بخصوص الشحنة '+t.shipment:''}.`)}}
+async function notify(to,text){await db.collection('notifs').doc('n'+Date.now()+Math.floor(Math.random()*99)).set({to,text,t:Date.now()})}
+async function sendN(){const e=$('ne').value.trim(),t=$('nt').value.trim();if(!e||!t){$('nse').textContent='اكتب الإيميل والإشعار';return}const u=S.users.find(x=>x.email.toLowerCase()===e.toLowerCase());if(!u){$('nse').textContent='العميل ده لسه ما سجّلش دخول';return}await notify(u.id,t);$('nse').style.color='var(--ok)';$('nse').textContent='تم الإرسال لموبايل '+u.name;$('nt').value=''}
+function supHTML(){const T=S.tickets,on=u=>u.online&&Date.now()-u.lastSeen<70000,cnt=(id,s)=>T.filter(t=>t.uid===id&&(!s||t.status===s)).length;
+ let h=`<h2>مركز دعم One Way <span style="font-size:14px;color:var(--b2)">(للفريق فقط)</span></h2>`+tabs([['dash','لوحة المتابعة'],['tk','التذاكر'],['arch','الأرشيف'],['nf','إرسال إشعار']]);
+ const row=t=>`<tr><td>${esc(t.name)}<br><small style="color:var(--m)">${esc(t.email)}</small></td><td>${esc(t.type||'—')}</td><td>${esc(t.shipment||'—')}</td><td class="u">${esc(t.subject)}</td><td>${tgs(t.status)}</td><td>${fmt(t.createdAt)}</td><td>${t.closedAt?fmt(t.closedAt):'—'}</td><td><button class="btn s" onclick="openT('${t.id}')">فتح</button></td></tr>`;
+ const hd='<tr><th>العميل</th><th>النوع</th><th>الشحنة</th><th>الموضوع</th><th>الحالة</th><th>فُتحت</th><th>أُغلقت</th><th></th></tr>';
+ if(tab==='dash')h+=`<div class="st"><div><b>${S.users.length}</b><small>عملاء مسجلين</small></div><div><b>${S.users.filter(on).length}</b><small>متصل الآن</small></div><div><b>${T.length}</b><small>تذاكر</small></div><div><b>${T.filter(t=>t.status==='done').length}</b><small>تمت بنجاح</small></div><div><b>${T.filter(t=>t.status==='postponed').length}</b><small>مؤجلة</small></div><div><b>${T.filter(t=>t.status==='closed').length}</b><small>مقفولة</small></div><div><b style="color:var(--er)">${S.att}</b><small>محاولات دخول فاشلة</small></div></div>
+ <div class="tw"><table><tr><th>العميل</th><th>التليفون</th><th>الحالة</th><th>آخر ظهور</th><th>تاريخ التسجيل</th><th>دخل الساعة</th><th>فتح</th><th>نجاح</th><th>تأجيل</th><th>قفل</th></tr>${S.users.map(u=>`<tr><td>${esc(u.name)}<br><small style="color:var(--m)">${esc(u.email)}</small></td><td dir="ltr">${esc(u.phone)}</td><td><span class="dot ${on(u)?'on':''}"></span>${on(u)?'فاتح الموقع':'قافل'}</td><td>${fmt(u.lastSeen)}</td><td>${fmt(u.registeredAt)}</td><td>${fmt(u.loginAt)}</td><td>${cnt(u.id)}</td><td>${cnt(u.id,'done')}</td><td>${cnt(u.id,'postponed')}</td><td>${cnt(u.id,'closed')}</td></tr>`).join('')||'<tr><td colspan=10 style="color:var(--m)">لا يوجد عملاء بعد</td></tr>'}</table></div>`;
+ if(tab==='tk')h+=`<div class="tw"><table>${hd}${T.filter(t=>t.status==='open'||t.status==='postponed').map(row).join('')||'<tr><td colspan=8 style="color:var(--m)">لا توجد تذاكر مفتوحة</td></tr>'}</table></div>`;
+ if(tab==='arch')h+=`<div class="tw"><table>${hd}${T.filter(t=>t.status==='done'||t.status==='closed').map(row).join('')||'<tr><td colspan=8 style="color:var(--m)">الأرشيف فاضي</td></tr>'}</table></div>`;
+ if(tab==='nf')h+=`<div class="card" style="max-width:520px"><label>إيميل العميل</label><input id="ne" dir="ltr"><label>نص الإشعار</label><textarea id="nt" rows="3"></textarea><div class="err" id="nse"></div><button class="btn" onclick="sendN()">إرسال لموبايل العميل</button></div>`;
+ return h}
+
+(()=>{const h=$('h1');h.innerHTML=h.textContent.split(' ').map((w,i)=>`<span class="w" style="animation-delay:${3.6+i*.18}s">${w}</span>`).join(' ');
+($('mq')||{}).innerHTML=[...Array(2)].map(()=>['الإسكندرية','دمياط','بورسعيد','العين السخنة','جدة','دبي','شنغهاي','روتردام','هامبورغ','سنغافورة','نيويورك','إسطنبول'].map(x=>`<span>${x}</span>`).join('')).join('');
+const cg=$('cg');addEventListener('pointermove',e=>{cg.style.left=e.clientX+'px';cg.style.top=e.clientY+'px'});
+const sp=$('sp0');addEventListener('scroll',()=>{sp.style.width=(scrollY/(document.documentElement.scrollHeight-innerHeight)*100)+'%'});
+document.addEventListener('pointermove',e=>{const c=e.target.closest&&e.target.closest('.card');if(c&&!c.closest('#app')){const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`perspective(700px) rotateY(${x*12}deg) rotateX(${-y*12}deg) translateY(-6px)`}});
+document.addEventListener('pointerout',e=>{const c=e.target.closest&&e.target.closest('.card');if(c&&!c.closest('#app'))c.style.transform=''});
+const cv=$('cv'),x=cv.getContext('2d');let W,H,P=[];const rs=()=>{W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;P=[...Array(Math.min(80,W/14|0))].map(()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,r:Math.random()*1.8+.4}))};rs();addEventListener('resize',rs);
+(function f(){if(document.body.classList.contains('mo')||document.hidden){requestAnimationFrame(f);return}x.clearRect(0,0,W,H);P.forEach((a,i)=>{a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>W)a.vx*=-1;if(a.y<0||a.y>H)a.vy*=-1;x.fillStyle='#8fd3ffcc';x.beginPath();x.arc(a.x,a.y,a.r,0,7);x.fill();for(let j=i+1;j<P.length;j++){const b=P[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<110){x.strokeStyle=`rgba(108,196,255,${.22*(1-d/110)})`;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}});requestAnimationFrame(f)})()})();
+const okSel=e=>e.target.closest&&e.target.closest('input,textarea,#app td,#app .m');
+['selectstart','contextmenu','dragstart'].forEach(t=>document.addEventListener(t,e=>{if(!okSel(e))e.preventDefault()},{passive:false}));
+document.addEventListener('selectionchange',()=>{const a=document.activeElement;if(a&&/INPUT|TEXTAREA/.test(a.tagName))return;const sl=getSelection();if(sl&&!sl.isCollapsed&&!(sl.anchorNode&&sl.anchorNode.parentElement&&sl.anchorNode.parentElement.closest('#app td,#app .m')))sl.removeAllRanges()});
+
+const FORCE_MAINT=false,isDev=()=>lsg('ow_dev')==='1';
+function applyM(){$('maint').style.display=((M||FORCE_MAINT)&&!isDev())?'flex':'none'}
+$('mg').innerHTML=globe(Math.min(190,innerWidth*.5));applyM();
+function openDev(){if(isDev())devPanel();else{$('mdb').innerHTML=`<h2 style="font-size:22px;text-align:center">👨‍💻 مبرمج</h2><label>كلمة المرور</label><input id="dp" type="password" dir="ltr" onkeydown="if(event.key==='Enter')devLogin()"><div class="err" id="derr"></div><div class="row" style="margin-top:8px"><button class="btn" style="flex:1" onclick="devLogin()">دخول</button><button class="btn g" onclick="cl('md')">إلغاء</button></div>`;op('md')}}
+function devLogin(){if($('dp').value==='998716'){lss('ow_dev','1');applyM();devPanel()}else $('derr').textContent='كلمة المرور غير صحيحة'}
+function devPanel(){$('mdb').innerHTML=`<h2 style="font-size:22px;text-align:center">👨‍💻 مبرمج</h2><div class="sw"><div><b>وضع الصيانة</b><br><small style="color:var(--m)">${M?'الموقع مقفول للزوار حالياً':'الموقع شغال للزوار'}</small></div><div class="tg2 ${M?'on':''}" onclick="togM()"></div></div><div class="row"><button class="btn g" style="flex:1" onclick="cl('md')">إغلاق</button><button class="btn g" onclick="devOut()">خروج</button></div>`;op('md')}
+async function togM(){const v=!M;try{await db.doc('meta/config').set({maint:v});if(!db.doc('meta/config').onSnapshot){}}catch(e){}M=v;applyM();devPanel()}
+function devOut(){lsd('ow_dev');cl('md');applyM()}
+setLang(LG);setTimeout(()=>{const i=$('intro');i&&i.remove()},4500);</script></body></html>
