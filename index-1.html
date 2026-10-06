@@ -212,8 +212,8 @@ let M=false,db=null,me=null,isSup=false,tab='',S={users:[],tickets:[],notifs:[],
 function mkdb(){const K='ow_db',L={};const ld=()=>{try{return JSON.parse(localStorage.getItem(K))||{}}catch(e){return{}}},sv=d=>{try{localStorage.setItem(K,JSON.stringify(d))}catch(e){}},fire=()=>Object.values(L).forEach(f=>f());addEventListener('storage',fire);
 const dr=(n,id)=>({get:async()=>{const v=(ld()[n]||{})[id];return{exists:!!v,data:()=>v,id}},set:async x=>{const d=ld();(d[n]=d[n]||{})[id]=x;sv(d);fire()},update:async x=>{const d=ld();d[n]=d[n]||{};d[n][id]={...(d[n][id]||{}),...x};sv(d);fire()},onSnapshot:cb=>{const k=Math.random(),f=()=>{const v=(ld()[n]||{})[id];cb({exists:!!v,data:()=>v})};L[k]=f;f();return()=>delete L[k]}});
 return{collection:n=>({doc:id=>dr(n,id),onSnapshot:cb=>{const k=Math.random(),f=()=>{const d=ld()[n]||{};cb({docs:Object.keys(d).map(id=>({id,data:()=>d[id]}))})};L[k]=f;f();return()=>delete L[k]}}),doc:p=>{const[n,i]=p.split('/');return dr(n,i)}}}
-const SUPABASE_URL='',SUPABASE_KEY='';
-function mkSb(U,K){const H={apikey:K,Authorization:'Bearer '+K,'Content-Type':'application/json'},C={},L=new Set();let last='1970-01-01T00:00:00+00:00',first=false,busy=false;
+const SUPABASE_URL='',SUPABASE_KEY='sb_publishable_bCwL46642Dx_EYsPYMmbZg_ubvcHVu-';
+function mkSb(U,K){const H={apikey:K,'Content-Type':'application/json'};if(K.startsWith('eyJ'))H.Authorization='Bearer '+K,C={},L=new Set();let last='1970-01-01T00:00:00+00:00',first=false,busy=false;
 const rest=(q,o={})=>fetch(U+'/rest/v1/'+q,{...o,headers:{...H,...(o.headers||{})}}),fire=()=>L.forEach(f=>f());
 async function poll(){if(busy)return;busy=true;try{const r=await rest('docs?select=col,id,data,updated_at&order=updated_at.asc&limit=1000&updated_at=gt.'+encodeURIComponent(last));if(r.ok){const rows=await r.json();rows.forEach(x=>{(C[x.col]=C[x.col]||{})[x.id]=x.data;last=x.updated_at});if(rows.length||!first){first=true;fire()}}}catch(e){}busy=false}
 setInterval(()=>{if(!document.hidden)poll()},2500);document.addEventListener('visibilitychange',()=>{if(!document.hidden)poll()});poll();
