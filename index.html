@@ -169,8 +169,47 @@ body.mo #site{visibility:visible!important}
 body.mo #cv,body.mo #cg,body.mo #sp0,body.mo .au,body.mo .mq,body.mo #hg,body.mo canvas{display:none!important}
 body.mo #site *,body.mo nav,body.mo nav *{animation:none!important}
 #rr{flex-wrap:wrap}#rr #rp{flex:1 1 100%!important;order:-1}#rr #sb{margin-inline-start:auto}
+
+#lp{position:fixed;inset:0;z-index:120;background:radial-gradient(circle at 50% 35%,#0b2a63,#030712 75%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center}
+#lp h3{font-size:22px;font-weight:800;color:#eaf2ff;margin-top:8px}#lp small{color:var(--m);font-size:14px;margin-bottom:6px}
+#lp .lb{width:min(300px,100%);padding:16px 20px;font-size:20px;font-weight:800;border-radius:16px;cursor:pointer;color:#fff;background:linear-gradient(135deg,#1e90ff,#0b57d0);border:1px solid #6cc4ff55}
+#lp .lb.e{background:linear-gradient(135deg,#0d1b3a,#13306b);font-family:Arial,sans-serif}
+.med{position:relative;border-radius:50%;padding:0;background:#fff;box-shadow:0 0 0 4px #e8c987,0 0 0 7px #0a1630,0 0 0 9px #e8c98788,0 0 60px 8px #1e90ffaa,0 0 120px 30px #1e90ff44;overflow:hidden}
+.med svg{display:block;border-radius:50%}.med img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
+.med::after{content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(115deg,transparent 35%,#ffffffaa 50%,transparent 65%);transform:translateX(-120%);animation:shine 3s 2.2s infinite}
+@keyframes shine{to{transform:translateX(120%)}}
+#intro{display:none;animation:none!important;overflow:hidden}
+#intro.go{display:flex;animation:out .9s 8.4s forwards!important}
+#intro .t{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;font-weight:900;font-size:clamp(34px,9vw,68px);opacity:0;padding:0 20px;background:linear-gradient(120deg,#fff,#e8c987 50%,#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
+#intro.go .t1{animation:tx 2.2s .3s both}#intro.go .t2{animation:tx 2.4s 2.5s both}
+@keyframes tx{0%{opacity:0;transform:translateY(-30%) scale(.9);filter:blur(8px)}25%,75%{opacity:1;transform:translateY(-50%) scale(1);filter:none}100%{opacity:0;transform:translateY(-70%) scale(1.05)}}
+#intro .fin{display:flex;flex-direction:column;align-items:center;opacity:0}
+#intro.go .fin{animation:fin 1.6s 5s both}
+@keyframes fin{from{opacity:0;transform:scale(.4) rotate(-20deg);filter:blur(14px)}to{opacity:1;transform:none;filter:none}}
+#intro .gold{height:2px;width:0;margin-top:18px;background:linear-gradient(90deg,transparent,#e8c987,transparent)}
+#intro.go .gold{animation:gl 1.4s 6.2s forwards}@keyframes gl{to{width:min(320px,70vw)}}
+#intro p{opacity:0;margin-top:14px;color:#e8c987;letter-spacing:5px;font-size:13px;direction:ltr}
+#intro.go p{animation:fade 1s 6.6s both}
+#intro .bar{display:none}
+#intro .sk{position:absolute;bottom:calc(20px + env(safe-area-inset-bottom,0px));color:#8ea3c755;font-size:12px}
+.ct a.btn{display:block;text-align:center;text-decoration:none;margin-top:10px}
+.ct .sep{margin:16px 0 4px;text-align:center;color:var(--m);font-size:13px}
+.ct .apps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.ct .apps a.btn{margin-top:6px;padding:12px 6px;font-size:14px}
+.ct .inf{margin-top:18px;border-top:1px solid var(--line);padding-top:14px;font-size:14px;line-height:2}
+.ct .inf b{color:var(--gd);display:block;margin-top:8px;font-size:13px}
+.ct .inf a{color:var(--b2);text-decoration:none;word-break:break-all}
+.ct .inf .ltr{direction:ltr;unicode-bidi:embed;display:block}
+.ci{position:relative;z-index:2;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;max-width:900px;margin:26px auto 0;text-align:center}
+.ci>div{background:linear-gradient(160deg,#10224a99,#08142c99);border:1px solid #e8c98744;border-radius:16px;padding:16px 12px;line-height:2;backdrop-filter:blur(8px)}
+.ci b{display:block;color:var(--gd);font-size:14px;margin-bottom:4px}
+.ci a,.ci span{display:block;color:var(--t);text-decoration:none;direction:ltr;unicode-bidi:embed;font-size:15px;word-break:break-all}.ci a:hover{color:var(--b2)}
+.pw{font-size:15px!important;font-weight:700;letter-spacing:3px!important;opacity:1!important;font-family:Georgia,'Times New Roman',serif!important;text-transform:uppercase;background:linear-gradient(110deg,#a8812f 20%,#fff3c4 40%,#e8c987 50%,#a8812f 80%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent;animation:pws 5s linear infinite;text-shadow:none}
+.pw::before,.pw::after{content:"";display:inline-block;width:38px;height:1px;background:linear-gradient(90deg,transparent,#e8c987);vertical-align:middle;margin:0 12px}.pw::after{transform:scaleX(-1)}
+@keyframes pws{to{background-position:-220% center}}
+.pw:hover{filter:drop-shadow(0 0 8px #e8c98788)}
 </style></head><body>
-<div id="intro"><div class="lg" id="il"></div><p>SHIPPING &amp; INT'L TRANSPORTATION</p><div class="bar"><i></i></div></div>
+<div id="lp"><div id="lpl"></div><h3>اختر لغتك &nbsp;|&nbsp; Choose your language</h3><button class="lb" onclick="pickLang('ar')">العربية</button><button class="lb e" onclick="pickLang('en')">English</button></div>
+<div id="intro" onclick="endIntro()"><div class="t t1" id="t1"></div><div class="t t2" id="t2"></div><div class="fin"><div id="il"></div><div class="gold"></div><p>SHIPPING &amp; INT'L TRANSPORTATION</p></div></div>
 <div id="push"></div>
 <div id="sp0"></div><div id="cg"></div><nav><div id="nl"></div><div class="l" id="links"><a href="#home">الرئيسية</a><a href="#svc">خدماتنا</a><a href="#contact">تواصل معنا</a></div><button class="btn s g" id="lgb" onclick="setLang()">EN</button><div class="row" id="navb"></div></nav>
 <div id="site">
@@ -192,10 +231,18 @@ body.mo #site *,body.mo nav,body.mo nav *{animation:none!important}
 <text font-size="26"><tspan><animateMotion dur="9s" repeatCount="indefinite"><mpath href="#r1"/></animateMotion></tspan></text>
 <text font-size="30" text-anchor="middle" dy="10">🚢<animateMotion dur="9s" repeatCount="indefinite" rotate="0"><mpath href="#r1"/></animateMotion></text>
 <text font-size="28" text-anchor="middle" dy="10">✈️<animateMotion dur="6s" repeatCount="indefinite" rotate="0"><mpath href="#r2"/></animateMotion></text>
-<text x="120" y="226" fill="#eaf2ff" font-size="14" text-anchor="middle" font-family="Cairo">القاهرة</text></svg></section><section id="contact" style="position:relative;overflow:hidden;text-align:center;background:var(--bg2)"><h2 class="rv">تواصل <span>معنا</span></h2><div class="cn" style="inset-inline-start:8%;bottom:-40px">📦</div><div class="cn" style="inset-inline-start:50%;bottom:-40px;animation-delay:-7s">🚢</div><div class="cn" style="inset-inline-start:88%;bottom:-40px;animation-delay:-12s">✈️</div><a class="big rv" href="tel:+201119300061" style="margin:16px 0;display:block;text-decoration:none">01119300061</a><a class="btn rv callb" href="tel:+201119300061" style="text-decoration:none;display:inline-block"><span class="ph">📞</span> اتصل الآن</a><p class="rv" style="color:var(--m);margin-top:18px">مدينة نصر، القاهرة، مصر</p></section>
+<text x="120" y="226" fill="#eaf2ff" font-size="14" text-anchor="middle" font-family="Cairo">القاهرة</text></svg></section><section id="contact" style="position:relative;overflow:hidden;text-align:center;background:var(--bg2)"><h2 class="rv">تواصل <span>معنا</span></h2><div class="cn" style="inset-inline-start:8%;bottom:-40px">📦</div><div class="cn" style="inset-inline-start:50%;bottom:-40px;animation-delay:-7s">🚢</div><div class="cn" style="inset-inline-start:88%;bottom:-40px;animation-delay:-12s">✈️</div><a class="big rv" href="tel:+201119300061" style="margin:16px 0;display:block;text-decoration:none">01119300061</a><a class="btn rv callb" href="tel:+201119300061" style="text-decoration:none;display:inline-block"><span class="ph">📞</span> اتصل الآن</a><div class="ci rv"><div><b>البريد الإلكتروني</b><a href="mailto:g.m@oneway-egypt.com">g.m@oneway-egypt.com</a><a href="mailto:mohamed.said@oneway-egypt.com">mohamed.said@oneway-egypt.com</a></div><div><b>الموبايل</b><a href="tel:+201119300061">01119300061</a><a href="tel:+201006364983">01006364983</a></div><div><b>العنوان</b><span>20 Mahmoud Ghoneim St, 6th District, Nasr City, Cairo</span></div></div><p class="rv" style="color:var(--m);margin-top:18px">مدينة نصر، القاهرة، مصر</p></section>
 <a class="fab" href="tel:+201119300061" aria-label="اتصل الآن"><span class="ph">📞</span></a><footer>© One Way Shipping &amp; Int'l Transportation LLC</footer><div class="pw" onclick="openDev()">Powered by Malek Mohamed</div></div>
 <div id="maint"><div id="mg"></div><h1>الموقع تحت الصيانة</h1><div class="pw" onclick="openDev()">Powered by Malek Mohamed</div></div><div id="app"></div>
 <div class="ov" id="mc"><div class="box"><div style="text-align:center" id="ml"></div><h2 style="font-size:24px;text-align:center;margin-top:8px">دخول العملاء</h2><label>الاسم</label><input id="cn"><label>البريد الإلكتروني</label><input id="ce" type="email" dir="ltr"><label>رقم التليفون</label><input id="cp" type="tel" dir="ltr"><label>كلمة المرور</label><input id="cpw" type="password" dir="ltr" autocomplete="current-password"><div class="note" style="margin-top:12px">اكتب أي كلمة مرور لحماية حسابك من أي شخص يسجل بإيميلك</div><div class="err" id="cerr"></div><div class="row" style="margin-top:8px"><button class="btn" id="cb" style="flex:1" onclick="custLogin()">دخول</button><button class="btn g" onclick="resetC();cl('mc')">إلغاء</button></div></div></div>
+<div class="ov" id="mct"><div class="box ct"><h2 style="font-size:26px;text-align:center;display:block">تواصل <span>معنا</span></h2>
+<a class="btn" href="#" onclick="cl('mct');openCust();return false">🌐 تواصل عبر موقعنا الإلكتروني</a>
+<div class="sep">أو التواصل عبر البرامج الآتية</div>
+<div class="apps"><a class="btn g" href="https://wa.me/201119300061" target="_blank" rel="noopener">واتساب</a><a class="btn g" href="https://t.me/+201119300061" target="_blank" rel="noopener">تيليجرام</a><a class="btn g" href="viber://chat?number=%2B201119300061">فايبر</a></div>
+<div class="inf"><b>البريد الإلكتروني</b><a class="ltr" href="mailto:g.m@oneway-egypt.com">g.m@oneway-egypt.com</a><a class="ltr" href="mailto:mohamed.said@oneway-egypt.com">mohamed.said@oneway-egypt.com</a>
+<b>الموبايل</b><a class="ltr" href="tel:+201119300061">01119300061</a><a class="ltr" href="tel:+201006364983">01006364983</a>
+<b>العنوان</b><span class="ltr">20 Mahmoud Ghoneim St, 6th District, Nasr City, Cairo</span></div>
+<div class="row" style="margin-top:14px"><button class="btn g" style="flex:1" onclick="cl('mct')">إغلاق</button></div></div></div>
 <div class="ov" id="ms"><div class="box"><h2 style="font-size:24px;text-align:center">🛡️ مركز الدعم الفني</h2><div class="note" style="margin-top:12px">هذا المركز مخصص لفريق دعم عملاء One Way فقط، وليس متاحاً لأي شخص آخر.</div><label>كلمة المرور</label><input id="sp" type="password" dir="ltr"><div class="err" id="serr"></div><div class="row" style="margin-top:8px"><button class="btn" style="flex:1" onclick="supLogin()">دخول</button><button class="btn g" onclick="cl('ms')">إلغاء</button></div></div></div>
 <div class="ov" id="md"><div class="box" id="mdb"></div></div><div class="ov" id="mt"><div class="box wide" id="mtb"></div></div>
 <script>
@@ -210,8 +257,29 @@ LG=lsg('ow_lang')==='en'?'en':'ar';
 function idb(){return new Promise((a,b)=>{const r=indexedDB.open('ow',1);r.onupgradeneeded=()=>r.result.createObjectStore('k');r.onsuccess=()=>a(r.result);r.onerror=b})}
 async function idbs(k,v){try{const d=await idb();d.transaction('k','readwrite').objectStore('k').put(v,k)}catch(e){}}
 async function idbg(k){try{const d=await idb();return await new Promise(r=>{const q=d.transaction('k').objectStore('k').get(k);q.onsuccess=()=>r(q.result);q.onerror=()=>r(null)})}catch(e){return null}}
-const EX={'رد':'Answer','رفض':'Decline','الدعم':'Support','العملاء':'Customers','العميل':'Customer','الاسم':'Name','دخول':'Login','خروج':'Logout','الحالة':'Status','التاريخ':'Date','الشحنة':'Shipment','الموضوع':'Subject','الرسالة':'Message','فتح':'Open','نجاح':'Success','قفل':'Closed','تذاكر':'Tickets','التذاكر':'Tickets','الأرشيف':'Archive','أخرى':'Other','شكوى':'Complaint','مفتوحة':'Open','مؤجلة':'Postponed','مقفولة':'Closed','منتهية':'Closed','التليفون':'Phone','إرسال':'Send','إيقاف':'Stop','الآن':'Now','إغلاق':'Close','مبرمج':'Developer','تأكيد':'Confirm','العربية':'العربية'};
-const DI=`شحن ونقل دولي|Shipping & Int'l Transportation
+const EX={'رد':'Answer','رفض':'Decline','الدعم':'Support','العملاء':'Customers','العميل':'Customer','الاسم':'Name','دخول':'Login','خروج':'Logout','الحالة':'Status','التاريخ':'Date','الشحنة':'Shipment','الموضوع':'Subject','الرسالة':'Message','فتح':'Open','نجاح':'Success','قفل':'Closed','طلبات':'Requests','الطلبات':'Requests','الأرشيف':'Archive','أخرى':'Other','شكوى':'Complaint','مفتوحة':'Open','مؤجلة':'Postponed','مقفولة':'Closed','منتهية':'Closed','التليفون':'Phone','إرسال':'Send','إيقاف':'Stop','الآن':'Now','إغلاق':'Close','مبرمج':'Developer','تأكيد':'Confirm','العربية':'العربية'};
+const DI=`تواصل عبر موقعنا الإلكتروني|Contact us via our website
+أو التواصل عبر البرامج الآتية|Or contact us via the following apps
+واتساب|WhatsApp
+تيليجرام|Telegram
+فايبر|Viber
+الموبايل|Mobile
+العنوان|Address
+الإسكندرية|Alexandria
+دمياط|Damietta
+بورسعيد|Port Said
+العين السخنة|Ain Sokhna
+جدة|Jeddah
+دبي|Dubai
+شنغهاي|Shanghai
+روتردام|Rotterdam
+هامبورغ|Hamburg
+سنغافورة|Singapore
+نيويورك|New York
+إسطنبول|Istanbul
+تصوير|Take a photo
+الطلب منتهي.|This request is closed.
+شحن ونقل دولي|Shipping & Int'l Transportation
 الرئيسية|Home
 خدماتنا|Our Services
 تواصل معنا|Contact Us
@@ -243,9 +311,9 @@ const DI=`شحن ونقل دولي|Shipping & Int'l Transportation
 جاري التسجيل...|Registering...
 تعذر حفظ بياناتك، حاول مرة أخرى|Could not save your data, please try again
 كلمة المرور غير صحيحة|Incorrect password
-فتح تذكرة جديدة|Open a New Ticket
-فتح تذكرة|Open Ticket
-تذاكري المفتوحة|My Open Tickets
+طلب شحن جديد|New Shipping Request
+طلب شحن|Shipping Request
+طلباتي المفتوحة|My Open Requests
 الملف كبير جداً (الحد 10 ميجا)|File too large (limit 10 MB)
 تعذر توصيل المكالمة على الشبكة الحالية|Could not connect the call on this network
 المكالمة شغالة|Call in progress
@@ -259,7 +327,7 @@ const DI=`شحن ونقل دولي|Shipping & Int'l Transportation
 جاري التوصيل...|Connecting...
 تعذر الرد. اسمح للموقع باستخدام الميكروفون|Could not answer. Allow the site to use the microphone
 اسمح للموقع باستخدام الميكروفون|Allow the site to use the microphone
-تعذر تحميل التذكرة، حدّث الصفحة وحاول مرة أخرى|Could not load the ticket, refresh and try again
+تعذر تحميل الطلب، حدّث الصفحة وحاول مرة أخرى|Could not load the request, refresh and try again
 حدث خطأ|An error occurred
 رقم الشحنة (اختياري)|Shipment No. (optional)
 رقم الشحنة|Shipment No.
@@ -269,16 +337,16 @@ const DI=`شحن ونقل دولي|Shipping & Int'l Transportation
 طلب تسعير|Quote Request
 التخليص الجمركي|Customs Clearance
 مشكلة في الدفع / الفاتورة|Payment / Invoice Issue
-اختر نوع التذكرة|Choose the ticket type
+اختر نوع الطلب|Choose the request type
 اختر النوع...|Choose type...
-نوع التذكرة|Ticket Type
+نوع الطلب|Request Type
 النوع|Type
-لا توجد تذاكر مفتوحة. اضغط "فتح تذكرة" لبدء تذكرة جديدة|No open tickets. Tap "Open Ticket" to start a new one
-لا توجد تذاكر منتهية|No closed tickets
-لا توجد تذاكر مفتوحة|No open tickets
+لا توجد طلبات مفتوحة. اضغط "طلب شحن" لبدء طلب جديد|No open requests. Tap "Shipping Request" to start a new one
+لا توجد طلبات منتهية|No closed requests
+لا توجد طلبات مفتوحة|No open requests
 لا توجد إشعارات|No notifications
 إرفاق صورة أو ملف (اختياري)|Attach an image or file (optional)
-إرسال التذكرة|Submit Ticket
+إرسال الطلب|Submit Request
 اكتب الموضوع والرسالة|Enter the subject and message
 جاري رفع الملف...|Uploading file...
 حجم الملف أكبر من 10 ميجا|File is larger than 10 MB
@@ -286,23 +354,23 @@ const DI=`شحن ونقل دولي|Shipping & Int'l Transportation
 تعذر رفع الملف. جرّب صورة أصغر|Could not upload the file. Try a smaller image
 جاري الرفع...|Uploading...
 جاري الإرسال...|Sending...
-تعذر حفظ التذكرة، حاول مرة أخرى|Could not save the ticket, please try again
+تعذر حفظ الطلب، حاول مرة أخرى|Could not save the request, please try again
 تعذر إرسال الرسالة، حاول مرة أخرى|Could not send the message, please try again
 اتصال|Call
 شحنة|Shipment
 فتحها|Opened by
 الساعة|at
 أُغلقت|Closed
-التذكرة منتهية.|This ticket is closed.
+الطلب منتهي.|This request is closed.
 إرفاق ملف|Attach file
 تسجيل رسالة صوتية|Record a voice message
 اكتب رسالتك...|Type your message...
 تأجيل|Postpone
-قفل التذكرة|Close Ticket
+قفل الطلب|Close Request
 رد جديد من|New reply from
-على تذكرتك|on your ticket
-تم إنجاز تذكرتك|Your ticket was completed:
-تم إغلاق تذكرتك|Your ticket was closed:
+على طلبك|on your request
+تم إنجاز طلبك|Your request was completed:
+تم إغلاق طلبك|Your request was closed:
 اكتب الإيميل والإشعار|Enter the email and notification
 العميل ده لسه ما سجّلش دخول|This customer has not logged in yet
 تم الإرسال لموبايل|Sent to the phone of
@@ -326,7 +394,7 @@ const DI=`شحن ونقل دولي|Shipping & Int'l Transportation
 وضع الصيانة|Maintenance Mode
 الموقع مقفول للزوار حالياً|Site is currently closed to visitors
 الموقع شغال للزوار|Site is live for visitors
-كل التذاكر|All Tickets
+كل الطلبات|All Requests
 المنتهية|Closed
 الإشعارات|Notifications
 أهلاً|Hello
@@ -346,23 +414,31 @@ function setLang(l){LG=l||(LG==='en'?'ar':'en');lss('ow_lang',LG);const d=docume
  document.title=LG==='en'?"One Way | Shipping & Int'l Transportation":'One Way | شحن ونقل دولي';
  $('h1').innerHTML=(LG==='en'?'Your One Way to Global Shipping':'طريقك الواحد للشحن العالمي').split(' ').map((w,i)=>`<span class="w" style="animation-delay:${l?3.6+i*.18:0}s">${w}</span>`).join(' ');
  walk(document.body,1);lastH='';try{render();if(cur)ticketView(cur,true)}catch(e){}}
+
+const WEL={ar:['مرحباً بك','شكراً لاختيارك لنا'],en:['Welcome','Thank you for choosing us']};
+let introT=null;
+function endIntro(){const i=$('intro');if(!i||i.dataset.done)return;i.dataset.done=1;i.style.transition='opacity .6s';i.style.opacity=0;setTimeout(()=>{i.style.display='none'},650)}
+function startIntro(){const i=$('intro');$('t1').textContent=WEL[LG][0];$('t2').textContent=WEL[LG][1];i.classList.add('go');setTimeout(endIntro,9300)}
+function pickLang(l){setLang(l);const p=$('lp');p.style.transition='opacity .5s';p.style.opacity=0;setTimeout(()=>{p.style.display='none';startIntro()},500)}
 function resetC(){['cn','ce','cp','cpw'].forEach(i=>{const x=$(i);if(x)x.value=''});$('cerr').textContent=''}
 
 function logo(s=120,txt=true){return `<svg width="${s}" height="${s*(txt?1.05:1)}" viewBox="0 0 120 126"><defs><linearGradient id="g${s}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6cc4ff"/><stop offset="1" stop-color="#0b57d0"/></linearGradient></defs><ellipse cx="60" cy="52" rx="50" ry="46" fill="url(#g${s})"/><ellipse cx="60" cy="52" rx="50" ry="46" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2"/><path d="M28 62h64l-9 16H38z" fill="#fff"/><path d="M60 22v34M60 24l22 30H60zM56 30L40 54h16z" fill="#fff" opacity=".95"/><path d="M24 84q9 6 18 0t18 0 18 0 18 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8"/>${txt?'<text x="60" y="122" text-anchor="middle" font-family="Arial Black,Arial" font-weight="900" font-size="19" fill="#eaf2ff" letter-spacing="1">ONE WAY</text>':''}</svg>`}
 
-function globe(sz){const u='g'+Math.random().toString(36).slice(2,7),B='M-40-20q10-14 24-6t6 16-18 6-12-16zM0 10q14-6 22 4t-4 22-22-4zM18-32q10-4 16 4t-8 10zM-30 24q8-4 12 4t-8 6z';
-return `<svg viewBox="-72 -72 144 144" width="${sz}" height="${sz}"><defs><radialGradient id="${u}a" cx=".35" cy=".3"><stop offset="0" stop-color="#9fdcff"/><stop offset=".5" stop-color="#1e90ff"/><stop offset="1" stop-color="#06306f"/></radialGradient><radialGradient id="${u}b"><stop offset=".7" stop-color="#1e90ff55"/><stop offset="1" stop-color="#1e90ff00"/></radialGradient><clipPath id="${u}c"><circle r="50"/></clipPath></defs>
-<circle r="68" fill="url(#${u}b)"><animate attributeName="r" values="60;70;60" dur="4s" repeatCount="indefinite"/></circle><circle r="50" fill="url(#${u}a)"/>
-<g clip-path="url(#${u}c)"><g fill="#cfeeff" opacity=".35"><path d="${B}"/><path d="${B}" transform="translate(100 0)"/><animateTransform attributeName="transform" type="translate" from="0 0" to="-100 0" dur="16s" repeatCount="indefinite"/></g>
-<g fill="none" stroke="#fff" stroke-opacity=".28" stroke-width=".8"><path d="M-50-30h100M-50-15h100M-50 0h100M-50 15h100M-50 30h100"/>
-<ellipse ry="50" rx="6"><animate attributeName="rx" values="2;50;2" dur="7s" repeatCount="indefinite"/></ellipse><ellipse ry="50" rx="6"><animate attributeName="rx" values="2;50;2" dur="7s" begin="-2.3s" repeatCount="indefinite"/></ellipse><ellipse ry="50" rx="6"><animate attributeName="rx" values="2;50;2" dur="7s" begin="-4.6s" repeatCount="indefinite"/></ellipse></g>
-<circle r="50" fill="none" stroke="#031a42" stroke-opacity=".5" stroke-width="14"/>
-<g><animateTransform attributeName="transform" type="translate" values="0 3;0 -1;0 3" dur="3s" repeatCount="indefinite"/><path d="M-27 4h54l-9 15h-36z" fill="#fff"/><rect x="-22" y="-4" width="10" height="8" fill="#ff7a59"/><rect x="-11" y="-4" width="10" height="8" fill="#ffd166"/><rect x="0" y="-4" width="10" height="8" fill="#fff" opacity=".9"/><rect x="11" y="-12" width="11" height="16" fill="#fff"/><rect x="14" y="-9" width="5" height="3" fill="#1e90ff"/></g>
-<path d="M-60 24q7 5 14 0t14 0 14 0 14 0 14 0 14 0 14 0" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><animateTransform attributeName="transform" type="translate" from="0 0" to="-28 0" dur="2s" repeatCount="indefinite"/></path></g>
-<circle r="50" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="1.2"/>
-<g transform="rotate(-22)"><ellipse rx="66" ry="19" fill="none" stroke="#6cc4ff" stroke-width="1.2" stroke-dasharray="4 6"><animate attributeName="stroke-dashoffset" from="0" to="-40" dur="2s" repeatCount="indefinite"/></ellipse><circle r="3.6" fill="#fff"><animateMotion dur="6s" repeatCount="indefinite" path="M-66 0a66 19 0 1 0 132 0a66 19 0 1 0 -132 0"/></circle></g></svg>`}
-function wm(w){return `<span style="display:inline-block;"><svg width="${w}" viewBox="0 0 360 84" style="direction:ltr;unicode-bidi:isolate;display:block"><defs><linearGradient id="wl"><stop offset="0" stop-color="#1e90ff"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#1e90ff"/></linearGradient></defs><g transform="skewX(-8) translate(12 0)"><text x="0" y="46" font-family="Arial Black,Arial" font-weight="900" font-size="50" fill="#4db2ff" letter-spacing="1">ONE</text><text x="214" y="46" font-family="Arial Black,Arial" font-weight="900" font-size="50" fill="#ffffff" letter-spacing="1">WAY</text></g><g transform="translate(166 24) scale(.32)">${globe(1).replace(/<svg[^>]*>/,"").replace("</svg>","").replace(/<animate[A-Za-z]*\b[^>]*\/>/g,"")}</g><rect x="10" y="56" width="340" height="3" rx="1.5" fill="url(#wl)"/><text x="10" y="74" font-family="Arial" font-weight="700" font-size="9.6" fill="#a9c3ee" letter-spacing="1.6">SHIPPING &amp; INT'L TRANSPORTATION LLC</text></svg></span>`}
-$('il').innerHTML=globe(Math.min(230,innerWidth*.6))+'<div style="margin-top:10px">'+wm(Math.min(440,innerWidth-80))+'</div>';$('hg').innerHTML=globe(Math.min(250,innerWidth*.62));$('hl').innerHTML=wm(Math.min(330,innerWidth-90));$('ml').innerHTML=wm(230);$('nl').innerHTML=wm(120);
+function GL(u){return `<defs><radialGradient id="${u}a" cx=".35" cy=".28" r=".85"><stop offset="0" stop-color="#bfe6ff"/><stop offset=".45" stop-color="#3aa0ff"/><stop offset="1" stop-color="#0a4fc4"/></radialGradient><linearGradient id="${u}h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b3550"/><stop offset="1" stop-color="#0c1220"/></linearGradient><linearGradient id="${u}w" x1="0" x2="1"><stop offset="0" stop-color="#1e90ff" stop-opacity="0"/><stop offset=".3" stop-color="#1e90ff"/><stop offset="1" stop-color="#0b57d0"/></linearGradient><clipPath id="${u}c"><circle cx="100" cy="98" r="64"/></clipPath></defs>
+<circle cx="100" cy="98" r="64" fill="url(#${u}a)"/>
+<g clip-path="url(#${u}c)"><g fill="#fff" opacity=".9"><path d="M52 62q14-16 34-12t8 18-26 10-16-8z"/><path d="M104 44q18-6 30 6t-4 16-24-6z"/><path d="M46 100q10-6 20 2t-2 16-18-6z"/><path d="M118 74q14-4 22 6t-6 14-20-6z"/></g>
+<g fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1"><ellipse cx="100" cy="98" rx="26" ry="64"/><ellipse cx="100" cy="98" rx="50" ry="64"/><path d="M36 76h128M36 98h128M36 120h128"/></g></g>
+<path d="M36 160q30 12 64 4t68-18" fill="none" stroke="url(#${u}w)" stroke-width="7" stroke-linecap="round"/>
+<path d="M52 166q34 8 70 0t52-14" fill="none" stroke="#6cc4ff" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+<path d="M34 148L92 128 114 108 172 100 164 130Q150 152 100 156 58 158 34 148Z" fill="url(#${u}h)"/>
+<path d="M92 128L114 108 172 100" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1.5"/>
+<g stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"><circle cx="132" cy="124" r="2.6"/><path d="M132 127v10M127 132h10M126 134q6 7 12 0"/></g>
+<g transform="translate(124 52) rotate(-24)" fill="#141b2e"><path d="M-34 -3.5Q-10 -6 22 -5.5Q40 -3 44 0Q40 3 22 5.5Q-10 6 -34 3.5Z"/><path d="M-4 0L-24 -26h8l22 24zM-4 0L-18 24h8l16-22z"/><path d="M-30 -1l-9-11h7l9 8zM-30 1l-9 9h7l9-6z"/></g>`}
+function GSVG(sz,u){return `<svg width="${sz}" height="${sz}" viewBox="14 24 172 150" preserveAspectRatio="xMidYMid meet">${GL(u)}</svg>`}
+
+let _gi=0;function globe(sz){const u='gl'+(++_gi);return `<div class="med" style="width:${sz}px;height:${sz}px"><svg viewBox="24 28 152 152" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">${GL(u)}</svg></div>`}
+function wm(w){return `<span style="display:inline-block;"><svg width="${w}" viewBox="0 0 360 84" style="direction:ltr;unicode-bidi:isolate;display:block"><defs><linearGradient id="wl"><stop offset="0" stop-color="#1e90ff"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#1e90ff"/></linearGradient></defs><g transform="skewX(-8) translate(12 0)"><text x="0" y="46" font-family="Arial Black,Arial" font-weight="900" font-size="50" fill="#4db2ff" letter-spacing="1">ONE</text><text x="214" y="46" font-family="Arial Black,Arial" font-weight="900" font-size="50" fill="#ffffff" letter-spacing="1">WAY</text></g><circle cx="187" cy="30" r="27" fill="#fff" stroke="#e8c987" stroke-width="2"/><svg x="161" y="4" width="52" height="52" viewBox="14 14 172 172" overflow="hidden">${GL("wm"+(++_gi))}</svg><rect x="10" y="56" width="340" height="3" rx="1.5" fill="url(#wl)"/><text x="10" y="74" font-family="Arial" font-weight="700" font-size="9.6" fill="#a9c3ee" letter-spacing="1.6">SHIPPING &amp; INT'L TRANSPORTATION LLC</text></svg></span>`}
+$('il').innerHTML='<div style="display:flex;flex-direction:column;align-items:center">'+globe(Math.min(210,innerWidth*.52))+'<div style="margin-top:22px;font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:clamp(40px,11vw,70px);letter-spacing:4px;direction:ltr;font-style:italic"><span style="color:#4db2ff">ONE</span> <span style="color:#fff">WAY</span></div></div>';$('lpl').innerHTML=globe(120);$('hg').innerHTML=globe(Math.min(250,innerWidth*.62));$('hl').innerHTML=wm(Math.min(330,innerWidth-90));$('ml').innerHTML=wm(230);$('nl').innerHTML=wm(120);
 
 const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('on')),{threshold:.15});document.querySelectorAll('.rv').forEach(e=>io.observe(e));
 let lastH='',sigT='',pend=null,pc=null,cc=null,ls=null,rg=null,ac=null,inc=null,mr=null,mch=[];
@@ -407,7 +483,7 @@ async function start(){
  if(isSup){}
  else{const a=$('app');$('home').after(a);a.style.paddingTop='36px';a.style.minHeight='0';a.style.background='transparent';
   document.querySelectorAll('.cta button').forEach(b=>b.style.display='none');
-  document.querySelector('.cta').insertAdjacentHTML('afterbegin','<button class="btn" onclick="goTab(\'new\')">🎫 فتح تذكرة</button><button class="btn g" onclick="goTab(\'ship\')">📂 تذاكري المفتوحة</button>')}
+  document.querySelector('.cta').insertAdjacentHTML('afterbegin','<button class="btn" onclick="goTab(\'new\')">📦 طلب شحن</button><button class="btn g" onclick="goTab(\'ship\')">📂 طلباتي المفتوحة</button>')}
  $('app').style.display=isSup?'none':'block';
  $('navb').innerHTML=`<span style="color:var(--m);font-size:13px">${isSup?'🛡️ مركز الدعم':esc(me.name)}</span><button class="btn s g" onclick="logout()">خروج</button>`;
  if(isSup)navS(false);
@@ -461,7 +537,7 @@ async function recV(){if(mr){mr.stop();return}
   mr.start();$('mic').textContent='⏹ إيقاف'}catch(e){alert('اسمح للموقع باستخدام الميكروفون')}}
 function navS(on){$('navb').innerHTML=`<button class="btn s" onclick="supOpen(${!on})">${on?'🏠 الرئيسية':'🛡️ مركز الدعم'}</button><button class="btn s g" onclick="logout()">خروج</button>`}
 function supOpen(on){$('site').style.display=on?'none':'';$('app').style.display=on?'block':'none';$('links').style.display=on?'none':'';navS(on);if(on){lastH='';render()}scrollTo(0,0)}
-function openT(id,n=0){try{if(!S.tickets.find(x=>x.id===id)){if(n<10){setTimeout(()=>openT(id,n+1),500);return}alert('تعذر تحميل التذكرة، حدّث الصفحة وحاول مرة أخرى');return}ticketView(id)}catch(e){alert('حدث خطأ: '+e.message)}}
+function openT(id,n=0){try{if(!S.tickets.find(x=>x.id===id)){if(n<10){setTimeout(()=>openT(id,n+1),500);return}alert('تعذر تحميل الطلب، حدّث الصفحة وحاول مرة أخرى');return}ticketView(id)}catch(e){alert('حدث خطأ: '+e.message)}}
 function setTab(t){tab=t;render()}
 function goTab(t){tab=t;lastH='';render();$('app').scrollIntoView({behavior:'smooth'})}
 function tabs(l){return `<div class="tabs">${l.map(([k,n])=>`<button class="${tab===k?'on':''}" onclick="setTab('${k}')">${n}</button>`).join('')}</div>`}
@@ -469,17 +545,17 @@ function render(){if(!$('app').style.display||$('app').style.display==='none')re
 function tgs(s){return `<span class="tg ${s}">${ST[s]}</span>`}
 function custHTML(){const mt=S.tickets.filter(t=>t.uid===me.id),mn=S.notifs.filter(n=>n.to===me.id),op=mt.filter(t=>t.status==='open'||t.status==='postponed'),dn=mt.filter(t=>t.status==='done'||t.status==='closed');
  const tbl=(l,em)=>`<div class="tw"><table><tr><th>النوع</th><th>رقم الشحنة</th><th>الموضوع</th><th>الحالة</th><th>التاريخ</th><th></th></tr>${l.map(t=>`<tr><td>${esc(t.type||'—')}</td><td dir="ltr">${esc(t.shipment||'—')}</td><td class="u">${esc(t.subject)}</td><td>${tgs(t.status)}</td><td>${fmt(t.createdAt)}</td><td><button class="btn s" onclick="openT('${t.id}')">فتح</button></td></tr>`).join('')||`<tr><td colspan=6 style="color:var(--m)">${em}</td></tr>`}</table></div>`;
- let h=`<h2>أهلاً ${esc(me.name)} 👋</h2>`+tabs([['ship','تذاكري المفتوحة ('+op.length+')'],['new','فتح تذكرة'],['hist','المنتهية ('+dn.length+')'],['notif','الإشعارات ('+mn.length+')']]);
- if(tab==='ship')h+=`<div class="st"><div><b>${mt.length}</b><small>كل التذاكر</small></div><div><b>${op.length}</b><small>مفتوحة</small></div><div><b>${dn.length}</b><small>منتهية</small></div></div>`+tbl(op,'لا توجد تذاكر مفتوحة. اضغط "فتح تذكرة" لبدء تذكرة جديدة')+`<div style="margin-top:14px"><button class="btn" onclick="setTab('new')">🎫 فتح تذكرة جديدة</button></div>`;
- if(tab==='hist')h+=tbl(dn,'لا توجد تذاكر منتهية');
- if(tab==='new')h+=`<div class="card" style="max-width:520px"><label>نوع التذكرة</label><select id="nty"><option value="">اختر النوع...</option><option value="استفسار عن شحنة">استفسار عن شحنة</option><option value="تأخير في الشحنة">تأخير في الشحنة</option><option value="شكوى">شكوى</option><option value="طلب تسعير">طلب تسعير</option><option value="التخليص الجمركي">التخليص الجمركي</option><option value="مشكلة في الدفع / الفاتورة">مشكلة في الدفع / الفاتورة</option><option value="أخرى">أخرى</option></select><label>رقم الشحنة (اختياري)</label><input id="ns" dir="ltr"><label>الموضوع</label><input id="nj"><label>الرسالة</label><textarea id="nm" rows="4"></textarea><label>إرفاق صورة أو ملف (اختياري)</label><input type="file" id="nf" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.zip"><div class="err" id="nerr"></div><button class="btn" onclick="newTicket()">إرسال التذكرة</button></div>`;
+ let h=`<h2>أهلاً ${esc(me.name)} 👋</h2>`+tabs([['ship','طلباتي المفتوحة ('+op.length+')'],['new','طلب شحن'],['hist','المنتهية ('+dn.length+')'],['notif','الإشعارات ('+mn.length+')']]);
+ if(tab==='ship')h+=`<div class="st"><div><b>${mt.length}</b><small>كل الطلبات</small></div><div><b>${op.length}</b><small>مفتوحة</small></div><div><b>${dn.length}</b><small>منتهية</small></div></div>`+tbl(op,'لا توجد طلبات مفتوحة. اضغط "طلب شحن" لبدء طلب جديد')+`<div style="margin-top:14px"><button class="btn" onclick="setTab('new')">📦 طلب شحن جديد</button></div>`;
+ if(tab==='hist')h+=tbl(dn,'لا توجد طلبات منتهية');
+ if(tab==='new')h+=`<div class="card" style="max-width:520px"><label>نوع الطلب</label><select id="nty"><option value="">اختر النوع...</option><option value="استفسار عن شحنة">استفسار عن شحنة</option><option value="تأخير في الشحنة">تأخير في الشحنة</option><option value="شكوى">شكوى</option><option value="طلب تسعير">طلب تسعير</option><option value="التخليص الجمركي">التخليص الجمركي</option><option value="مشكلة في الدفع / الفاتورة">مشكلة في الدفع / الفاتورة</option><option value="أخرى">أخرى</option></select><label>رقم الشحنة (اختياري)</label><input id="ns" dir="ltr"><label>الموضوع</label><input id="nj"><label>الرسالة</label><textarea id="nm" rows="4"></textarea><label>إرفاق صورة أو ملف (اختياري)</label><input type="file" id="nf" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.zip"><div class="err" id="nerr"></div><button class="btn" onclick="newTicket()">إرسال الطلب</button></div>`;
  if(tab==='notif')h+=mn.map(n=>`<div class="card" style="margin-bottom:10px"><b>🔔 One Way Team</b><p style="color:var(--t)">${esc(n.text)}</p><small style="color:var(--m)">${fmt(n.t)}</small></div>`).join('')||'<p style="color:var(--m)">لا توجد إشعارات</p>';
  return h}
-async function newTicket(){const ty=$('nty').value,s=$('ns').value.trim(),j=$('nj').value.trim(),m=$('nm').value.trim();if(!ty){$('nerr').textContent='اختر نوع التذكرة';return}if(!j||!m){$('nerr').textContent='اكتب الموضوع والرسالة';return}
+async function newTicket(){const ty=$('nty').value,s=$('ns').value.trim(),j=$('nj').value.trim(),m=$('nm').value.trim();if(!ty){$('nerr').textContent='اختر نوع الطلب';return}if(!j||!m){$('nerr').textContent='اكتب الموضوع والرسالة';return}
  let fo=null;const nf=$('nf')&&$('nf').files[0];
  if(nf){$('nerr').textContent='جاري رفع الملف...';try{fo=await upFile(nf)}catch(e){$('nerr').textContent=e.message==='big'?'حجم الملف أكبر من 10 ميجا':'تعذر رفع الملف. جرّب صورة أصغر أو تواصل مع الدعم';return}}
  $('nerr').textContent='جاري الإرسال...';const id='t'+Date.now()+Math.floor(Math.random()*99);
- try{await db.collection('tickets').doc(id).set({uid:me.id,name:me.name,email:me.email,phone:me.phone,type:ty,shipment:s,subject:j,status:'open',createdAt:Date.now(),closedAt:0,msgs:[{from:'c',name:me.name,text:m,t:Date.now(),...(fo?{file:fo}:{})}]})}catch(e){$('nerr').textContent='تعذر حفظ التذكرة، حاول مرة أخرى';return}
+ try{await db.collection('tickets').doc(id).set({uid:me.id,name:me.name,email:me.email,phone:me.phone,type:ty,shipment:s,subject:j,status:'open',createdAt:Date.now(),closedAt:0,msgs:[{from:'c',name:me.name,text:m,t:Date.now(),...(fo?{file:fo}:{})}]})}catch(e){$('nerr').textContent='تعذر حفظ الطلب، حاول مرة أخرى';return}
  tab='ship';lastH='';render()}
 function ticketView(id,keep){try{return ticketView0(id,keep)}catch(e){console.error(e);cl('mt');cur=null;alert('حدث خطأ: '+e.message)}}
 function ticketView0(id,keep){const t=S.tickets.find(x=>x.id===id);if(!t)return;if(cur!==id)pend=null;cur=id;const sc=$('mtb').querySelector('.chat');const top=sc?sc.scrollTop:0;const rpo=$('rp'),dv=rpo&&cur===id?rpo.value:'',hadF=rpo&&document.activeElement===rpo;sigT=(t.msgs||[]).length+'|'+t.status;
@@ -488,27 +564,27 @@ function ticketView0(id,keep){const t=S.tickets.find(x=>x.id===id);if(!t)return;
  const mb=$('mtb'),ch0=mb.querySelector('.chat');
  if(keep&&ch0&&$('mt').classList.contains('on')&&mb.dataset.tid===id&&mb.dataset.st===t.status){const atB=ch0.scrollHeight-ch0.scrollTop-ch0.clientHeight<80;ch0.innerHTML=mh;if(atB)ch0.scrollTop=ch0.scrollHeight;return}
  mb.dataset.tid=id;mb.dataset.st=t.status;
- $('mtb').innerHTML=`<div class="row" style="justify-content:space-between"><h3 class="u">🎫 ${esc(t.subject)}</h3><div class="row">${fin?'':`<button class="btn s" onclick="startCall('${id}')">📞 اتصال</button>`}<button class="btn s g" onclick="cl('mt');cur=null">✕</button></div></div><p style="color:var(--m);font-size:13px;margin-top:6px">النوع: <b style="color:var(--t)">${esc(t.type||'—')}</b>${t.shipment?' • شحنة: '+esc(t.shipment):''} • ${tgs(t.status)}${sup?`<br>فتحها: <b style="color:var(--t)">${esc(t.name)}</b> (${esc(t.email)} / ${esc(t.phone)}) الساعة ${fmt(t.createdAt)}${t.closedAt?'<br>أُغلقت: '+fmt(t.closedAt):''}`:''}</p>
+ $('mtb').innerHTML=`<div class="row" style="justify-content:space-between"><h3 class="u">📦 ${esc(t.subject)}</h3><div class="row">${fin?'':`<button class="btn s" onclick="startCall('${id}')">📞 اتصال</button>`}<button class="btn s g" onclick="cl('mt');cur=null">✕</button></div></div><p style="color:var(--m);font-size:13px;margin-top:6px">النوع: <b style="color:var(--t)">${esc(t.type||'—')}</b>${t.shipment?' • شحنة: '+esc(t.shipment):''} • ${tgs(t.status)}${sup?`<br>فتحها: <b style="color:var(--t)">${esc(t.name)}</b> (${esc(t.email)} / ${esc(t.phone)}) الساعة ${fmt(t.createdAt)}${t.closedAt?'<br>أُغلقت: '+fmt(t.closedAt):''}`:''}</p>
  <div class="chat">${mh}</div>
- ${fin?'<p style="color:var(--m)">التذكرة منتهية.</p>':`<div id="pf"></div><div class="row" id="rr"><button class="btn s g" onclick="$('fl').click()" title="إرفاق ملف">📎</button><button class="btn s g" id="mic" onclick="recV()" title="تسجيل رسالة صوتية">🎤</button><button class="btn s g" onclick="$('fc').click()" title="تصوير">📷</button><input type="file" id="fc" hidden accept="image/*" capture="environment" onchange="pickF(this)"><input type="file" id="fl" hidden accept="image/*,audio/*,video/*,.pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.zip" onchange="pickF(this)"><input id="rp" style="flex:1" placeholder="اكتب رسالتك..." onkeydown="if(event.key==='Enter')reply('${id}')"><button class="btn" id="sb" onclick="reply('${id}')">إرسال</button></div>`}
- ${sup&&!fin?`<div class="row" style="margin-top:12px"><button class="btn s ok" onclick="setSt('${id}','done')">تمت بنجاح</button><button class="btn s wr" onclick="setSt('${id}','postponed')">تأجيل</button><button class="btn s er" onclick="setSt('${id}','closed')">قفل التذكرة</button></div>`:''}`;
+ ${fin?'<p style="color:var(--m)">الطلب منتهي.</p>':`<div id="pf"></div><div class="row" id="rr"><button class="btn s g" onclick="$('fl').click()" title="إرفاق ملف">📎</button><button class="btn s g" id="mic" onclick="recV()" title="تسجيل رسالة صوتية">🎤</button><button class="btn s g" onclick="$('fc').click()" title="تصوير">📷</button><input type="file" id="fc" hidden accept="image/*" capture="environment" onchange="pickF(this)"><input type="file" id="fl" hidden accept="image/*,audio/*,video/*,.pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.zip" onchange="pickF(this)"><input id="rp" style="flex:1" placeholder="اكتب رسالتك..." onkeydown="if(event.key==='Enter')reply('${id}')"><button class="btn" id="sb" onclick="reply('${id}')">إرسال</button></div>`}
+ ${sup&&!fin?`<div class="row" style="margin-top:12px"><button class="btn s ok" onclick="setSt('${id}','done')">تمت بنجاح</button><button class="btn s wr" onclick="setSt('${id}','postponed')">تأجيل</button><button class="btn s er" onclick="setSt('${id}','closed')">قفل الطلب</button></div>`:''}`;
  op('mt');const c=$('mtb').querySelector('.chat');c.scrollTop=keep?top:c.scrollHeight;const ni=$('rp');if(ni){if(dv)ni.value=dv;showPf();if(hadF)ni.focus()}}
 async function reply(id){const i=$('rp'),v=i.value.trim();if(!v&&!pend)return;const t=S.tickets.find(x=>x.id===id),sb=$('sb');let fo=null;
  if(sb){sb.disabled=true;sb.textContent=pend?'جاري الرفع...':'...'}
  try{if(pend)fo=await upFile(pend)}catch(e){alert(e.message==='big'?'حجم الملف أكبر من 10 ميجا':'تعذر رفع الملف. جرّب صورة أصغر');if(sb){sb.disabled=false;sb.textContent='إرسال'}return}
  const msg={from:isSup?'s':'c',name:isSup?'One Way Team':me.name,text:v,t:Date.now(),...(fo?{file:fo}:{})};
  const pp=pend;i.value='';pend=null;
- try{await db.collection('tickets').doc(id).update({msgs:[...(t.msgs||[]),msg]});if(isSup)notify(t.uid,`رد جديد من One Way Team على تذكرتك "${t.subject}"`)}catch(e){alert('تعذر إرسال الرسالة، حاول مرة أخرى');const r=$('rp');if(r)r.value=v;pend=pp;showPf();const b=$('sb');if(b){b.disabled=false;b.textContent='إرسال'}}}
-async function setSt(id,s){await db.collection('tickets').doc(id).update({status:s,closedAt:s==='postponed'?0:Date.now()});if(s!=='postponed'){const t=S.tickets.find(x=>x.id===id);notify(t.uid,`تم ${s==='done'?'إنجاز':'إغلاق'} تذكرتك "${t.subject}" ${t.shipment?'بخصوص الشحنة '+t.shipment:''}.`)}}
+ try{await db.collection('tickets').doc(id).update({msgs:[...(t.msgs||[]),msg]});if(isSup)notify(t.uid,`رد جديد من One Way Team على طلبك "${t.subject}"`)}catch(e){alert('تعذر إرسال الرسالة، حاول مرة أخرى');const r=$('rp');if(r)r.value=v;pend=pp;showPf();const b=$('sb');if(b){b.disabled=false;b.textContent='إرسال'}}}
+async function setSt(id,s){await db.collection('tickets').doc(id).update({status:s,closedAt:s==='postponed'?0:Date.now()});if(s!=='postponed'){const t=S.tickets.find(x=>x.id===id);notify(t.uid,`تم ${s==='done'?'إنجاز':'إغلاق'} طلبك "${t.subject}" ${t.shipment?'بخصوص الشحنة '+t.shipment:''}.`)}}
 async function notify(to,text){await db.collection('notifs').doc('n'+Date.now()+Math.floor(Math.random()*99)).set({to,text,t:Date.now()})}
 async function sendN(){const e=$('ne').value.trim(),t=$('nt').value.trim();if(!e||!t){$('nse').textContent='اكتب الإيميل والإشعار';return}const u=S.users.find(x=>x.email.toLowerCase()===e.toLowerCase());if(!u){$('nse').textContent='العميل ده لسه ما سجّلش دخول';return}await notify(u.id,t);$('nse').style.color='var(--ok)';$('nse').textContent='تم الإرسال لموبايل '+u.name;$('nt').value=''}
 function supHTML(){const T=S.tickets,on=u=>u.online&&Date.now()-u.lastSeen<70000,cnt=(id,s)=>T.filter(t=>t.uid===id&&(!s||t.status===s)).length;
- let h=`<h2>مركز دعم One Way <span style="font-size:14px;color:var(--b2)">(للفريق فقط)</span></h2>`+tabs([['dash','لوحة المتابعة'],['tk','التذاكر'],['arch','الأرشيف'],['nf','إرسال إشعار']]);
+ let h=`<h2>مركز دعم One Way <span style="font-size:14px;color:var(--b2)">(للفريق فقط)</span></h2>`+tabs([['dash','لوحة المتابعة'],['tk','الطلبات'],['arch','الأرشيف'],['nf','إرسال إشعار']]);
  const row=t=>`<tr><td>${esc(t.name)}<br><small style="color:var(--m)">${esc(t.email)}</small></td><td>${esc(t.type||'—')}</td><td>${esc(t.shipment||'—')}</td><td class="u">${esc(t.subject)}</td><td>${tgs(t.status)}</td><td>${fmt(t.createdAt)}</td><td>${t.closedAt?fmt(t.closedAt):'—'}</td><td><button class="btn s" onclick="openT('${t.id}')">فتح</button></td></tr>`;
  const hd='<tr><th>العميل</th><th>النوع</th><th>الشحنة</th><th>الموضوع</th><th>الحالة</th><th>فُتحت</th><th>أُغلقت</th><th></th></tr>';
- if(tab==='dash')h+=`<div class="st"><div><b>${S.users.length}</b><small>عملاء مسجلين</small></div><div><b>${S.users.filter(on).length}</b><small>متصل الآن</small></div><div><b>${T.length}</b><small>تذاكر</small></div><div><b>${T.filter(t=>t.status==='done').length}</b><small>تمت بنجاح</small></div><div><b>${T.filter(t=>t.status==='postponed').length}</b><small>مؤجلة</small></div><div><b>${T.filter(t=>t.status==='closed').length}</b><small>مقفولة</small></div><div><b style="color:var(--er)">${S.att}</b><small>محاولات دخول فاشلة</small></div></div>
+ if(tab==='dash')h+=`<div class="st"><div><b>${S.users.length}</b><small>عملاء مسجلين</small></div><div><b>${S.users.filter(on).length}</b><small>متصل الآن</small></div><div><b>${T.length}</b><small>طلبات</small></div><div><b>${T.filter(t=>t.status==='done').length}</b><small>تمت بنجاح</small></div><div><b>${T.filter(t=>t.status==='postponed').length}</b><small>مؤجلة</small></div><div><b>${T.filter(t=>t.status==='closed').length}</b><small>مقفولة</small></div><div><b style="color:var(--er)">${S.att}</b><small>محاولات دخول فاشلة</small></div></div>
  <div class="tw"><table><tr><th>العميل</th><th>التليفون</th><th>الحالة</th><th>آخر ظهور</th><th>تاريخ التسجيل</th><th>دخل الساعة</th><th>فتح</th><th>نجاح</th><th>تأجيل</th><th>قفل</th></tr>${S.users.map(u=>`<tr><td>${esc(u.name)}<br><small style="color:var(--m)">${esc(u.email)}</small></td><td dir="ltr">${esc(u.phone)}</td><td><span class="dot ${on(u)?'on':''}"></span>${on(u)?'فاتح الموقع':'قافل'}</td><td>${fmt(u.lastSeen)}</td><td>${fmt(u.registeredAt)}</td><td>${fmt(u.loginAt)}</td><td>${cnt(u.id)}</td><td>${cnt(u.id,'done')}</td><td>${cnt(u.id,'postponed')}</td><td>${cnt(u.id,'closed')}</td></tr>`).join('')||'<tr><td colspan=10 style="color:var(--m)">لا يوجد عملاء بعد</td></tr>'}</table></div>`;
- if(tab==='tk')h+=`<div class="tw"><table>${hd}${T.filter(t=>t.status==='open'||t.status==='postponed').map(row).join('')||'<tr><td colspan=8 style="color:var(--m)">لا توجد تذاكر مفتوحة</td></tr>'}</table></div>`;
+ if(tab==='tk')h+=`<div class="tw"><table>${hd}${T.filter(t=>t.status==='open'||t.status==='postponed').map(row).join('')||'<tr><td colspan=8 style="color:var(--m)">لا توجد طلبات مفتوحة</td></tr>'}</table></div>`;
  if(tab==='arch')h+=`<div class="tw"><table>${hd}${T.filter(t=>t.status==='done'||t.status==='closed').map(row).join('')||'<tr><td colspan=8 style="color:var(--m)">الأرشيف فاضي</td></tr>'}</table></div>`;
  if(tab==='nf')h+=`<div class="card" style="max-width:520px"><label>إيميل العميل</label><input id="ne" dir="ltr"><label>نص الإشعار</label><textarea id="nt" rows="3"></textarea><div class="err" id="nse"></div><button class="btn" onclick="sendN()">إرسال لموبايل العميل</button></div>`;
  return h}
@@ -533,4 +609,7 @@ function devLogin(){if($('dp').value==='998716'){lss('ow_dev','1');applyM();devP
 function devPanel(){$('mdb').innerHTML=`<h2 style="font-size:22px;text-align:center">👨‍💻 مبرمج</h2><div class="sw"><div><b>وضع الصيانة</b><br><small style="color:var(--m)">${M?'الموقع مقفول للزوار حالياً':'الموقع شغال للزوار'}</small></div><div class="tg2 ${M?'on':''}" onclick="togM()"></div></div><div class="row"><button class="btn g" style="flex:1" onclick="cl('md')">إغلاق</button><button class="btn g" onclick="devOut()">خروج</button></div>`;op('md')}
 async function togM(){const v=!M;try{await db.doc('meta/config').set({maint:v});if(!db.doc('meta/config').onSnapshot){}}catch(e){}M=v;applyM();devPanel()}
 function devOut(){lsd('ow_dev');cl('md');applyM()}
-setLang(LG);setTimeout(()=>{const i=$('intro');i&&i.remove()},4500);</script></body></html>
+document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[href="#contact"]');if(a){e.preventDefault();op('mct')}});
+setLang(LG);
+try{setLang(LG)}catch(e){console.error(e)}
+</script></body></html>
