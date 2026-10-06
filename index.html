@@ -37,7 +37,7 @@ section{padding:80px 6vw}h2{font-size:34px;font-weight:900;margin-bottom:10px}h2
 footer{padding:26px;text-align:center;color:var(--m);border-top:1px solid var(--line)}
 .ov{position:fixed;inset:0;z-index:50;background:rgba(2,6,16,.8);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:16px}.ov.on{display:flex}
 .box{width:min(440px,100%);max-height:92vh;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px;animation:pop2 .4s both}
-.box.w{width:min(760px,100%)}@media(max-width:700px){nav .l{display:none}}@keyframes pop2{from{opacity:0;transform:scale(.9)}}
+.box.wide{width:min(760px,100%)}@media(max-width:700px){nav .l{display:none}}@keyframes pop2{from{opacity:0;transform:scale(.9)}}
 label{display:block;margin:12px 0 5px;color:var(--m);font-size:13px}
 input,textarea,select{width:100%;background:#071026;border:1px solid var(--line);color:var(--t);border-radius:12px;padding:11px 14px;outline:0}input:focus,textarea:focus,select:focus{border-color:var(--b)}
 .note{background:#102a55;border:1px dashed var(--b);border-radius:12px;padding:10px 12px;font-size:13px;color:var(--b2);margin-bottom:6px}
@@ -113,7 +113,7 @@ h2::after{content:"";display:block;height:3px;width:60%;margin-top:8px;border-ra
 nav{padding-inline:12px}nav .btn.s{padding:7px 10px;font-size:12px;white-space:nowrap}#navb{flex-wrap:nowrap;gap:6px}#nl svg{max-width:112px}
 .hero{padding:96px 18px 90px}.hero p{font-size:16px}.hero .cta{flex-direction:column;width:100%;max-width:340px}.hero .cta .btn{width:100%;text-align:center}
 .sh{font-size:34px}section{padding:60px 18px}.rt{overflow:hidden}.rt svg{width:118%;max-width:none;margin-inline:-9%}
-footer{padding-bottom:96px}.box{padding:20px;border-radius:18px}.box.w{padding:16px}
+footer{padding-bottom:96px}.box{padding:20px;border-radius:18px}.box.wide{padding:16px}
 #app{padding:78px 12px 100px}.tabs button{flex:1 1 auto;padding:9px 10px;font-size:13px}.st{grid-template-columns:repeat(2,1fr)}.card{padding:18px}
 th,td{padding:8px 6px;font-size:13px}.m{max-width:92%}.fab{width:56px;height:56px;font-size:25px}
 #push{width:94vw}.big{font-size:30px}}
@@ -156,10 +156,23 @@ nav{gap:8px}
 #maint .pw{position:absolute;bottom:calc(8px + env(safe-area-inset-bottom,0px));inset-inline:0}
 .sw{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#071026;border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:14px 0}
 .tg2{width:58px;height:32px;border-radius:99px;background:#334155;position:relative;cursor:pointer;transition:.3s;flex:none}.tg2::after{content:"";position:absolute;top:4px;inset-inline-start:4px;width:24px;height:24px;border-radius:50%;background:#fff;transition:.3s}.tg2.on{background:#dc2626}.tg2.on::after{inset-inline-start:30px}
+.ov{align-items:flex-start;overflow-y:auto;-webkit-overflow-scrolling:touch}.box{margin:auto;max-height:none}#call{z-index:80!important;background:#030b1f!important}#lgb{white-space:nowrap}
+
+.ov{display:none!important;background:#06142e!important;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:12px;align-items:initial}
+.ov.on{display:block!important}
+.box{margin:8px auto!important;position:relative;z-index:2;background:#0c1d44!important;box-shadow:none!important;opacity:1!important;transform:none!important;animation:none!important;max-height:none}
+body.mo #site{visibility:visible!important}
+
+/* ticket + modals: no blur, no animation, no glow; page behind is frozen */
+.ov,.ov *{animation:none!important;transition:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;filter:none!important;text-shadow:none!important}
+.ov .btn,.ov .box,.ov .m{box-shadow:none!important;opacity:1!important;transform:none!important}
+body.mo #cv,body.mo #cg,body.mo #sp0,body.mo .au,body.mo .mq,body.mo #hg,body.mo canvas{display:none!important}
+body.mo #site *,body.mo nav,body.mo nav *{animation:none!important}
+#rr{flex-wrap:wrap}#rr #rp{flex:1 1 100%!important;order:-1}#rr #sb{margin-inline-start:auto}
 </style></head><body>
 <div id="intro"><div class="lg" id="il"></div><p>SHIPPING &amp; INT'L TRANSPORTATION</p><div class="bar"><i></i></div></div>
 <div id="push"></div>
-<div id="sp0"></div><div id="cg"></div><nav><div id="nl"></div><div class="l" id="links"><a href="#home">الرئيسية</a><a href="#svc">خدماتنا</a><a href="#contact">تواصل معنا</a></div><div class="row" id="navb"></div></nav>
+<div id="sp0"></div><div id="cg"></div><nav><div id="nl"></div><div class="l" id="links"><a href="#home">الرئيسية</a><a href="#svc">خدماتنا</a><a href="#contact">تواصل معنا</a></div><button class="btn s g" id="lgb" onclick="setLang()">EN</button><div class="row" id="navb"></div></nav>
 <div id="site">
 <header class="hero" id="home"><canvas id="cv"></canvas><i class="au a"></i><i class="au b"></i><i class="au c"></i><div class="gl" id="hg"></div><div class="lg" id="hl"></div><h1 id="h1">طريقك الواحد للشحن العالمي</h1>
 <div class="cta"><button class="btn" onclick="openCust()">👤 تسجيل دخول العملاء</button><button class="btn g" onclick="openSup()">🛡️ مركز الدعم</button><a class="btn g callb" href="tel:+201119300061" style="text-decoration:none"><span class="ph">📞</span> اتصل الآن</a></div>
@@ -182,15 +195,159 @@ nav{gap:8px}
 <text x="120" y="226" fill="#eaf2ff" font-size="14" text-anchor="middle" font-family="Cairo">القاهرة</text></svg></section><section id="contact" style="position:relative;overflow:hidden;text-align:center;background:var(--bg2)"><h2 class="rv">تواصل <span>معنا</span></h2><div class="cn" style="inset-inline-start:8%;bottom:-40px">📦</div><div class="cn" style="inset-inline-start:50%;bottom:-40px;animation-delay:-7s">🚢</div><div class="cn" style="inset-inline-start:88%;bottom:-40px;animation-delay:-12s">✈️</div><a class="big rv" href="tel:+201119300061" style="margin:16px 0;display:block;text-decoration:none">01119300061</a><a class="btn rv callb" href="tel:+201119300061" style="text-decoration:none;display:inline-block"><span class="ph">📞</span> اتصل الآن</a><p class="rv" style="color:var(--m);margin-top:18px">مدينة نصر، القاهرة، مصر</p></section>
 <a class="fab" href="tel:+201119300061" aria-label="اتصل الآن"><span class="ph">📞</span></a><footer>© One Way Shipping &amp; Int'l Transportation LLC</footer><div class="pw" onclick="openDev()">Powered by Malek Mohamed</div></div>
 <div id="maint"><div id="mg"></div><h1>الموقع تحت الصيانة</h1><div class="pw" onclick="openDev()">Powered by Malek Mohamed</div></div><div id="app"></div>
-<div class="ov" id="mc"><div class="box"><div style="text-align:center" id="ml"></div><h2 style="font-size:24px;text-align:center;margin-top:8px">دخول العملاء</h2><label>الاسم</label><input id="cn"><label>البريد الإلكتروني</label><input id="ce" type="email" dir="ltr"><label>رقم التليفون</label><input id="cp" type="tel" dir="ltr"><div class="err" id="cerr"></div><div class="row" style="margin-top:8px"><button class="btn" style="flex:1" onclick="custLogin()">دخول</button><button class="btn g" onclick="cl('mc')">إلغاء</button></div></div></div>
+<div class="ov" id="mc"><div class="box"><div style="text-align:center" id="ml"></div><h2 style="font-size:24px;text-align:center;margin-top:8px">دخول العملاء</h2><label>الاسم</label><input id="cn"><label>البريد الإلكتروني</label><input id="ce" type="email" dir="ltr"><label>رقم التليفون</label><input id="cp" type="tel" dir="ltr"><label>كلمة المرور</label><input id="cpw" type="password" dir="ltr" autocomplete="current-password"><div class="note" style="margin-top:12px">اكتب أي كلمة مرور لحماية حسابك من أي شخص يسجل بإيميلك</div><div class="err" id="cerr"></div><div class="row" style="margin-top:8px"><button class="btn" id="cb" style="flex:1" onclick="custLogin()">دخول</button><button class="btn g" onclick="resetC();cl('mc')">إلغاء</button></div></div></div>
 <div class="ov" id="ms"><div class="box"><h2 style="font-size:24px;text-align:center">🛡️ مركز الدعم الفني</h2><div class="note" style="margin-top:12px">هذا المركز مخصص لفريق دعم عملاء One Way فقط، وليس متاحاً لأي شخص آخر.</div><label>كلمة المرور</label><input id="sp" type="password" dir="ltr"><div class="err" id="serr"></div><div class="row" style="margin-top:8px"><button class="btn" style="flex:1" onclick="supLogin()">دخول</button><button class="btn g" onclick="cl('ms')">إلغاء</button></div></div></div>
-<div class="ov" id="md"><div class="box" id="mdb"></div></div><div class="ov" id="mt"><div class="box w" id="mtb"></div></div>
+<div class="ov" id="md"><div class="box" id="mdb"></div></div><div class="ov" id="mt"><div class="box wide" id="mtb"></div></div>
 <script>
-const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let LG='ar';const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const sync=()=>document.body.classList.toggle('mo',!!document.querySelector('.ov.on')),cl=id=>{$(id).classList.remove('on');sync()},op=id=>{$(id).classList.add('on');sync()};
-const fmt=t=>t?new Date(t).toLocaleString('ar-EG',{dateStyle:'short',timeStyle:'short'}):'—';
+const fmt=t=>t?new Date(t).toLocaleString(LG==='en'?'en-GB':'ar-EG',{dateStyle:'short',timeStyle:'short'}):'—';
 const SP='Net@OneWay2021',ST={open:'مفتوحة',done:'تمت بنجاح',postponed:'مؤجلة',closed:'مقفولة'};
-const lsg=k=>{try{return localStorage.getItem(k)}catch(e){return null}},lss=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+const ckg=k=>{try{const m=document.cookie.match(new RegExp('(?:^|; )'+k+'=([^;]*)'));return m?decodeURIComponent(m[1]):null}catch(e){return null}},ckw=(k,v,d)=>{try{document.cookie=k+'='+encodeURIComponent(v)+';max-age='+(d*86400)+';path=/;SameSite=Lax'}catch(e){}};
+const lsg=k=>{let v=null;try{v=localStorage.getItem(k)}catch(e){}return v!==null?v:ckg(k)},lss=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}ckw(k,v,365);idbs(k,v)},lsd=k=>{try{localStorage.removeItem(k)}catch(e){}ckw(k,'',-1);idbs(k,null)};
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+LG=lsg('ow_lang')==='en'?'en':'ar';
+function idb(){return new Promise((a,b)=>{const r=indexedDB.open('ow',1);r.onupgradeneeded=()=>r.result.createObjectStore('k');r.onsuccess=()=>a(r.result);r.onerror=b})}
+async function idbs(k,v){try{const d=await idb();d.transaction('k','readwrite').objectStore('k').put(v,k)}catch(e){}}
+async function idbg(k){try{const d=await idb();return await new Promise(r=>{const q=d.transaction('k').objectStore('k').get(k);q.onsuccess=()=>r(q.result);q.onerror=()=>r(null)})}catch(e){return null}}
+const EX={'رد':'Answer','رفض':'Decline','الدعم':'Support','العملاء':'Customers','العميل':'Customer','الاسم':'Name','دخول':'Login','خروج':'Logout','الحالة':'Status','التاريخ':'Date','الشحنة':'Shipment','الموضوع':'Subject','الرسالة':'Message','فتح':'Open','نجاح':'Success','قفل':'Closed','تذاكر':'Tickets','التذاكر':'Tickets','الأرشيف':'Archive','أخرى':'Other','شكوى':'Complaint','مفتوحة':'Open','مؤجلة':'Postponed','مقفولة':'Closed','منتهية':'Closed','التليفون':'Phone','إرسال':'Send','إيقاف':'Stop','الآن':'Now','إغلاق':'Close','مبرمج':'Developer','تأكيد':'Confirm','العربية':'العربية'};
+const DI=`شحن ونقل دولي|Shipping & Int'l Transportation
+الرئيسية|Home
+خدماتنا|Our Services
+تواصل معنا|Contact Us
+تسجيل دخول العملاء|Customer Login
+مركز الدعم للعملاء|Customer Support Center
+مركز الدعم الفني|Technical Support Center
+مركز دعم|Support Center
+مركز الدعم|Support Center
+اتصل الآن|Call Now
+الشحن البحري|Sea Freight
+الشحن الجوي|Air Freight
+النقل البري والتخليص|Land Transport & Customs Clearance
+خدمات |Services of 
+شبكة |Global 
+شحن عالمية|Shipping Network
+القاهرة|Cairo
+تواصل |Contact 
+معنا|Us
+مدينة نصر، القاهرة، مصر|Nasr City, Cairo, Egypt
+الموقع تحت الصيانة|Site Under Maintenance
+دخول العملاء|Customer Login
+البريد الإلكتروني|Email
+رقم التليفون|Phone Number
+إلغاء|Cancel
+هذا المركز مخصص لفريق دعم عملاء One Way فقط، وليس متاحاً لأي شخص آخر.|This center is for the One Way customer support team only and is not available to anyone else.
+كلمة المرور|Password
+تمت بنجاح|Completed
+اكتب الاسم والإيميل ورقم التليفون بشكل صحيح|Enter a valid name, email and phone number
+جاري التسجيل...|Registering...
+تعذر حفظ بياناتك، حاول مرة أخرى|Could not save your data, please try again
+كلمة المرور غير صحيحة|Incorrect password
+فتح تذكرة جديدة|Open a New Ticket
+فتح تذكرة|Open Ticket
+تذاكري المفتوحة|My Open Tickets
+الملف كبير جداً (الحد 10 ميجا)|File too large (limit 10 MB)
+تعذر توصيل المكالمة على الشبكة الحالية|Could not connect the call on this network
+المكالمة شغالة|Call in progress
+اتكلم عادي، الطرف التاني بيسمعك|Speak normally, the other side can hear you
+إنهاء المكالمة|End Call
+المتصفح لا يدعم المكالمات|This browser does not support calls
+جاري الاتصال...|Calling...
+تعذر بدء المكالمة. اسمح للموقع باستخدام الميكروفون|Could not start the call. Allow the site to use the microphone
+تم رفض المكالمة|Call declined
+مكالمة واردة|Incoming Call
+جاري التوصيل...|Connecting...
+تعذر الرد. اسمح للموقع باستخدام الميكروفون|Could not answer. Allow the site to use the microphone
+اسمح للموقع باستخدام الميكروفون|Allow the site to use the microphone
+تعذر تحميل التذكرة، حدّث الصفحة وحاول مرة أخرى|Could not load the ticket, refresh and try again
+حدث خطأ|An error occurred
+رقم الشحنة (اختياري)|Shipment No. (optional)
+رقم الشحنة|Shipment No.
+تأخير في الشحنة|Shipment Delay
+بخصوص الشحنة|regarding shipment
+استفسار عن شحنة|Shipment Inquiry
+طلب تسعير|Quote Request
+التخليص الجمركي|Customs Clearance
+مشكلة في الدفع / الفاتورة|Payment / Invoice Issue
+اختر نوع التذكرة|Choose the ticket type
+اختر النوع...|Choose type...
+نوع التذكرة|Ticket Type
+النوع|Type
+لا توجد تذاكر مفتوحة. اضغط "فتح تذكرة" لبدء تذكرة جديدة|No open tickets. Tap "Open Ticket" to start a new one
+لا توجد تذاكر منتهية|No closed tickets
+لا توجد تذاكر مفتوحة|No open tickets
+لا توجد إشعارات|No notifications
+إرفاق صورة أو ملف (اختياري)|Attach an image or file (optional)
+إرسال التذكرة|Submit Ticket
+اكتب الموضوع والرسالة|Enter the subject and message
+جاري رفع الملف...|Uploading file...
+حجم الملف أكبر من 10 ميجا|File is larger than 10 MB
+تعذر رفع الملف. جرّب صورة أصغر أو تواصل مع الدعم|Could not upload the file. Try a smaller image or contact support
+تعذر رفع الملف. جرّب صورة أصغر|Could not upload the file. Try a smaller image
+جاري الرفع...|Uploading...
+جاري الإرسال...|Sending...
+تعذر حفظ التذكرة، حاول مرة أخرى|Could not save the ticket, please try again
+تعذر إرسال الرسالة، حاول مرة أخرى|Could not send the message, please try again
+اتصال|Call
+شحنة|Shipment
+فتحها|Opened by
+الساعة|at
+أُغلقت|Closed
+التذكرة منتهية.|This ticket is closed.
+إرفاق ملف|Attach file
+تسجيل رسالة صوتية|Record a voice message
+اكتب رسالتك...|Type your message...
+تأجيل|Postpone
+قفل التذكرة|Close Ticket
+رد جديد من|New reply from
+على تذكرتك|on your ticket
+تم إنجاز تذكرتك|Your ticket was completed:
+تم إغلاق تذكرتك|Your ticket was closed:
+اكتب الإيميل والإشعار|Enter the email and notification
+العميل ده لسه ما سجّلش دخول|This customer has not logged in yet
+تم الإرسال لموبايل|Sent to the phone of
+للفريق فقط|Team only
+لوحة المتابعة|Dashboard
+إرسال إشعار|Send Notification
+إرسال لموبايل العميل|Send to Customer's Phone
+إيميل العميل|Customer Email
+نص الإشعار|Notification Text
+عملاء مسجلين|Registered Customers
+متصل الآن|Online Now
+محاولات دخول فاشلة|Failed Login Attempts
+تاريخ التسجيل|Registered
+آخر ظهور|Last Seen
+دخل الساعة|Logged in at
+فاتح الموقع|On the site
+قافل|Offline
+لا يوجد عملاء بعد|No customers yet
+الأرشيف فاضي|Archive is empty
+فُتحت|Opened
+وضع الصيانة|Maintenance Mode
+الموقع مقفول للزوار حالياً|Site is currently closed to visitors
+الموقع شغال للزوار|Site is live for visitors
+كل التذاكر|All Tickets
+المنتهية|Closed
+الإشعارات|Notifications
+أهلاً|Hello
+إعادة الإرسال|Resend
+جاري التحقق...|Verifying...
+اكتب أي كلمة مرور لحماية حسابك من أي شخص يسجل بإيميلك|Enter any password to protect your account from anyone registering with your email
+اكتب كلمة المرور (6 أحرف على الأقل)|Enter a password (at least 6 characters)`.split('\n').map(l=>l.split('|')).sort((a,b)=>b[0].length-a[0].length);
+const AR=/[\u0600-\u06FF]/;
+function T(s){if(LG!=='en'||!AR.test(s))return s;const m=s.match(/^([^\u0600-\u06FF]*)([\s\S]*?)(\s*)$/),x=EX[m[2]];if(x)return m[1]+x+m[3];for(const[a,e]of DI)if(s.includes(a))s=s.split(a).join(e);return s}
+function tn(n){if(n._t===n.nodeValue)return;if(n.parentNode&&n.parentNode.closest&&n.parentNode.closest('.m,.u'))return;const o=n.nodeValue,t=T(o);n._o=o;n._t=t;if(t!==o)n.nodeValue=t}
+function walk(r,f){const w=document.createTreeWalker(r,NodeFilter.SHOW_TEXT),L=[];let n;while(n=w.nextNode())L.push(n);
+ L.forEach(n=>{if(/^(SCRIPT|STYLE)$/i.test(n.parentNode.nodeName))return;if(f){if(n._o!==undefined&&n._t===n.nodeValue)n.nodeValue=n._o;n._t=null;n._o=undefined}if(LG==='en')tn(n)});
+ if(r.querySelectorAll)r.querySelectorAll('[placeholder],[title],[aria-label]').forEach(e=>['placeholder','title','aria-label'].forEach(a=>{if(e.hasAttribute(a)){if(e['_'+a]===undefined)e['_'+a]=e.getAttribute(a);e.setAttribute(a,T(e['_'+a]))}}))}
+new MutationObserver(ms=>ms.forEach(m=>{if(m.type==='characterData')tn(m.target);else m.addedNodes.forEach(n=>n.nodeType===3?tn(n):n.nodeType===1&&walk(n))})).observe(document.documentElement,{childList:true,subtree:true,characterData:true});
+const _al=window.alert.bind(window);window.alert=m=>_al(T(String(m)));
+function setLang(l){LG=l||(LG==='en'?'ar':'en');lss('ow_lang',LG);const d=document.documentElement;d.lang=LG;d.dir=LG==='en'?'ltr':'rtl';$('lgb').textContent=LG==='en'?'العربية':'EN';
+ document.title=LG==='en'?"One Way | Shipping & Int'l Transportation":'One Way | شحن ونقل دولي';
+ $('h1').innerHTML=(LG==='en'?'Your One Way to Global Shipping':'طريقك الواحد للشحن العالمي').split(' ').map((w,i)=>`<span class="w" style="animation-delay:${l?3.6+i*.18:0}s">${w}</span>`).join(' ');
+ walk(document.body,1);lastH='';try{render();if(cur)ticketView(cur,true)}catch(e){}}
+function resetC(){['cn','ce','cp','cpw'].forEach(i=>{const x=$(i);if(x)x.value=''});$('cerr').textContent=''}
+
 function logo(s=120,txt=true){return `<svg width="${s}" height="${s*(txt?1.05:1)}" viewBox="0 0 120 126"><defs><linearGradient id="g${s}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6cc4ff"/><stop offset="1" stop-color="#0b57d0"/></linearGradient></defs><ellipse cx="60" cy="52" rx="50" ry="46" fill="url(#g${s})"/><ellipse cx="60" cy="52" rx="50" ry="46" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2"/><path d="M28 62h64l-9 16H38z" fill="#fff"/><path d="M60 22v34M60 24l22 30H60zM56 30L40 54h16z" fill="#fff" opacity=".95"/><path d="M24 84q9 6 18 0t18 0 18 0 18 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8"/>${txt?'<text x="60" y="122" text-anchor="middle" font-family="Arial Black,Arial" font-weight="900" font-size="19" fill="#eaf2ff" letter-spacing="1">ONE WAY</text>':''}</svg>`}
 
 function globe(sz){const u='g'+Math.random().toString(36).slice(2,7),B='M-40-20q10-14 24-6t6 16-18 6-12-16zM0 10q14-6 22 4t-4 22-22-4zM18-32q10-4 16 4t-8 10zM-30 24q8-4 12 4t-8 6z';
@@ -208,6 +365,7 @@ function wm(w){return `<span style="display:inline-block;"><svg width="${w}" vie
 $('il').innerHTML=globe(Math.min(230,innerWidth*.6))+'<div style="margin-top:10px">'+wm(Math.min(440,innerWidth-80))+'</div>';$('hg').innerHTML=globe(Math.min(250,innerWidth*.62));$('hl').innerHTML=wm(Math.min(330,innerWidth-90));$('ml').innerHTML=wm(230);$('nl').innerHTML=wm(120);
 
 const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('on')),{threshold:.15});document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+let lastH='',sigT='',pend=null,pc=null,cc=null,ls=null,rg=null,ac=null,inc=null,mr=null,mch=[];
 let M=false,db=null,me=null,isSup=false,tab='',S={users:[],tickets:[],notifs:[],att:0},cur=null,seenN=new Set(),firstN=true;
 function mkdb(){const K='ow_db',L={};const ld=()=>{try{return JSON.parse(localStorage.getItem(K))||{}}catch(e){return{}}},sv=d=>{try{localStorage.setItem(K,JSON.stringify(d))}catch(e){}},fire=()=>Object.values(L).forEach(f=>f());addEventListener('storage',fire);
 const dr=(n,id)=>({get:async()=>{const v=(ld()[n]||{})[id];return{exists:!!v,data:()=>v,id}},set:async x=>{const d=ld();(d[n]=d[n]||{})[id]=x;sv(d);fire()},update:async x=>{const d=ld();d[n]=d[n]||{};d[n][id]={...(d[n][id]||{}),...x};sv(d);fire()},onSnapshot:cb=>{const k=Math.random(),f=()=>{const v=(ld()[n]||{})[id];cb({exists:!!v,data:()=>v})};L[k]=f;f();return()=>delete L[k]}});
@@ -223,38 +381,46 @@ const dr=(n,id)=>({get:async()=>{const v=await cur(n,id);return{exists:!!v,data:
 return{collection:n=>({doc:id=>dr(n,id),onSnapshot:cb=>{const f=()=>{const d=C[n]||{};cb({docs:Object.keys(d).map(id=>({id,data:()=>d[id]}))})};L.add(f);if(first)f();return()=>L.delete(f)}}),doc:q=>{const[n,i]=q.split('/');return dr(n,i)}}}
 const key=e=>e.toLowerCase().replace(/[^a-z0-9]/g,'_');
 (async()=>{if(SUPABASE_URL&&SUPABASE_KEY)db=mkSb(SUPABASE_URL.replace(/\/$/,''),SUPABASE_KEY);if(!db){try{db=await claude.use('db')}catch(e){}}if(!db)db=mkdb();try{db.doc('meta/config').onSnapshot(x=>{M=!!(x.exists&&x.data().maint);applyM()})}catch(e){}
- try{me=JSON.parse(lsg('ow_me')||'null')}catch(e){}
- try{localStorage.removeItem('ow_sup')}catch(e){}try{history.scrollRestoration='manual'}catch(e){}scrollTo(0,0);try{localStorage.removeItem('ow_me')}catch(e){}me=null;navb()})();
+ if(!lsg('ow_me')){const v=await idbg('ow_me');if(v)lss('ow_me',v)}if(!lsg('ow_sup')){const v=await idbg('ow_sup');if(v)lss('ow_sup',v)}
+ try{me=JSON.parse(lsg('ow_me')||'null')}catch(e){}if(me&&me.id)lss('ow_me',JSON.stringify(me));
+ if(lsg('ow_sup')==='1'&&db){isSup=true;await start();supOpen(true)}else if(me&&me.id&&db){await start()}else navb()})();
 function navb(){$('navb').innerHTML=`<button class="btn s" onclick="openCust()">👤 العملاء</button><button class="btn s g" onclick="openSup()">🛡️ الدعم</button>`}navb();
-function openCust(){op('mc')}function openSup(){op('ms')}
+function openCust(){resetC();op('mc')}function openSup(){op('ms')}
 function needDb(el){if(false){$(el).textContent='الخدمة تحتاج تسجيل دخول لحساب Claude لفتح الصفحة.';return true}}
-async function custLogin(){if(needDb('cerr'))return;const n=$('cn').value.trim(),e=$('ce').value.trim(),p=$('cp').value.trim();
+async function sha(x){try{const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(x));return[...new Uint8Array(b)].map(v=>v.toString(16).padStart(2,'0')).join('')}catch(e){let h=5381;for(const c of x)h=(h*33^c.charCodeAt(0))>>>0;return'x'+h}}
+async function custLogin(){const n=$('cn').value.trim(),e=$('ce').value.trim().toLowerCase(),p=$('cp').value.trim(),w=$('cpw').value;
  if(!n||!/.+@.+\..+/.test(e)||p.length<8){$('cerr').textContent='اكتب الاسم والإيميل ورقم التليفون بشكل صحيح';return}
- const id=key(e);let old=null;try{const g=await db.doc('users/'+id).get();old=g.exists?g.data():null}catch(x){}
- me={name:n,email:e,phone:p,id,registeredAt:(old&&old.registeredAt)||Date.now(),loginAt:Date.now()};
+ if(w.length<6){$('cerr').textContent='اكتب كلمة المرور (6 أحرف على الأقل)';return}
+ $('cerr').textContent='جاري التحقق...';const ph=await sha(w+'|ow|'+e);let old=null;
+ try{const g=await db.doc('users/'+key(e)).get();old=g.exists?g.data():null}catch(x){$('cerr').textContent='حدث خطأ';return}
+ if(old&&old.pw&&old.pw!==ph){$('cerr').textContent='كلمة المرور غير صحيحة';return}
+ return finishLogin(n,e,p,ph)}
+async function finishLogin(n,e,p,ph){const id=key(e);let old=null;try{const g=await db.doc('users/'+id).get();old=g.exists?g.data():null}catch(x){}
+ me={name:n,email:e,phone:p,id,ph,registeredAt:(old&&old.registeredAt)||Date.now(),loginAt:Date.now()};
  $('cerr').textContent='جاري التسجيل...';
- try{await db.doc('users/'+id).set({name:n,email:e,phone:p,registeredAt:me.registeredAt,loginAt:me.loginAt,lastSeen:Date.now(),online:true})}catch(x){$('cerr').textContent='تعذر حفظ بياناتك، حاول مرة أخرى';return}
- $('cerr').textContent='';cl('mc');start()}
-async function supLogin(){if(needDb('serr'))return;if($('sp').value===SP){lss('ow_sup','1');isSup=true;cl('ms');start();return}
+ try{await db.doc('users/'+id).set({name:n,email:e,phone:p,pw:ph,registeredAt:me.registeredAt,loginAt:me.loginAt,lastSeen:Date.now(),online:true})}catch(x){$('cerr').textContent='تعذر حفظ بياناتك، حاول مرة أخرى';return}
+ $('cerr').textContent='';lss('ow_me',JSON.stringify(me));cl('mc');resetC();start()}
+async function supLogin(){if(needDb('serr'))return;if($('sp').value===SP){lss('ow_sup','1');isSup=true;cl('ms');start();supOpen(true);return}
  $('serr').textContent='كلمة المرور غير صحيحة';try{const r=db.doc('meta/attempts');const s=await r.get();const c=(s.exists?s.data().count:0)+1;await r.set({count:c,last:Date.now()})}catch(e){}}
-function logout(){if(me&&db&&!isSup)try{db.collection('users').doc(me.id).update({online:false,lastSeen:Date.now()})}catch(e){};try{localStorage.removeItem('ow_me');localStorage.removeItem('ow_sup')}catch(e){}location.reload()}
+function logout(){if(me&&db&&!isSup)try{db.collection('users').doc(me.id).update({online:false,lastSeen:Date.now()})}catch(e){};lsd('ow_me');lsd('ow_sup');location.reload()}
 async function start(){
- if(isSup){$('site').style.display='none';$('links').style.display='none'}
+ if(isSup){}
  else{const a=$('app');$('home').after(a);a.style.paddingTop='36px';a.style.minHeight='0';a.style.background='transparent';
   document.querySelectorAll('.cta button').forEach(b=>b.style.display='none');
   document.querySelector('.cta').insertAdjacentHTML('afterbegin','<button class="btn" onclick="goTab(\'new\')">🎫 فتح تذكرة</button><button class="btn g" onclick="goTab(\'ship\')">📂 تذاكري المفتوحة</button>')}
- $('app').style.display='block';
+ $('app').style.display=isSup?'none':'block';
  $('navb').innerHTML=`<span style="color:var(--m);font-size:13px">${isSup?'🛡️ مركز الدعم':esc(me.name)}</span><button class="btn s g" onclick="logout()">خروج</button>`;
+ if(isSup)navS(false);
  tab=isSup?'dash':'ship';lastH='';
- db.collection('tickets').onSnapshot(s=>{S.tickets=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>b.createdAt-a.createdAt);render();if(cur){const t=S.tickets.find(x=>x.id===cur);const sg=t?t.msgs.length+'|'+t.status:'';if(sg!==sigT)ticketView(cur,true)}});
+ db.collection('tickets').onSnapshot(s=>{S.tickets=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>b.createdAt-a.createdAt);render();if(cur){const t=S.tickets.find(x=>x.id===cur);const sg=t?(t.msgs||[]).length+'|'+t.status:'';if(sg!==sigT)ticketView(cur,true)}});
  db.collection('calls').onSnapshot(callSnap);
  db.collection('notifs').onSnapshot(s=>{S.notifs=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>b.t-a.t);if(!isSup)S.notifs.filter(n=>n.to===me.id).forEach(n=>{if(!seenN.has(n.id)){seenN.add(n.id);if(!firstN&&n.t>Date.now()-60000)push(n.text)}});firstN=false;render()});
  if(isSup){db.collection('users').onSnapshot(s=>{S.users=s.docs.map(d=>({id:d.id,...d.data()}));render()});db.doc('meta/attempts').onSnapshot(s=>{S.att=s.exists?s.data().count:0;render()});setInterval(render,30000)}
- else{const u=db.collection('users').doc(me.id);const hb=(on=true)=>u.set({name:me.name,email:me.email,phone:me.phone,registeredAt:me.registeredAt,lastSeen:Date.now(),online:on,loginAt:me.loginAt||(me.loginAt=Date.now())}).catch(()=>{});hb();setInterval(hb,20000);addEventListener('pagehide',()=>hb(false))}
+ else{const u=db.collection('users').doc(me.id);const hb=(on=true)=>u.update({name:me.name,email:me.email,phone:me.phone,...(me.ph?{pw:me.ph}:{}),registeredAt:me.registeredAt,lastSeen:Date.now(),online:on,loginAt:me.loginAt||(me.loginAt=Date.now())}).catch(()=>{});hb();setInterval(hb,20000);addEventListener('pagehide',()=>hb(false))}
  render()}
 function push(t){const p=$('push');p.innerHTML=`<div>${logo(34,false)}</div><div><b>One Way • الآن</b><span>${esc(t)}</span></div>`;p.classList.add('on');try{navigator.vibrate&&navigator.vibrate([200,100,200])}catch(e){}setTimeout(()=>p.classList.remove('on'),6000)}
 
-const FMAX=10*1024*1024;let pend=null;
+const FMAX=10*1024*1024;
 const sz=n=>n>1048576?(n/1048576).toFixed(1)+' MB':Math.max(1,Math.round(n/1024))+' KB';
 function cmp(f){return new Promise(res=>{if(!/^image\/(jpeg|png|webp)/.test(f.type))return res(f);const im=new Image(),u=URL.createObjectURL(f);im.onload=()=>{const k=Math.min(1,1600/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);g.drawImage(im,0,0,c.width,c.height);c.toBlob(b=>{URL.revokeObjectURL(u);res(b?new File([b],f.name.replace(/\.\w+$/,'')+'.jpg',{type:'image/jpeg'}):f)},'image/jpeg',.8)};im.onerror=()=>res(f);im.src=u})}
 const b64=f=>new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(f)});
@@ -262,12 +428,13 @@ async function upFile(f){f=await cmp(f);if(f.size>FMAX)throw new Error('big');co
  if(SUPABASE_URL){try{const B=SUPABASE_URL.replace(/\/$/,''),p='t/'+Date.now()+'_'+Math.random().toString(36).slice(2,8)+'.'+((f.name.split('.').pop()||'bin').replace(/[^a-z0-9]/gi,'').slice(0,6)||'bin'),H={apikey:SUPABASE_KEY,'Content-Type':meta.type};if(SUPABASE_KEY.startsWith('eyJ'))H.Authorization='Bearer '+SUPABASE_KEY;
   const r=await fetch(B+'/storage/v1/object/attachments/'+p,{method:'POST',headers:H,body:f});if(r.ok)return{...meta,url:B+'/storage/v1/object/public/attachments/'+p,st:1}}catch(e){}}
  if(f.size>700*1024)throw new Error('nostorage');return{...meta,url:await b64(f)}}
-function fileHTML(f){if(!f||!f.url)return'';const au=/^audio\//.test(f.type)?`<audio controls preload="metadata" src="${esc(f.url)}" style="width:100%;margin-top:6px"></audio>`:'';const img=/^image\//.test(f.type)?`<a href="${esc(f.url)}" target="_blank" rel="noopener"><img src="${esc(f.url)}" alt="" loading="lazy" style="max-width:100%;max-height:220px;border-radius:10px;display:block;margin:6px 0"></a>`:'';
- const dl=f.st?f.url+'?download='+encodeURIComponent(f.name):f.url;return au+img+`<a href="${esc(dl)}" ${f.st?'':`download="${esc(f.name)}"`} target="_blank" rel="noopener" style="color:var(--b2);display:block;margin-top:4px;word-break:break-all">⬇️ ${esc(f.name)} (${sz(f.size)})</a>`}
+const BU={};function bu(u){if(!/^data:/.test(u))return u;if(BU[u])return BU[u];try{const p=u.split(','),b=atob(p[1]),a=new Uint8Array(b.length);for(let i=0;i<b.length;i++)a[i]=b.charCodeAt(i);return BU[u]=URL.createObjectURL(new Blob([a],{type:p[0].slice(5).split(';')[0]}))}catch(e){return u}}
+function fileHTML(f){if(!f||!f.url)return'';const U=bu(f.url);const au=/^audio\//.test(f.type)?`<audio controls preload="metadata" src="${esc(U)}" style="width:100%;margin-top:6px"></audio>`:'';const img=/^image\//.test(f.type)?`<a href="${esc(U)}" target="_blank" rel="noopener"><img src="${esc(U)}" alt="" loading="lazy" style="max-width:100%;max-height:220px;border-radius:10px;display:block;margin:6px 0"></a>`:'';
+ const dl=f.st?U+'?download='+encodeURIComponent(f.name):f.url;return au+img+`<a href="${esc(dl)}" ${f.st?'':`download="${esc(f.name)}"`} target="_blank" rel="noopener" style="color:var(--b2);display:block;margin-top:4px;word-break:break-all">⬇️ ${esc(f.name)} (${sz(f.size)})</a>`}
 function pickF(el){const f=el.files[0];el.value='';if(!f)return;if(f.size>30*1024*1024){alert('الملف كبير جداً (الحد 10 ميجا)');return}pend=f;showPf()}
 function showPf(){const p=$('pf');if(p)p.innerHTML=pend?`<span style="font-size:13px;color:var(--b2)">📎 ${esc(pend.name)} (${sz(pend.size)}) <a href="#" onclick="pend=null;showPf();return false" style="color:var(--er);margin-inline-start:6px">✕</a></span>`:''}
 
-let pc=null,cc=null,ls=null,rg=null,ac=null,inc=null,mr=null,mch=[];const role=()=>isSup?'s':'c';
+const role=()=>isSup?'s':'c';
 function beep(on){clearInterval(rg);rg=null;if(!on)return;try{ac=ac||new AudioContext();const b=()=>{const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=440;g.gain.value=.12;o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+.4)};b();rg=setInterval(b,1500)}catch(e){}}
 function callUI(h){let c=$('call');if(!c){c=document.createElement('div');c.id='call';c.style.cssText='position:fixed;inset:0;z-index:70;background:rgba(2,6,16,.94);display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;color:#fff;text-align:center;padding:20px';document.body.appendChild(c)}c.innerHTML=h;c.style.display=h?'flex':'none'}
 const ice=p=>new Promise(r=>{if(p.iceGatheringState==='complete')return r();const f=()=>{if(p.iceGatheringState==='complete'){p.removeEventListener('icegatheringstatechange',f);r()}};p.addEventListener('icegatheringstatechange',f);setTimeout(r,4000)});
@@ -292,18 +459,20 @@ async function recV(){if(mr){mr.stop();return}
  try{const st=await navigator.mediaDevices.getUserMedia({audio:true});const mt=MediaRecorder.isTypeSupported('audio/webm')?'audio/webm':(MediaRecorder.isTypeSupported('audio/mp4')?'audio/mp4':'');mr=new MediaRecorder(st,mt?{mimeType:mt}:{});mch=[];mr.ondataavailable=e=>mch.push(e.data);
   mr.onstop=()=>{st.getTracks().forEach(t=>t.stop());const ty=(mr.mimeType||mt||'audio/webm').split(';')[0];pend=new File([new Blob(mch,{type:ty})],'voice.'+(ty.includes('mp4')?'m4a':'webm'),{type:ty});mr=null;const m=$('mic');if(m)m.textContent='🎤';showPf()};
   mr.start();$('mic').textContent='⏹ إيقاف'}catch(e){alert('اسمح للموقع باستخدام الميكروفون')}}
+function navS(on){$('navb').innerHTML=`<button class="btn s" onclick="supOpen(${!on})">${on?'🏠 الرئيسية':'🛡️ مركز الدعم'}</button><button class="btn s g" onclick="logout()">خروج</button>`}
+function supOpen(on){$('site').style.display=on?'none':'';$('app').style.display=on?'block':'none';$('links').style.display=on?'none':'';navS(on);if(on){lastH='';render()}scrollTo(0,0)}
+function openT(id,n=0){try{if(!S.tickets.find(x=>x.id===id)){if(n<10){setTimeout(()=>openT(id,n+1),500);return}alert('تعذر تحميل التذكرة، حدّث الصفحة وحاول مرة أخرى');return}ticketView(id)}catch(e){alert('حدث خطأ: '+e.message)}}
 function setTab(t){tab=t;render()}
 function goTab(t){tab=t;lastH='';render();$('app').scrollIntoView({behavior:'smooth'})}
-let lastH='',sigT='';
 function tabs(l){return `<div class="tabs">${l.map(([k,n])=>`<button class="${tab===k?'on':''}" onclick="setTab('${k}')">${n}</button>`).join('')}</div>`}
 function render(){if(!$('app').style.display||$('app').style.display==='none')return;if(document.activeElement&&['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName))return;const h=isSup?supHTML():custHTML();if(h===lastH)return;lastH=h;$('app').innerHTML=h}
 function tgs(s){return `<span class="tg ${s}">${ST[s]}</span>`}
 function custHTML(){const mt=S.tickets.filter(t=>t.uid===me.id),mn=S.notifs.filter(n=>n.to===me.id),op=mt.filter(t=>t.status==='open'||t.status==='postponed'),dn=mt.filter(t=>t.status==='done'||t.status==='closed');
- const tbl=(l,em)=>`<div class="tw"><table><tr><th>النوع</th><th>رقم الشحنة</th><th>الموضوع</th><th>الحالة</th><th>التاريخ</th><th></th></tr>${l.map(t=>`<tr><td>${esc(t.type||'—')}</td><td dir="ltr">${esc(t.shipment||'—')}</td><td>${esc(t.subject)}</td><td>${tgs(t.status)}</td><td>${fmt(t.createdAt)}</td><td><button class="btn s" onclick="ticketView('${t.id}')">فتح</button></td></tr>`).join('')||`<tr><td colspan=6 style="color:var(--m)">${em}</td></tr>`}</table></div>`;
+ const tbl=(l,em)=>`<div class="tw"><table><tr><th>النوع</th><th>رقم الشحنة</th><th>الموضوع</th><th>الحالة</th><th>التاريخ</th><th></th></tr>${l.map(t=>`<tr><td>${esc(t.type||'—')}</td><td dir="ltr">${esc(t.shipment||'—')}</td><td class="u">${esc(t.subject)}</td><td>${tgs(t.status)}</td><td>${fmt(t.createdAt)}</td><td><button class="btn s" onclick="openT('${t.id}')">فتح</button></td></tr>`).join('')||`<tr><td colspan=6 style="color:var(--m)">${em}</td></tr>`}</table></div>`;
  let h=`<h2>أهلاً ${esc(me.name)} 👋</h2>`+tabs([['ship','تذاكري المفتوحة ('+op.length+')'],['new','فتح تذكرة'],['hist','المنتهية ('+dn.length+')'],['notif','الإشعارات ('+mn.length+')']]);
  if(tab==='ship')h+=`<div class="st"><div><b>${mt.length}</b><small>كل التذاكر</small></div><div><b>${op.length}</b><small>مفتوحة</small></div><div><b>${dn.length}</b><small>منتهية</small></div></div>`+tbl(op,'لا توجد تذاكر مفتوحة. اضغط "فتح تذكرة" لبدء تذكرة جديدة')+`<div style="margin-top:14px"><button class="btn" onclick="setTab('new')">🎫 فتح تذكرة جديدة</button></div>`;
  if(tab==='hist')h+=tbl(dn,'لا توجد تذاكر منتهية');
- if(tab==='new')h+=`<div class="card" style="max-width:520px"><label>نوع التذكرة</label><select id="nty"><option value="">اختر النوع...</option><option>استفسار عن شحنة</option><option>تأخير في الشحنة</option><option>شكوى</option><option>طلب تسعير</option><option>التخليص الجمركي</option><option>مشكلة في الدفع / الفاتورة</option><option>أخرى</option></select><label>رقم الشحنة (اختياري)</label><input id="ns" dir="ltr"><label>الموضوع</label><input id="nj"><label>الرسالة</label><textarea id="nm" rows="4"></textarea><label>إرفاق صورة أو ملف (اختياري)</label><input type="file" id="nf" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.zip"><div class="err" id="nerr"></div><button class="btn" onclick="newTicket()">إرسال التذكرة</button></div>`;
+ if(tab==='new')h+=`<div class="card" style="max-width:520px"><label>نوع التذكرة</label><select id="nty"><option value="">اختر النوع...</option><option value="استفسار عن شحنة">استفسار عن شحنة</option><option value="تأخير في الشحنة">تأخير في الشحنة</option><option value="شكوى">شكوى</option><option value="طلب تسعير">طلب تسعير</option><option value="التخليص الجمركي">التخليص الجمركي</option><option value="مشكلة في الدفع / الفاتورة">مشكلة في الدفع / الفاتورة</option><option value="أخرى">أخرى</option></select><label>رقم الشحنة (اختياري)</label><input id="ns" dir="ltr"><label>الموضوع</label><input id="nj"><label>الرسالة</label><textarea id="nm" rows="4"></textarea><label>إرفاق صورة أو ملف (اختياري)</label><input type="file" id="nf" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.zip"><div class="err" id="nerr"></div><button class="btn" onclick="newTicket()">إرسال التذكرة</button></div>`;
  if(tab==='notif')h+=mn.map(n=>`<div class="card" style="margin-bottom:10px"><b>🔔 One Way Team</b><p style="color:var(--t)">${esc(n.text)}</p><small style="color:var(--m)">${fmt(n.t)}</small></div>`).join('')||'<p style="color:var(--m)">لا توجد إشعارات</p>';
  return h}
 async function newTicket(){const ty=$('nty').value,s=$('ns').value.trim(),j=$('nj').value.trim(),m=$('nm').value.trim();if(!ty){$('nerr').textContent='اختر نوع التذكرة';return}if(!j||!m){$('nerr').textContent='اكتب الموضوع والرسالة';return}
@@ -312,25 +481,30 @@ async function newTicket(){const ty=$('nty').value,s=$('ns').value.trim(),j=$('n
  $('nerr').textContent='جاري الإرسال...';const id='t'+Date.now()+Math.floor(Math.random()*99);
  try{await db.collection('tickets').doc(id).set({uid:me.id,name:me.name,email:me.email,phone:me.phone,type:ty,shipment:s,subject:j,status:'open',createdAt:Date.now(),closedAt:0,msgs:[{from:'c',name:me.name,text:m,t:Date.now(),...(fo?{file:fo}:{})}]})}catch(e){$('nerr').textContent='تعذر حفظ التذكرة، حاول مرة أخرى';return}
  tab='ship';lastH='';render()}
-function ticketView(id,keep){const t=S.tickets.find(x=>x.id===id);if(!t)return;if(cur!==id)pend=null;cur=id;const sc=$('mtb').querySelector('.chat');const top=sc?sc.scrollTop:0;const rpo=$('rp'),dv=rpo&&cur===id?rpo.value:'',hadF=rpo&&document.activeElement===rpo;sigT=t.msgs.length+'|'+t.status;
+function ticketView(id,keep){try{return ticketView0(id,keep)}catch(e){console.error(e);cl('mt');cur=null;alert('حدث خطأ: '+e.message)}}
+function ticketView0(id,keep){const t=S.tickets.find(x=>x.id===id);if(!t)return;if(cur!==id)pend=null;cur=id;const sc=$('mtb').querySelector('.chat');const top=sc?sc.scrollTop:0;const rpo=$('rp'),dv=rpo&&cur===id?rpo.value:'',hadF=rpo&&document.activeElement===rpo;sigT=(t.msgs||[]).length+'|'+t.status;
  const sup=isSup,fin=t.status==='closed'||t.status==='done';
- $('mtb').innerHTML=`<div class="row" style="justify-content:space-between"><h3>🎫 ${esc(t.subject)}</h3><div class="row">${fin?'':`<button class="btn s" onclick="startCall('${id}')">📞 اتصال</button>`}<button class="btn s g" onclick="cl('mt');cur=null">✕</button></div></div><p style="color:var(--m);font-size:13px;margin-top:6px">النوع: <b style="color:var(--t)">${esc(t.type||'—')}</b>${t.shipment?' • شحنة: '+esc(t.shipment):''} • ${tgs(t.status)}${sup?`<br>فتحها: <b style="color:var(--t)">${esc(t.name)}</b> (${esc(t.email)} / ${esc(t.phone)}) الساعة ${fmt(t.createdAt)}${t.closedAt?'<br>أُغلقت: '+fmt(t.closedAt):''}`:''}</p>
- <div class="chat">${t.msgs.map(m=>{const mine=sup?m.from==='s':m.from==='c';return `<div class="m ${mine?'me':''}"><small>${m.from==='s'?'One Way Team':esc(m.name)} • ${fmt(m.t)}</small>${esc(m.text)}${fileHTML(m.file)}</div>`}).join('')}</div>
- ${fin?'<p style="color:var(--m)">التذكرة منتهية.</p>':`<div id="pf"></div><div class="row"><button class="btn s g" onclick="$('fl').click()" title="إرفاق ملف">📎</button><button class="btn s g" id="mic" onclick="recV()" title="تسجيل رسالة صوتية">🎤</button><input type="file" id="fl" hidden accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.zip" onchange="pickF(this)"><input id="rp" style="flex:1" placeholder="اكتب رسالتك..." onkeydown="if(event.key==='Enter')reply('${id}')"><button class="btn" id="sb" onclick="reply('${id}')">إرسال</button></div>`}
+ const mh=(t.msgs||[]).map(m=>{const mine=sup?m.from==='s':m.from==='c';return `<div class="m ${mine?'me':''}"><small>${m.from==='s'?'One Way Team':esc(m.name)} • ${fmt(m.t)}</small>${esc(m.text)}${fileHTML(m.file)}</div>`}).join('');
+ const mb=$('mtb'),ch0=mb.querySelector('.chat');
+ if(keep&&ch0&&$('mt').classList.contains('on')&&mb.dataset.tid===id&&mb.dataset.st===t.status){const atB=ch0.scrollHeight-ch0.scrollTop-ch0.clientHeight<80;ch0.innerHTML=mh;if(atB)ch0.scrollTop=ch0.scrollHeight;return}
+ mb.dataset.tid=id;mb.dataset.st=t.status;
+ $('mtb').innerHTML=`<div class="row" style="justify-content:space-between"><h3 class="u">🎫 ${esc(t.subject)}</h3><div class="row">${fin?'':`<button class="btn s" onclick="startCall('${id}')">📞 اتصال</button>`}<button class="btn s g" onclick="cl('mt');cur=null">✕</button></div></div><p style="color:var(--m);font-size:13px;margin-top:6px">النوع: <b style="color:var(--t)">${esc(t.type||'—')}</b>${t.shipment?' • شحنة: '+esc(t.shipment):''} • ${tgs(t.status)}${sup?`<br>فتحها: <b style="color:var(--t)">${esc(t.name)}</b> (${esc(t.email)} / ${esc(t.phone)}) الساعة ${fmt(t.createdAt)}${t.closedAt?'<br>أُغلقت: '+fmt(t.closedAt):''}`:''}</p>
+ <div class="chat">${mh}</div>
+ ${fin?'<p style="color:var(--m)">التذكرة منتهية.</p>':`<div id="pf"></div><div class="row" id="rr"><button class="btn s g" onclick="$('fl').click()" title="إرفاق ملف">📎</button><button class="btn s g" id="mic" onclick="recV()" title="تسجيل رسالة صوتية">🎤</button><button class="btn s g" onclick="$('fc').click()" title="تصوير">📷</button><input type="file" id="fc" hidden accept="image/*" capture="environment" onchange="pickF(this)"><input type="file" id="fl" hidden accept="image/*,audio/*,video/*,.pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.zip" onchange="pickF(this)"><input id="rp" style="flex:1" placeholder="اكتب رسالتك..." onkeydown="if(event.key==='Enter')reply('${id}')"><button class="btn" id="sb" onclick="reply('${id}')">إرسال</button></div>`}
  ${sup&&!fin?`<div class="row" style="margin-top:12px"><button class="btn s ok" onclick="setSt('${id}','done')">تمت بنجاح</button><button class="btn s wr" onclick="setSt('${id}','postponed')">تأجيل</button><button class="btn s er" onclick="setSt('${id}','closed')">قفل التذكرة</button></div>`:''}`;
- op('mt');const c=$('mtb').querySelector('.chat');c.scrollTop=keep?top:c.scrollHeight;const ni=$('rp');if(ni){if(dv)ni.value=dv;showPf();if(hadF||!keep)ni.focus()}}
+ op('mt');const c=$('mtb').querySelector('.chat');c.scrollTop=keep?top:c.scrollHeight;const ni=$('rp');if(ni){if(dv)ni.value=dv;showPf();if(hadF)ni.focus()}}
 async function reply(id){const i=$('rp'),v=i.value.trim();if(!v&&!pend)return;const t=S.tickets.find(x=>x.id===id),sb=$('sb');let fo=null;
  if(sb){sb.disabled=true;sb.textContent=pend?'جاري الرفع...':'...'}
  try{if(pend)fo=await upFile(pend)}catch(e){alert(e.message==='big'?'حجم الملف أكبر من 10 ميجا':'تعذر رفع الملف. جرّب صورة أصغر');if(sb){sb.disabled=false;sb.textContent='إرسال'}return}
  const msg={from:isSup?'s':'c',name:isSup?'One Way Team':me.name,text:v,t:Date.now(),...(fo?{file:fo}:{})};
  const pp=pend;i.value='';pend=null;
- try{await db.collection('tickets').doc(id).update({msgs:[...t.msgs,msg]});if(isSup)notify(t.uid,`رد جديد من One Way Team على تذكرتك "${t.subject}"`)}catch(e){alert('تعذر إرسال الرسالة، حاول مرة أخرى');const r=$('rp');if(r)r.value=v;pend=pp;showPf();const b=$('sb');if(b){b.disabled=false;b.textContent='إرسال'}}}
+ try{await db.collection('tickets').doc(id).update({msgs:[...(t.msgs||[]),msg]});if(isSup)notify(t.uid,`رد جديد من One Way Team على تذكرتك "${t.subject}"`)}catch(e){alert('تعذر إرسال الرسالة، حاول مرة أخرى');const r=$('rp');if(r)r.value=v;pend=pp;showPf();const b=$('sb');if(b){b.disabled=false;b.textContent='إرسال'}}}
 async function setSt(id,s){await db.collection('tickets').doc(id).update({status:s,closedAt:s==='postponed'?0:Date.now()});if(s!=='postponed'){const t=S.tickets.find(x=>x.id===id);notify(t.uid,`تم ${s==='done'?'إنجاز':'إغلاق'} تذكرتك "${t.subject}" ${t.shipment?'بخصوص الشحنة '+t.shipment:''}.`)}}
 async function notify(to,text){await db.collection('notifs').doc('n'+Date.now()+Math.floor(Math.random()*99)).set({to,text,t:Date.now()})}
 async function sendN(){const e=$('ne').value.trim(),t=$('nt').value.trim();if(!e||!t){$('nse').textContent='اكتب الإيميل والإشعار';return}const u=S.users.find(x=>x.email.toLowerCase()===e.toLowerCase());if(!u){$('nse').textContent='العميل ده لسه ما سجّلش دخول';return}await notify(u.id,t);$('nse').style.color='var(--ok)';$('nse').textContent='تم الإرسال لموبايل '+u.name;$('nt').value=''}
 function supHTML(){const T=S.tickets,on=u=>u.online&&Date.now()-u.lastSeen<70000,cnt=(id,s)=>T.filter(t=>t.uid===id&&(!s||t.status===s)).length;
  let h=`<h2>مركز دعم One Way <span style="font-size:14px;color:var(--b2)">(للفريق فقط)</span></h2>`+tabs([['dash','لوحة المتابعة'],['tk','التذاكر'],['arch','الأرشيف'],['nf','إرسال إشعار']]);
- const row=t=>`<tr><td>${esc(t.name)}<br><small style="color:var(--m)">${esc(t.email)}</small></td><td>${esc(t.type||'—')}</td><td>${esc(t.shipment||'—')}</td><td>${esc(t.subject)}</td><td>${tgs(t.status)}</td><td>${fmt(t.createdAt)}</td><td>${t.closedAt?fmt(t.closedAt):'—'}</td><td><button class="btn s" onclick="ticketView('${t.id}')">فتح</button></td></tr>`;
+ const row=t=>`<tr><td>${esc(t.name)}<br><small style="color:var(--m)">${esc(t.email)}</small></td><td>${esc(t.type||'—')}</td><td>${esc(t.shipment||'—')}</td><td class="u">${esc(t.subject)}</td><td>${tgs(t.status)}</td><td>${fmt(t.createdAt)}</td><td>${t.closedAt?fmt(t.closedAt):'—'}</td><td><button class="btn s" onclick="openT('${t.id}')">فتح</button></td></tr>`;
  const hd='<tr><th>العميل</th><th>النوع</th><th>الشحنة</th><th>الموضوع</th><th>الحالة</th><th>فُتحت</th><th>أُغلقت</th><th></th></tr>';
  if(tab==='dash')h+=`<div class="st"><div><b>${S.users.length}</b><small>عملاء مسجلين</small></div><div><b>${S.users.filter(on).length}</b><small>متصل الآن</small></div><div><b>${T.length}</b><small>تذاكر</small></div><div><b>${T.filter(t=>t.status==='done').length}</b><small>تمت بنجاح</small></div><div><b>${T.filter(t=>t.status==='postponed').length}</b><small>مؤجلة</small></div><div><b>${T.filter(t=>t.status==='closed').length}</b><small>مقفولة</small></div><div><b style="color:var(--er)">${S.att}</b><small>محاولات دخول فاشلة</small></div></div>
  <div class="tw"><table><tr><th>العميل</th><th>التليفون</th><th>الحالة</th><th>آخر ظهور</th><th>تاريخ التسجيل</th><th>دخل الساعة</th><th>فتح</th><th>نجاح</th><th>تأجيل</th><th>قفل</th></tr>${S.users.map(u=>`<tr><td>${esc(u.name)}<br><small style="color:var(--m)">${esc(u.email)}</small></td><td dir="ltr">${esc(u.phone)}</td><td><span class="dot ${on(u)?'on':''}"></span>${on(u)?'فاتح الموقع':'قافل'}</td><td>${fmt(u.lastSeen)}</td><td>${fmt(u.registeredAt)}</td><td>${fmt(u.loginAt)}</td><td>${cnt(u.id)}</td><td>${cnt(u.id,'done')}</td><td>${cnt(u.id,'postponed')}</td><td>${cnt(u.id,'closed')}</td></tr>`).join('')||'<tr><td colspan=10 style="color:var(--m)">لا يوجد عملاء بعد</td></tr>'}</table></div>`;
@@ -358,5 +532,5 @@ function openDev(){if(isDev())devPanel();else{$('mdb').innerHTML=`<h2 style="fon
 function devLogin(){if($('dp').value==='998716'){lss('ow_dev','1');applyM();devPanel()}else $('derr').textContent='كلمة المرور غير صحيحة'}
 function devPanel(){$('mdb').innerHTML=`<h2 style="font-size:22px;text-align:center">👨‍💻 مبرمج</h2><div class="sw"><div><b>وضع الصيانة</b><br><small style="color:var(--m)">${M?'الموقع مقفول للزوار حالياً':'الموقع شغال للزوار'}</small></div><div class="tg2 ${M?'on':''}" onclick="togM()"></div></div><div class="row"><button class="btn g" style="flex:1" onclick="cl('md')">إغلاق</button><button class="btn g" onclick="devOut()">خروج</button></div>`;op('md')}
 async function togM(){const v=!M;try{await db.doc('meta/config').set({maint:v});if(!db.doc('meta/config').onSnapshot){}}catch(e){}M=v;applyM();devPanel()}
-function devOut(){try{localStorage.removeItem('ow_dev')}catch(e){}cl('md');applyM()}
-setTimeout(()=>{const i=$('intro');i&&i.remove()},4500);</script></body></html>
+function devOut(){lsd('ow_dev');cl('md');applyM()}
+setLang(LG);setTimeout(()=>{const i=$('intro');i&&i.remove()},4500);</script></body></html>
