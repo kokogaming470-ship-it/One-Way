@@ -119,7 +119,8 @@ th,td{padding:8px 6px;font-size:13px}.m{max-width:92%}.fab{width:56px;height:56p
 #push{width:94vw}.big{font-size:30px}}
 @media(max-width:380px){nav .btn.s{padding:6px 8px;font-size:11px}.hero h1{font-size:30px}}
 @media(hover:none){.card:hover{transform:none}.btn:hover{transform:none}}
-@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important}}
+/* الخلفية المتحركة تعمل دائماً حتى مع تفعيل تقليل الحركة في الجهاز */
+#bgw,#bgw *{animation-play-state:running!important}
 
 .ov{background:radial-gradient(ellipse at 50% 30%,#0b2a63f0,#030712f8);backdrop-filter:none;-webkit-backdrop-filter:none}
 body.mo #site{visibility:hidden}body.mo{overflow:hidden}
@@ -285,9 +286,7 @@ html:not([lang=ar]) .ar{display:none!important}html[lang=ar] .en{display:none!im
 .a3 .road i{position:absolute;left:0;right:0;top:45%;height:4px;background:repeating-linear-gradient(90deg,#f0b03c 0 40px,transparent 40px 90px);animation:rdl .6s linear infinite}
 @keyframes rdl{to{background-position:-90px 0}}
 .truck{width:clamp(250px,44vw,600px);bottom:calc(15% - 14px)}
-#bgw.ps *{animation-play-state:paused!important}
 #bgw.vid .act{display:none}
-@media(prefers-reduced-motion:reduce){#bgw .a1{animation:none!important;opacity:1}#bgw .a1 .veh{animation:none!important;transform:translateX(24vw)}}
 /* ===== intro: CEO line + responsive ===== */
 #intro{height:100vh;height:100dvh;padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom)}
 #intro .t{font-size:clamp(30px,8.5vw,72px);line-height:1.35;padding:0 6vw}
@@ -647,14 +646,31 @@ function trSet(k,v){TS[k]=v;trSave();if(k==='il')trRef()}
 async function trChat(){if(!isSup||!TS.i||!cur)return;const t=S.tickets.find(x=>x.id===cur);if(!t)return;for(const el of [...document.querySelectorAll('#mtb .chat .m[data-c]')]){const m=(t.msgs||[])[+el.dataset.c];if(!m||!m.text||el.querySelector('.trx'))continue;try{const o=await gt(m.text,TS.il);if(o.sl===TS.il)continue;const d=document.createElement('div');d.className='trx';d.textContent='🌍 '+o.t;el.appendChild(d)}catch(e){}}}
 {const _tv=ticketView;ticketView=function(a,b){const r=_tv(a,b);setTimeout(trChat,50);return r}}
 window.BG_VIDEOS=[/* ضع هنا روابط فيديوهات mp4 الخاصة بيك (سفينة / طيارة / عربية شحن) وهتشتغل بدل الخلفية المتحركة، مثال: 'videos/ship.mp4' */];
-(function(){const V=window.BG_VIDEOS,bw=$('bgw');
-setInterval(()=>bw.classList.toggle('ps',getComputedStyle($('app')).display!=='none'),1500);
-if(!V.length)return;bw.classList.add('vid');let i=0,a=$('bv1'),b=$('bv2');
+(function(){const V=window.BG_VIDEOS||[],bw=$('bgw');
+/* الخلفية بتشتغل دائماً: مفيش إيقاف مؤقت لا مع فتح الواجهة ولا مع إعدادات تقليل الحركة */
+bw.classList.remove('ps');
+if(!V.length)return;bw.classList.add('vid');
+let i=0,a=$('bv1'),b=$('bv2');
+[a,b].forEach(v=>{v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');v.setAttribute('autoplay','');v.disablePictureInPicture=true;v.controls=false});
+const single=V.length===1;
 function load(v,n){v.innerHTML='';const e=document.createElement('source');e.src=V[n];e.type='video/mp4';v.appendChild(e);v.load()}
-function bind(){a.ontimeupdate=()=>{if(a.duration&&a.duration-a.currentTime<1.4)swap()};a.onended=swap}
-function swap(){a.ontimeupdate=a.onended=null;const n=(i+1)%V.length;load(b,n);b.oncanplay=()=>{b.oncanplay=null;b.play().catch(()=>{});b.classList.add('on');a.classList.remove('on');const o=a;a=b;b=o;i=n;bind()}}
-load(a,0);a.classList.add('on');a.play().catch(()=>{});bind();addEventListener('pointerdown',()=>a.play().catch(()=>{}),{once:true});
-setInterval(()=>{const h=getComputedStyle($('app')).display!=='none';[a,b].forEach(v=>{if(h)v.pause();else if(v.classList.contains('on')&&v.paused)v.play().catch(()=>{})})},1500)})();
+function kick(v){const p=v.play();if(p&&p.catch)p.catch(()=>{})}
+function bind(){if(single)return;a.ontimeupdate=()=>{if(a.duration&&a.duration-a.currentTime<1.4)swap()};a.onended=swap}
+function swap(){a.ontimeupdate=a.onended=null;const n=(i+1)%V.length;load(b,n);b.oncanplay=()=>{b.oncanplay=null;kick(b);b.classList.add('on');a.classList.remove('on');const o=a;a=b;b=o;i=n;bind()}}
+function setup(){load(a,0);a.loop=single;a.classList.add('on');kick(a);bind()}
+setup();
+a.addEventListener('error',()=>{});
+/* أي لمسة أو ضغطة أو حركة تعيد التشغيل لو المتصفح منعه (موبايل/توفير الطاقة) */
+['pointerdown','touchstart','touchend','click','keydown','scroll'].forEach(ev=>addEventListener(ev,()=>{if(a.paused)kick(a)},{passive:true}));
+['visibilitychange','pageshow','focus','online','resize','orientationchange'].forEach(ev=>addEventListener(ev,()=>{if(!document.hidden&&a.paused)kick(a)}));
+/* حارس كل ثانية: لو الفيديو واقف أو متجمد يرجّعه يشتغل */
+let lt=-1,st=0;
+setInterval(()=>{
+ if(document.hidden)return;
+ if(a.paused){kick(a);return}
+ if(a.currentTime===lt){st++;if(st>=4){st=0;const t=a.currentTime;a.load();a.addEventListener('loadeddata',()=>{try{a.currentTime=t}catch(e){}kick(a)},{once:true})}}else{st=0;lt=a.currentTime}
+ if(a.ended){if(single){a.currentTime=0;kick(a)}}
+},1000)})();
 (function(){const it=$('intro');for(let k=0;k<3;k++){const r=document.createElement('i');r.className='ray';r.style.animationDelay=(-k*2)+'s';r.style.width=(10+k*6)+'vw';it.appendChild(r)}for(let k=0;k<38;k++){const p=document.createElement('i');p.className='pt';p.style.left=Math.random()*100+'%';p.style.animationDuration=(6+Math.random()*8)+'s';p.style.animationDelay=(-Math.random()*10)+'s';p.style.transform='scale('+(.6+Math.random()*1.6)+')';it.appendChild(p)}})();
 let faceData=null,noCam=false,fStream=null;
 async function faceOpen(){try{fStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:{ideal:640}}});const v=$('fv');v.srcObject=fStream;v.style.display='block';$('fi').style.display='none';$('fb1').style.display='none';$('fb2').style.display='';$('fno').textContent='';noCam=false;faceData=null;$('cerr').textContent=''}catch(e){$('cerr').textContent='تعذر فتح الكاميرا. اسمح للموقع باستخدامها أو اختر "ليس لدي كاميرا"'}}
