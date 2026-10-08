@@ -741,12 +741,26 @@ const DI=`تواصل عبر موقعنا الإلكتروني|Contact us via our
 جاري التحقق...|Verifying...
 اكتب أي كلمة مرور لحماية حسابك من أي شخص يسجل بإيميلك|Enter any password to protect your account from anyone registering with your email
 اكتب كلمة المرور (6 أحرف على الأقل)|Enter a password (at least 6 characters)
-تتبع السفن|Track Ships`.split('\n').map(l=>l.split('|')).sort((a,b)=>b[0].length-a[0].length);
+تتبع السفن|Track Ships
+طلب شحن شحنة|Shipment request
+طلب تخليص جمركي|Customs clearance request
+طلب تسعير|Quote request
+استفسار عن شحنة|Shipment inquiry
+تأخير في الشحنة|Shipment delay
+مشكلة في الدفع / الفاتورة|Payment / invoice issue
+اختر النوع...|Select type...
+نوع الطلب|Request type
+رقم الشحنة (اختياري)|Shipment number (optional)
+أرفق صورة أو ملف (اختياري)|Attach a photo or file (optional)
+إرسال الطلب|Send request
+ عبر | via 
+شكوى|Complaint
+أخرى|Other`.split('\n').map(l=>l.split('|')).sort((a,b)=>b[0].length-a[0].length);
 const AR=/[\u0600-\u06FF]/;
 function T0(s){if(!AR.test(s))return s;const m=s.match(/^([^\u0600-\u06FF]*)([\s\S]*?)(\s*)$/),x=EX[m[2]];if(x)return m[1]+x+m[3];for(const[a,e]of DI)if(s.includes(a))s=s.split(a).join(e);return s}
 const RTL=['ar','iw','fa','ur','ps','sd','ug','yi'];let LX={};try{LX=JSON.parse(localStorage.getItem('ow_lx')||'{}')}catch(e){}
 const TQ=new Set(),TF=new Set();let tqT=null,trP=Promise.resolve();
-function T(s){if(LG==='ar')return s;const e=T0(s);if(LG==='en')return e;const m=e.match(/^(\s*)([\s\S]*?)(\s*)$/),k=m[2];if(!/\p{L}{2}/u.test(k)||/@|^https?:|^[\d+\s().-]+$/.test(k))return e;const q=LG+'\u0001'+k,c=(LX[LG]||{})[k];if(c)return m[1]+c+m[3];if(TF.has(q))return e;TQ.add(q);clearTimeout(tqT);tqT=setTimeout(()=>{trP=trRun()},250);return e}
+function T(s){if(LG==='ar')return s;const e=T0(s);if(LG==='en'&&!AR.test(e))return e;const m=e.match(/^(\s*)([\s\S]*?)(\s*)$/),k=m[2];if(!/\p{L}{2}/u.test(k)||/@|^https?:|^[\d+\s().-]+$/.test(k))return e;const q=LG+'\u0001'+k,c=(LX[LG]||{})[k];if(c)return m[1]+c+m[3];if(TF.has(q))return e;TQ.add(q);clearTimeout(tqT);tqT=setTimeout(()=>{trP=trRun()},250);return e}
 const TC={};
 async function gt(text,tl,sl){sl=sl||'auto';const k=sl+'|'+tl+'|'+text;if(TC[k])return TC[k];const u='https://translate.googleapis.com/translate_a/single?client=gtx&sl='+sl+'&tl='+tl+'&dt=t&q=',e=encodeURIComponent(text);const r=e.length<1800?await fetch(u+e):await fetch(u,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'q='+e});if(!r.ok)throw new Error('tr');const j=await r.json();return TC[k]={t:j[0].map(x=>x[0]).join(''),sl:j[2]}}
 async function trRun(){const L=[...TQ];TQ.clear();let n=0,i=0;const job=async()=>{while(i<L.length){const[l,k]=L[i++].split('\u0001');try{const o=await gt(k,l);(LX[l]=LX[l]||{})[k]=o.t;n++}catch(e){TF.add(l+'\u0001'+k)}}};await Promise.all([job(),job(),job(),job(),job(),job()]);try{localStorage.setItem('ow_lx',JSON.stringify(LX))}catch(e){}if(n)walk(document.body,1)}
@@ -1031,11 +1045,11 @@ function render(){if(!$('app').style.display||$('app').style.display==='none')re
 function tgs(s){return `<span class="tg ${s}">${ST[s]}</span>`}
 function custHTML(){const mt=S.tickets.filter(t=>t.uid===me.id),mn=S.notifs.filter(n=>n.to===me.id),op=mt.filter(t=>t.status==='open'||t.status==='postponed'),dn=mt.filter(t=>t.status==='done'||t.status==='closed');
  const tbl=(l,em)=>`<div class="tw"><table><tr><th>النوع</th><th>رقم الشحنة</th><th>الموضوع</th><th>الحالة</th><th>التاريخ</th><th></th></tr>${l.map(t=>`<tr><td>${esc(t.type||'—')}</td><td dir="ltr">${esc(t.shipment||'—')}</td><td class="u">${esc(t.subject)}</td><td>${tgs(t.status)}</td><td>${fmt(t.createdAt)}</td><td><button class="btn s" onclick="openT('${t.id}')">فتح</button></td></tr>`).join('')||`<tr><td colspan=6 style="color:var(--m)">${em}</td></tr>`}</table></div>`;
- let h=`<h2>أهلاً ${esc(me.name)} 👋</h2>`+tabs([['ship','طلباتي المفتوحة ('+op.length+')'],['new','طلب شحن'],['hist','المنتهية ('+dn.length+')'],['notif','الإشعارات ('+mn.length+')']]);
+ let h=`<h2>أهلاً ${esc(me.name)} 👋</h2>`+tabs([['ship','طلباتي المفتوحة ('+op.length+')'],['new','طلب شحن'],['hist','المنتهية ('+dn.length+')'],['notif','الإشعارات ('+mn.length+')'],['ships',ln('🚢 سفني','🚢 My Ships')+' ('+myShips().length+')']]);
  if(tab==='ship')h+=`<div class="st"><div><b>${mt.length}</b><small>كل الطلبات</small></div><div><b>${op.length}</b><small>مفتوحة</small></div><div><b>${dn.length}</b><small>منتهية</small></div></div>`+tbl(op,'لا توجد طلبات مفتوحة. اضغط "طلب شحن" لبدء طلب جديد')+`<div style="margin-top:14px"><button class="btn" onclick="setTab('new')">📦 طلب شحن جديد</button></div>`;
  if(tab==='hist')h+=tbl(dn,'لا توجد طلبات منتهية');
  if(tab==='new')h+=`<div class="card" style="max-width:520px"><label>نوع الطلب</label><select id="nty"><option value="">اختر النوع...</option><option value="طلب شحن شحنة">طلب شحن شحنة</option><option value="طلب تخليص جمركي">طلب تخليص جمركي</option><option value="طلب تسعير">طلب تسعير</option><option value="استفسار عن شحنة">استفسار عن شحنة</option><option value="تأخير في الشحنة">تأخير في الشحنة</option><option value="شكوى">شكوى</option><option value="مشكلة في الدفع / الفاتورة">مشكلة في الدفع / الفاتورة</option><option value="أخرى">أخرى</option></select><label>رقم الشحنة (اختياري)</label><input id="ns" dir="ltr"><label>الموضوع</label><input id="nj"><label>الرسالة</label><textarea id="nm" rows="4"></textarea><label>📎 أرفق صورة أو ملف (اختياري)</label><input id="nf" type="file" accept="image/*,application/pdf"><div class="err" id="nerr"></div><button class="btn" onclick="newTicket()">إرسال الطلب</button></div>`;
- if(tab==='notif')h+=mn.map(n=>`<div class="card" style="margin-bottom:10px"><b>🔔 One Way Team</b><p style="color:var(--t)">${esc(n.text)}</p><small style="color:var(--m)">${fmt(n.t)}</small></div>`).join('')||'<p style="color:var(--m)">لا توجد إشعارات</p>';
+ if(tab==='ships')h+=shipsCust();if(tab==='notif')h+=mn.map(n=>`<div class="card" style="margin-bottom:10px"><b>🔔 One Way Team</b><p style="color:var(--t)">${esc(n.text)}</p><small style="color:var(--m)">${fmt(n.t)}</small></div>`).join('')||'<p style="color:var(--m)">لا توجد إشعارات</p>';
  return h}
 async function newTicket(){const ty=$('nty').value,s=$('ns').value.trim(),j=$('nj').value.trim(),m=$('nm').value.trim();if(!ty){$('nerr').textContent='اختر نوع الطلب';return}if(!j||!m){$('nerr').textContent='اكتب الموضوع والرسالة';return}
  let fo=null;const nf=$('nf')&&$('nf').files[0];
@@ -1110,14 +1124,22 @@ function pickShip(id){selShip=id;lastH='';render()}
 let shZ=8;
 function zoomShip(d){shZ=Math.max(3,Math.min(14,shZ+d));lastH='';render();const m=$('wmap');if(m){m.dataset.sig='';try{wmapRender()}catch(e){}}}
 function shipMap(s,sup,H){H=H||430;if(sup)return `<div class="mw">${aisFrame({h:H,z:9,n:true,mmsi:s.mmsi,imo:s.imo,tr:true})}<div class="pin"><b>ONE WAY</b><small>${esc(s.cname||s.email)}</small></div></div>`;
- if(s.lat!=null)return `<div class="mw"><div class="lmap" data-sid="${s.id}" style="height:${H}px"></div><div class="lbadge lts" data-sid="${s.id}"></div></div>`;
- return `<div class="mw">${aisFrame({h:H,z:shZ,n:false,mmsi:s.mmsi,imo:s.imo,tr:true})}<div class="shd"></div><div class="pin"><b>ONE WAY</b><small>${esc(s.name)}</small></div><div class="zb"><button onclick="zoomShip(1)">+</button><button onclick="zoomShip(-1)">−</button></div></div>`}
+ s=mg(s);if(s.lat!=null)return `<div class="mw"><div class="lmap" data-sid="${s.id}" style="height:${H}px"></div><div class="lbadge lts" data-sid="${s.id}"></div></div>`;
+ return `<div class="mw"><div data-lerr style="height:${H}px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:var(--m);line-height:2">${esc(lerrText())}</div></div>`}
 const SF=[['shipment','📦 رقم الشحنة'],['country','🌍 الدولة'],['pol','⚓ ميناء الشحن'],['pod','🏁 ميناء الوصول'],['eta','🕒 موعد الوصول المتوقع'],['st','📍 حالة الشحنة'],['note','📝 ملاحظات']];
 function shipInfo(s,sup){if(!sup&&s.sd===false)return '';const l=SF.filter(([k])=>s[k]);return (l.length?`<div class="inf2">${l.map(([k,n])=>`<div><small>${n}</small><b>${esc(s[k])}</b></div>`).join('')}</div>`:'')+(s.photo&&s.photo.url?`<div class="bd">${fileHTML(s.photo)}</div>`:'')}
 function shipHead(s,sup){return `<div class="shh"><span class="owb">ONE WAY</span><b>${esc(s.name)}</b>${sup?`<small dir="ltr">${s.mmsi?'MMSI '+esc(s.mmsi):''}${s.imo?' · IMO '+esc(s.imo):''}</small>`:''}${s.shipment?`<small>الشحنة: <span dir="ltr">${esc(s.shipment)}</span></small>`:''}${sup?`<small>العميل: ${esc(s.cname||'')} (<span dir="ltr">${esc(s.email)}</span>)</small>`:''}</div>`}
-function shipsCust(){const l=myShips();if(!l.length)return '<div class="shc"><div class="bd"><p style="color:var(--m);line-height:2">لا توجد سفن مرتبطة بحسابك حالياً. لو شحنتك على سفينة تابعة لـ One Way، فريق الدعم هيربطها بحسابك وتظهر هنا مع علامة ONE WAY.</p></div></div>';
- const s=l.find(x=>x.id===selShip)||l[0];
- return `<div class="row" style="margin-bottom:12px">${l.map(x=>`<button class="btn s ${x.id===s.id?'':'g'}" onclick="pickShip('${x.id}')">🚢 ${esc(x.name)}</button>`).join('')}</div><div class="shc">${shipHead(s)}${shipMap(s)}${shipInfo(s)}<div class="bd row"><button class="btn s" onclick="lastH='';render()">🎯 إعادة التمركز على السفينة</button></div></div>`}
+function shipsCust(){
+ const l=myShips(),s0=l.find(x=>x.id===selShip)||l[0];
+ const add=`<div class="shc" style="max-width:660px;margin-bottom:12px"><div class="shh"><b>${ln('تتبع سفينة','Track a vessel')}</b></div><div class="bd"><label>MMSI (${ln('9 أرقام','9 digits')})</label><input id="cmm" dir="ltr" inputmode="numeric" maxlength="9" placeholder="636019825"><label>${ln('ميناء الشحن (اختياري)','Origin port (optional)')}</label><input id="cpl" dir="ltr"><label>${ln('ميناء الوصول (اختياري)','Destination port (optional)')}</label><input id="cpd" dir="ltr"><div class="err" id="cme"></div><button class="btn s" onclick="custAddShip()">${ln('🚢 ابدأ التتبع','🚢 Start tracking')}</button></div></div>`;
+ if(!l.length)return add;
+ const s=mg(s0);
+ return add+`<div class="row" style="margin-bottom:12px">${l.map(x=>`<button class="btn s ${x.id===s0.id?'':'g'}" onclick="pickShip('${x.id}')">🚢 ${esc(mg(x).name)}</button>`).join('')}</div><div class="shc"><div class="shh"><b>${esc(s.name)}</b><small dir="ltr">MMSI ${esc(s.mmsi)}</small></div>${shipMap(s0,0)}<div class="inf2">${[['from',ln('من','From')],['to',ln('إلى','To')],['eta','ETA'],['sog',ln('السرعة','Speed')],['cog',ln('الاتجاه','Course')]].map(([k,n])=>`<div><small>${n}</small><b data-lf="${k}" data-sid="${s0.id}">—</b></div>`).join('')}</div>${shipInfo(s0)}${s0.self?`<div class="bd row"><button class="btn s er" onclick="custDelShip('${s0.id}')">${ln('إزالة السفينة','Remove vessel')}</button></div>`:''}</div>`}
+async function custAddShip(){const m=dg(($('cmm')||{}).value||''),e=$('cme');if(!e)return;
+ if(m.length!==9){e.textContent=ln('اكتب MMSI من 9 أرقام','Enter a 9-digit MMSI');return}
+ if(myShips().some(x=>dg(x.mmsi)===m)){e.textContent=ln('السفينة مضافة بالفعل','Vessel already added');return}
+ try{const r=await db.collection('ships').add({name:'MMSI '+m,mmsi:m,pol:(($('cpl')||{}).value||'').trim(),pod:(($('cpd')||{}).value||'').trim(),uid:me.id,email:me.email||'',cname:me.name||'',show:true,self:true,createdAt:Date.now()});selShip=r.id;LNEXT[m]=0;lastH='';render();livePollOne(m)}catch(x){e.textContent=ln('تعذر إضافة السفينة','Could not add the vessel')}}
+async function custDelShip(id){if(!confirm(ln('إزالة السفينة؟','Remove this vessel?')))return;try{await db.collection('ships').doc(id).update({del:true});if(selShip===id)selShip=null}catch(e){}}
 function worldCust(){return `<div class="shc"><div class="shh"><b>🌍 حركة السفن حول العالم (مباشر)</b></div><div class="bd"><div class="mw">${aisFrame({h:520,z:3,n:false})}</div></div></div>`}
 function shipsSup(){const L=S.ships||[],s=L.find(x=>x.id===selShip);
  return `<div class="shc" style="max-width:660px"><div class="shh"><b>📡 التتبع المباشر (مواقع حقيقية متحركة)</b></div><div class="bd"><div class="note">سجّل مجاناً في aisstream.io، خد مفتاح API وحطه هنا، وسيب الصفحة دي مفتوحة. السيستم بيجيب موقع كل سفينة مربوطة ويحدّثه للعميل تلقائياً.</div><label>مفتاح AISStream</label><input id="fk" type="password" dir="ltr" value="${esc(lsg('ow_aiskey')||'')}"><div id="fs" style="font-size:13px;margin:8px 0;color:var(--m)">${esc(FS)}</div><div class="row"><button class="btn s ok" onclick="feedStart()">▶ تشغيل</button><button class="btn s er" onclick="feedStop()">⏹ إيقاف</button></div></div></div>
@@ -1160,23 +1182,43 @@ function wmapRender(){const m=$('wmap');if(!m||!m.dataset.vis)return;const H=Mat
 (()=>{const m=$('wmap');if(!m)return;const go=()=>{m.dataset.vis=1;wmapRender()};
  if('IntersectionObserver' in window)new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){o.disconnect();go()}},{rootMargin:'300px'}).observe(m);else go()})();
 
-const shipById=id=>(S.ships||[]).find(x=>x.id===id);
+const shipById=id=>{const s=(S.ships||[]).find(x=>x.id===id);return s?mg(s):s};
 let LF=null;const LMS=new Map();let FW=null,FT={},FS='';
 function loadLeaflet(){return LF||(LF=new Promise((ok,no)=>{if(window.L)return ok();const l=document.createElement('link');l.rel='stylesheet';l.href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css';document.head.appendChild(l);const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';s.onload=ok;s.onerror=no;document.head.appendChild(s)}))}
 function pred(s){let la=s.lat,lo=s.lon;const dt=Math.min(600,Math.max(0,(Date.now()-(s.ts||0))/1000));if(s.sog>.5&&s.sog<60&&s.cog!=null&&s.cog<360){const d=s.sog*.514444*dt,r=s.cog*Math.PI/180;la+=d*Math.cos(r)/111320;lo+=d*Math.sin(r)/(111320*Math.max(.2,Math.cos(la*Math.PI/180)))}return[la,lo]}
-const ago=t=>{const s=Math.max(0,Math.round((Date.now()-t)/1000));return s<90?s+' ث':s<5400?Math.round(s/60)+' د':Math.round(s/3600)+' س'};
+const ago=t=>{const s=Math.max(0,Math.round((Date.now()-t)/1000));return s<90?s+ln(' ث',' s'):s<5400?Math.round(s/60)+ln(' د',' min'):Math.round(s/3600)+ln(' س',' h')};
 async function mountLive(){for(const[el,o]of[...LMS])if(!document.body.contains(el)){try{o.map.remove()}catch(e){}LMS.delete(el)}
  const els=[...document.querySelectorAll('.lmap')].filter(e=>!LMS.has(e));if(!els.length)return;try{await loadLeaflet()}catch(e){return}
  els.forEach(el=>{if(LMS.has(el)||!document.body.contains(el))return;const s=shipById(el.dataset.sid);if(!s||s.lat==null)return;
-  const map=L.map(el,{scrollWheelZoom:false,dragging:!L.Browser.mobile,tap:false}).setView(pred(s),Math.min(15,shZ+1));
+  const map=L.map(el,{scrollWheelZoom:false,dragging:!L.Browser.mobile,tap:false}).setView(pred(s),Math.min(15,shZ+1));map.attributionControl.setPrefix(false);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:17,subdomains:'abcd',attribution:'© OpenStreetMap © CARTO'}).addTo(map);
   const tr=L.polyline(s.trail||[],{color:'#e8c987',weight:2,opacity:.75,dashArray:'6 6'}).addTo(map);
   const mk=L.marker(pred(s),{icon:L.divIcon({className:'',html:`<div class="shm"><b>ONE WAY</b><small>${esc(s.name)}</small><i></i></div>`,iconSize:[0,0]}),interactive:false}).addTo(map);
   const o={map,mk,tr,sid:s.id,follow:true};map.on('dragstart',()=>o.follow=false);LMS.set(el,o);setTimeout(()=>map.invalidateSize(),250)});liveTick()}
 function liveUpdate(){for(const o of LMS.values()){const s=shipById(o.sid);if(s&&s.lat!=null)o.tr.setLatLngs(s.trail||[])}liveTick()}
 function liveTick(){for(const o of LMS.values()){const s=shipById(o.sid);if(!s||s.lat==null)continue;const p=pred(s);o.mk.setLatLng(p);if(o.follow)o.map.panTo(p,{animate:false})}
- document.querySelectorAll('.lts').forEach(e=>{const s=shipById(e.dataset.sid);e.textContent=s&&s.ts?'🟢 مباشر • آخر موقع منذ '+ago(s.ts):(e.classList.contains('lbadge')?'':'—')})}
+ document.querySelectorAll('[data-lerr]').forEach(e=>{const t=lerrText();if(e.textContent!==t)e.textContent=t});
+ document.querySelectorAll('[data-lf]').forEach(e=>{const s=shipById(e.dataset.sid);if(!s)return;const k=e.dataset.lf;let v='—';if(k==='to')v=s.dest||s.pod||'—';else if(k==='from')v=s.pol||'—';else if(k==='eta')v=s.eta||'—';else if(k==='sog')v=s.sog!=null?(+s.sog).toFixed(1)+' kn':'—';else if(k==='cog')v=s.cog!=null&&s.cog<360?Math.round(s.cog)+'°':'—';if(e.textContent!==v)e.textContent=v});
+ document.querySelectorAll('.lts').forEach(e=>{const s=shipById(e.dataset.sid);e.textContent=s&&s.ts?ln('🟢 مباشر • آخر موقع منذ ','🟢 Live • last position ')+ago(s.ts)+ln('',' ago'):(e.classList.contains('lbadge')?'':'—')})}
 setInterval(liveTick,1000);
+/* ===== live AIS (customer self-service via /api/ais) ===== */
+function ln(a,e){return LG==='ar'?a:e}
+const LIVE={},LBUSY={},LNEXT={};let LERR='';
+function mg(s){const v=LIVE[dg(s.mmsi)];if(!v)return s;const o={...s};['name','lat','lon','sog','cog','ts','dest','eta'].forEach(k=>{if(v[k]!=null&&v[k]!=='')o[k]=v[k]});if(v.trail&&v.trail.length)o.trail=v.trail;return o}
+function lerrText(){return LERR==='nokey'?ln('خدمة التتبع غير مفعلة بعد. تواصل مع الدعم.','Live tracking is not configured yet. Please contact support.'):LERR?ln('تعذر الوصول لخدمة التتبع، جاري إعادة المحاولة...','Tracking service unreachable, retrying...'):ln('جاري تحديد موقع السفينة مباشرة... قد يستغرق دقيقة. لو السفينة لا ترسل إشارة AIS فلن يظهر موقعها.','Locating the vessel live… this can take up to a minute. If the vessel is not transmitting AIS, no position will appear.')}
+function trLoad(m){try{return JSON.parse(localStorage.getItem('ow_tr_'+m)||'[]')}catch(e){return[]}}
+async function livePollOne(m){if(LBUSY[m])return;LBUSY[m]=1;
+ try{const r=await fetch('/api/ais?mmsi='+m,{cache:'no-store'});const j=await r.json();
+  if(j.error){LERR=j.error==='nokey'?'nokey':'err'}else{LERR='';const v=LIVE[m]=LIVE[m]||{trail:trLoad(m)};
+   if(j.name)v.name=String(j.name).slice(0,60);if(j.dest)v.dest=String(j.dest).replace(/[<>]/g,'').slice(0,60);if(j.eta)v.eta=String(j.eta).slice(0,30);
+   if(j.name){const x=(S.ships||[]).find(q=>dg(q.mmsi)===m&&q.self&&/^MMSI /.test(q.name||''));if(x)try{db.collection('ships').doc(x.id).update({name:v.name}).catch(()=>{})}catch(e){}}
+   if(j.lat!=null&&Math.abs(j.lat)<=90&&Math.abs(j.lon)<=180){const first=v.lat==null;v.lat=j.lat;v.lon=j.lon;v.sog=j.sog;v.cog=j.cog;v.ts=Date.now();
+    const t=v.trail,p=t[t.length-1];if(!p||Math.abs(p[0]-j.lat)+Math.abs(p[1]-j.lon)>.0005){t.push([+j.lat.toFixed(5),+j.lon.toFixed(5)]);if(t.length>150)t.shift();try{localStorage.setItem('ow_tr_'+m,JSON.stringify(t))}catch(e){}}
+    if(first){lastH='';render()}else liveUpdate()}}
+ }catch(e){LERR='err'}finally{LBUSY[m]=0;LNEXT[m]=Date.now()+15000}}
+function livePoll(){if(typeof me==='undefined'||!me||isSup||document.hidden||tab!=='ships')return;const a=$('app');if(!a||a.style.display==='none')return;
+ myShips().forEach(s=>{const m=dg(s.mmsi);if(m.length===9&&Date.now()>=(LNEXT[m]||0))livePollOne(m)})}
+setInterval(livePoll,3000);
 function setFS(t){FS=t;const e=$('fs');if(e)e.textContent=t}
 function feedStop(q){if(FW){const w=FW;FW=null;try{w.close()}catch(e){}}if(!q)setFS('تم الإيقاف')}
 function feedStart(){const fk=$('fk'),k=((fk&&fk.value)||lsg('ow_aiskey')||'').trim();if(!k){setFS('اكتب مفتاح AISStream');return}lss('ow_aiskey',k);feedStop(true);
