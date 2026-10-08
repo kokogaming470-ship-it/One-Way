@@ -1,5 +1,5 @@
 // Vercel serverless function: live AIS position for one MMSI (key stays on the server)
-const WebSocket = require('ws');
+const WebSocket = globalThis.WebSocket || require('ws');
 const pad = n => String(n).padStart(2, '0');
 module.exports = (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
@@ -15,12 +15,13 @@ module.exports = (req, res) => {
     try { ws.close(); } catch (e) {}
     res.status(200).json(out);
   };
-  const hard = setTimeout(fin, 12000);
-  ws.on('open', () => ws.send(JSON.stringify({
+  const hard = setTimeout(fin, 8000);
+  const on = (ev, fn) => (ws.addEventListener ? ws.addEventListener(ev, e => fn(ev === 'message' ? e.data : e)) : ws.on(ev, fn));
+  on('open', () => ws.send(JSON.stringify({
     APIKey: key, BoundingBoxes: [[[-90, -180], [90, 180]]],
     FiltersShipMMSI: [mmsi], FilterMessageTypes: ['PositionReport', 'ShipStaticData']
   })));
-  ws.on('message', d => {
+  on('message', d => {
     let m; try { m = JSON.parse(d.toString()); } catch (e) { return; }
     if (m.error) { out.error = String(m.error); return fin(); }
     const mm = m.MetaData || {}, msg = m.Message || {};
@@ -37,6 +38,6 @@ module.exports = (req, res) => {
       if (s.Name && s.Name.trim()) out.name = s.Name.trim();
     }
   });
-  ws.on('error', () => { out.error = out.error || 'ws'; fin(); });
-  ws.on('close', fin);
+  on('error', () => { out.error = out.error || 'ws'; fin(); });
+  on('close', fin);
 };
